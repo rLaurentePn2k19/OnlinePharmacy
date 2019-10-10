@@ -309,6 +309,7 @@ public class SeniorCitizen extends Customer {
         }
         if (trial == 3) {
             System.err.println("\nYou've exceed the number of trials.");
+            Runtime.getRuntime().exit(0);
         }
     }
 
