@@ -93,6 +93,17 @@ public class SeniorCitizen extends Customer {
                     for (int x = 0; x < User.getMedicineForHeadache().size(); x++) {
                         User.getMedicineForHeadache().get(x).setId(x + 1);
                     }
+                    super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForHeadache().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForHeadache().get(i).getQuantity()) {
                     User.getMedicineForHeadache().get(i).setQuantity(User.getMedicineForHeadache().get(i).getQuantity() - buy);
                     System.out.println("Successfully Purchased!");
@@ -101,19 +112,19 @@ public class SeniorCitizen extends Customer {
                     } else {
                         super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
                     }
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForHeadache().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForHeadache().get(i).getPrice();
-                float discount = (float) (0.2 * price);
-                int remaining = (int) (money - discount * buy);
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + discount * buy);
-                System.out.println("You availed 20% discount.");
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -133,6 +144,17 @@ public class SeniorCitizen extends Customer {
                     for (int x = 0; x < User.getMedicineForBodyPain().size(); x++) {
                         User.getMedicineForBodyPain().get(x).setId(x + 1);
                     }
+                    super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForBodyPain().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForBodyPain().get(i).getQuantity()) {
                     User.getMedicineForBodyPain().get(i).setQuantity(User.getMedicineForBodyPain().get(i).getQuantity() - buy);
                     System.out.println("Successfully Purchased!");
@@ -141,19 +163,19 @@ public class SeniorCitizen extends Customer {
                     } else {
                         super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), buy);
                     }
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForBodyPain().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForBodyPain().get(i).getPrice();
-                float discount = (float) (0.2 * price);
-                int remaining = (int) (money - discount * buy);
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + discount * buy);
-                System.out.println("You availed 20% discount.");
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -173,6 +195,17 @@ public class SeniorCitizen extends Customer {
                     for (int x = 0; x < User.getMedicineForAllergies().size(); x++) {
                         User.getMedicineForAllergies().get(x).setId(x + 1);
                     }
+                    super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForAllergies().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForAllergies().get(i).getQuantity()) {
                     User.getMedicineForAllergies().get(i).setQuantity(User.getMedicineForAllergies().get(i).getQuantity() - buy);
                     System.out.println("Successfully Purchased!");
@@ -181,19 +214,19 @@ public class SeniorCitizen extends Customer {
                     } else {
                         super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), buy);
                     }
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForAllergies().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForAllergies().get(i).getPrice();
-                float discount = (float) (0.2 * price);
-                int remaining = (int) (money - discount * buy);
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + discount * buy);
-                System.out.println("You availed 20% discount.");
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -213,6 +246,17 @@ public class SeniorCitizen extends Customer {
                     for (int x = 0; x < User.getMedicineForCough().size(); x++) {
                         User.getMedicineForCough().get(x).setId(x + 1);
                     }
+                    super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForCough().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForCough().get(i).getQuantity()) {
                     User.getMedicineForCough().get(i).setQuantity(User.getMedicineForCough().get(i).getQuantity() - buy);
                     System.out.println("Successfully Purchased!");
@@ -221,22 +265,21 @@ public class SeniorCitizen extends Customer {
                     } else {
                         super.getPurchased_med().put(User.getMedicineForCough().get(i).getBrandName(), buy);
                     }
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForCough().get(i).getPrice();
+                    float discount = (float) (0.2 * price);
+                    int remaining = (int) (money - discount * buy);
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + discount * buy);
+                    System.out.println("You availed 20% discount.");
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForCough().get(i).getPrice();
-                float discount = (float) (0.2 * price);
-                int remaining = (int) (money - discount * buy);
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + discount * buy);
-                System.out.println("You availed 20% discount.");
-                System.out.println("\nAccount money: " + remaining);
             }
         }
-
     }
 
     @Override
@@ -250,19 +293,18 @@ public class SeniorCitizen extends Customer {
         System.out.println("\n--- LOGIN ---\nYou have 3 trials to Login");
         int trial = 0;
         while (trial != 3) {
-            System.out.print("\nEnter Username: ");
+            System.out.print(ANSI_YELLOW + "\nEnter Username: " + ANSI_RESET);
             String username = input.nextLine();
-            System.out.print("Enter Password: ");
+            System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
             for (Account registeredCustomer : Customer.getRegisteredCustomers()) {
                 if (registeredCustomer.getUserName().equals(username) && registeredCustomer.getPassWord().equals(password)) {
                     System.out.println("\n--- WELCOME to ROSE PHARMACY ---\n\n" + a.getUserName() + " you are now logged in.\n");
                     System.out.println("\nYou can now purchase medicines.");
-                    System.out.println("You can avail 20% discount in every medicine you want to buy.");
+                    System.out.println(ANSI_GREEN+"\nYou can avail 20% discount in every medicine you want to buy."+ ANSI_RESET);
                     this.CustomerMainTransaction(a);
                 }
                 trial++;
-                System.err.println("Incorrect filled inputs.\n");
             }
         }
         if (trial == 3) {
@@ -275,7 +317,7 @@ public class SeniorCitizen extends Customer {
         while (true) {
             System.out.println("\n--- CHOOSE OPERATION ---");
             System.out.println("\n1. View Available Medicines\n2. Purchase Medicines\n3. View Purchased Medicines\n4. My Account\n5. Account Money\n6. Logout");
-            System.out.print("\nSelect Transaction: ");
+            System.out.print(ANSI_CYAN + "\nSelect Transaction: " + ANSI_RESET);
             String selection = input.nextLine();
             switch (selection) {
                 case "1":
@@ -290,7 +332,7 @@ public class SeniorCitizen extends Customer {
                 case "4":
                     for (int i = 0; i < User.getRegisteredCustomers().size(); i++) {
                         if (User.getRegisteredCustomers().get(i).equals(a)) {
-                            System.out.println("Personal Profile:");
+                            System.out.println("\nPersonal Profile:");
                             User.getRegisteredCustomers().get(i).myAccountC();
                         }
                     }
@@ -299,7 +341,7 @@ public class SeniorCitizen extends Customer {
                     System.out.println("You have ₱ " + super.getEcoin());
                     break;
                 case "6":
-                    System.out.print("\nAre you sure to Logout? yes/no : ");
+                    System.out.print(ANSI_RED + "\nAre you sure to Logout? " + ANSI_WHITE + "yes/no : " + ANSI_RESET);
                     String logout = input.nextLine();
                     switch (logout) {
                         case "yes":

@@ -47,7 +47,7 @@ public class PharmacyApp {
         MedicineForCough mfc2 = new MedicineForCough(0,"Ambroxol","E+",5,"Tablet","March 10, 2020", 20);
         MedicineForCough mfc3 = new MedicineForCough(0,"Lagundi","Flemex",60,"Syrup","March 10, 2020", 20);
         MedicineForCough mfc4 = new MedicineForCough(0,"Tuseran","Forte",10,"Tablet","March 10, 2020", 20);
-        MedicineForCough mfc5 = new MedicineForCough(0,"Carbociestine","Fresh",50,"Syrup","March 10, 2020", 20);
+        MedicineForCough mfc5 = new MedicineForCough(0,"Carbo","Fresh",50,"Syrup","March 10, 2020", 20);
         
         // Medicines for headache
         MedicineForHeadache mfh1 = new MedicineForHeadache(0,"Biogesic","Anti-Katol",15,"Tablet","March 10, 2020", 20);

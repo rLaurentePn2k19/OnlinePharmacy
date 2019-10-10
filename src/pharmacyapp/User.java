@@ -32,6 +32,7 @@ public class User implements UserTransaction {
     private static List<MedicineForAllergies> medicineForAllergies = new ArrayList<>();
 
     Scanner user_input = new Scanner(System.in);
+    Scanner int_input = new Scanner(System.in);
 
     public User() {
 
@@ -100,6 +101,7 @@ public class User implements UserTransaction {
                 this.Login(a);
                 break;
             default:
+                this.AfterLoggedout(a);
                 break;
         }
     }
@@ -108,16 +110,23 @@ public class User implements UserTransaction {
     public void Login(Account a) {
         System.out.print("\n1. Customer\n2. Pharmacist\n\nLogin as: ");
         String log = user_input.nextLine();
-        if (log.equals("1")) {
-            this.LoginAsCustomer(a);
-        } else if (log.equals("2")) {
-            this.LoginAsPharmacist(a);
+        switch (log) {
+            case "1":
+                this.LoginAsCustomer(a);
+                break;
+            case "2":
+                this.LoginAsPharmacist(a);
+                break;
+            default:
+                System.err.println("\nIncorrect Input!");
+                this.Login(a);
+                break;
         }
     }
 
     @Override
     public void Basic(Account a) {
-        System.err.println(ANSI_CYAN + "Notice to the users: \n\t\tJust type the number assigned to the transaction that you will do later in the program.\n\t\t" +ANSI_YELLOW+ "Example: 1.Purchase\n" + ANSI_RESET);
+        System.err.println(ANSI_CYAN + "Notice to the users: \n\t\tJust type the number assigned to the transaction that you will do later in the program.\n\t\t" + ANSI_YELLOW + "Example: 1.Purchase\n" + ANSI_RESET);
         System.out.print("\nAlready have an account? yes/no : ");
         String log = user_input.nextLine();
         switch (log) {
@@ -128,6 +137,7 @@ public class User implements UserTransaction {
                 this.Register(a);
                 break;
             default:
+                this.Basic(a);
                 break;
         }
     }
@@ -148,6 +158,8 @@ public class User implements UserTransaction {
                 break;
             }
             default:
+                this.Register(a);
+                System.err.println("\nInvalid Input!");
                 break;
         }
     }
@@ -194,27 +206,27 @@ public class User implements UserTransaction {
 
     @Override
     public void RegisterAsCustomer(Account a) {
-        System.out.print("\nEnter first name: ");
+        System.out.print(ANSI_YELLOW + "\nEnter first name: " + ANSI_RESET);
         String fname = user_input.nextLine();
         a.setFname(fname);
-        System.out.print("Enter last name: ");
+        System.out.print(ANSI_YELLOW + "Enter last name: " + ANSI_RESET);
         String lname = user_input.nextLine();
         a.setLname(lname);
-        System.out.print("Enter age: ");
-        String age = user_input.nextLine();
-        if(Integer.valueOf(age) < 18){
-            System.err.println("Minor is restricted.\n");
+        System.out.print(ANSI_YELLOW + "Enter age: " + ANSI_RESET);
+        int age = int_input.nextInt();
+        if (age < 18) {
+            System.err.println("\nMinor is restricted.");
             this.AfterLoggedout(a);
-        }else{
-            a.setAge(Integer.valueOf(age));
+        } else {
+            a.setAge(age);
         }
-        System.out.print("Enter username: ");
+        System.out.print(ANSI_YELLOW + "Enter username: " + ANSI_RESET);
         String uname = user_input.nextLine();
         a.setUserName(uname);
-        System.out.print("Enter password: ");
+        System.out.print(ANSI_YELLOW + "Enter password: " + ANSI_RESET);
         String pass = user_input.nextLine();
         a.setPassWord(pass);
-        System.out.print("Enter address: ");
+        System.out.print(ANSI_YELLOW + "Enter address: " + ANSI_RESET);
         String address = user_input.nextLine();
         a.setAddress(address);
         this.addRegisteredCustomer(a);
@@ -223,30 +235,30 @@ public class User implements UserTransaction {
 
     @Override
     public void RegisterAsPharmacist(Account a) {
-        System.out.print("\nEnter first name: ");
+        System.out.print(ANSI_YELLOW + "\nEnter first name: " + ANSI_RESET);
         String fname = user_input.nextLine();
         a.setFname(fname);
-        System.out.print("Enter last name: ");
+        System.out.print(ANSI_YELLOW + "Enter last name: " + ANSI_RESET);
         String lname = user_input.nextLine();
         a.setLname(lname);
-        System.out.print("Enter age : ");
-        String age = user_input.nextLine();
-        if(Integer.valueOf(age) < 18){
-            System.err.println("Minor is restricted.\n");
+        System.out.print(ANSI_YELLOW + "Enter age : " + ANSI_RESET);
+        int age = int_input.nextInt();
+        if (age < 18) {
+            System.err.println("\nMinor is restricted.");
             this.AfterLoggedout(a);
-        }else{
-            a.setAge(Integer.valueOf(age));
+        } else {
+            a.setAge(age);
         }
-        System.out.print("Enter username: ");
+        System.out.print(ANSI_YELLOW + "Enter username: " + ANSI_RESET);
         String uname = user_input.nextLine();
         a.setUserName(uname);
-        System.out.print("Enter password: ");
+        System.out.print(ANSI_YELLOW + "Enter password: " + ANSI_RESET);
         String pass = user_input.nextLine();
         a.setPassWord(pass);
-        System.out.print("Enter Licensed No: ");
+        System.out.print(ANSI_YELLOW + "Enter Licensed No: " + ANSI_RESET);
         String licensed = user_input.nextLine();
         a.setPharLicensedNo(Integer.valueOf(licensed));
-        System.out.print("Enter address: ");
+        System.out.print(ANSI_YELLOW + "Enter address: " + ANSI_RESET);
         String address = user_input.nextLine();
         a.setAddress(address);
         this.addRegisteredPharmacist(a);

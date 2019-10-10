@@ -21,13 +21,13 @@ public interface PharmacistOperation {
     public void inventoryMedicineForAllergies();
 
     // For Adding Medicines to a specific list of Medicines
-    public boolean addMedicineForCough(MedicineForCough m);
+    public void addMedicineForCough(MedicineForCough m);
 
-    public boolean addMedicineForHeadache(MedicineForHeadache m);
+    public void addMedicineForHeadache(MedicineForHeadache m);
 
-    public boolean addMedicineForBodyPain(MedicineForBodyPain m);
+    public void addMedicineForBodyPain(MedicineForBodyPain m);
 
-    public boolean addMedicineForAllergies(MedicineForAllergies m);
+    public void addMedicineForAllergies(MedicineForAllergies m);
 
     // For Removing Medicines to a specific list of Medicines
     public void removeMedicineForCough(MedicineForCough m, int id);

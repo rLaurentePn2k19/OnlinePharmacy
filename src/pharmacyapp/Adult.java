@@ -27,7 +27,7 @@ public class Adult extends Customer {
     public void viewAvailableMedicines(Account a) {
         Pharmacist p = new Pharmacist();
         System.out.println("\n1. Medicines for cough\n2. Medicines for headache\n3. Medicines for body pain\n4. Medicines for allergies\n5. Back");
-        System.out.print("\nWhat specific list medicines you want to view?: ");
+        System.out.print(ANSI_CYAN + "\nSelect List: " + ANSI_RESET);
         String choose = input.nextLine();
         switch (choose) {
             case "1":
@@ -55,8 +55,8 @@ public class Adult extends Customer {
         System.out.println("\nNotice: You can only do single purchasing. Thanks!");
         System.out.println("\nSelect a specific list of medicines you want to buy of. ");
         System.out.println("\n1. Medicines For Cough\n2. Medicines For Headache\n3. Medicines For Body Pain\n4. Medicines For Allergies\n5. Back");
-        System.out.print("\nWhat specific list medicines the medicine you want to buy?: ");
-        String selection = input.next();
+        System.out.print(ANSI_CYAN + "\nSelect List: " + ANSI_RESET);
+        String selection = input.nextLine();
         switch (selection) {
             case "1":
                 this.purchaseMedicineForCough();
@@ -94,26 +94,34 @@ public class Adult extends Customer {
                         User.getMedicineForHeadache().get(x).setId(x + 1);
                     }
                     super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForHeadache().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForHeadache().get(i).getQuantity()) {
                     User.getMedicineForHeadache().get(i).setQuantity(User.getMedicineForHeadache().get(i).getQuantity() - buy);
-                    System.out.println("Successfully purchased!");
+                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForHeadache().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForHeadache().get(i).getBrandName()) + buy);
                     } else {
                         super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
                     }
                     super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), buy);
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForHeadache().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForHeadache().get(i).getPrice();
-                int remaining = money - price * buy;
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForHeadache().get(i).getBrandName() + ": " + User.getMedicineForHeadache().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + price * buy);
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -134,26 +142,34 @@ public class Adult extends Customer {
                         User.getMedicineForBodyPain().get(x).setId(x + 1);
                     }
                     super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForBodyPain().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForBodyPain().get(i).getQuantity()) {
                     User.getMedicineForBodyPain().get(i).setQuantity(User.getMedicineForBodyPain().get(i).getQuantity() - buy);
-                    System.out.println("Successfully purchased!");
+                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForBodyPain().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForBodyPain().get(i).getBrandName()) + buy);
                     } else {
                         super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), buy);
                     }
                     super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), buy);
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForBodyPain().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForBodyPain().get(i).getPrice();
-                int remaining = money - price * buy;
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForBodyPain().get(i).getBrandName() + ": " + User.getMedicineForBodyPain().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + price * buy);
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -174,26 +190,34 @@ public class Adult extends Customer {
                         User.getMedicineForAllergies().get(x).setId(x + 1);
                     }
                     super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), buy);
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForAllergies().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForAllergies().get(i).getQuantity()) {
                     User.getMedicineForAllergies().get(i).setQuantity(User.getMedicineForAllergies().get(i).getQuantity() - buy);
-                    System.out.println("Successfully purchased!");
+                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForAllergies().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForAllergies().get(i).getBrandName()) + buy);
                     } else {
                         super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), buy);
                     }
                     super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), buy);
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReciept: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForAllergies().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReciept: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForAllergies().get(i).getPrice();
-                int remaining = money - price * buy;
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForAllergies().get(i).getBrandName() + ": " + User.getMedicineForAllergies().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + price * buy);
-                System.out.println("\nAccount money: " + remaining);
             }
         }
     }
@@ -214,27 +238,33 @@ public class Adult extends Customer {
                         User.getMedicineForCough().get(x).setId(x + 1);
                     }
                     super.getPurchased_med().put(User.getMedicineForCough().get(i).getBrandName(), buy);
+                    System.out.println("\nReceipt: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForCough().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForCough().get(i).getQuantity()) {
                     User.getMedicineForCough().get(i).setQuantity(User.getMedicineForCough().get(i).getQuantity() - buy);
-                    System.out.println("Successfully purchased!");
+                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForCough().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForCough().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForCough().get(i).getBrandName()) + buy);
                     } else {
                         super.getPurchased_med().put(User.getMedicineForCough().get(i).getBrandName(), buy);
                     }
-                } else {
-                    System.out.println("The medicine you want to buy is limited!");
+                    System.out.println("\nReceipt: ");
+                    int money = super.getEcoin();
+                    int price = User.getMedicineForCough().get(i).getPrice();
+                    int remaining = money - price * buy;
+                    super.setEcoin(remaining);
+                    System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
+                    System.out.println("______________\nTotal: " + price * buy);
+                    System.out.println("\nAccount money: " + remaining);
+                } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
+                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
-                System.out.println("\nReceipt: ");
-                int money = super.getEcoin();
-                int price = User.getMedicineForCough().get(i).getPrice();
-                int remaining = money - price * buy;
-                super.setEcoin(remaining);
-                System.out.println(User.getMedicineForCough().get(i).getBrandName() + ": " + User.getMedicineForCough().get(i).getPrice() + " * " + buy);
-                System.out.println("______________\nTotal: " + price * buy);
-                System.out.println("\nAccount money: " + remaining);
-                break;
-
             }
         }
     }
@@ -250,9 +280,9 @@ public class Adult extends Customer {
         System.out.println("\n--- LOGIN ---\nYou have 3 trials to Login");
         int trial = 0;
         while (trial != 3) {
-            System.out.print("\nEnter Username: ");
+            System.out.print(ANSI_YELLOW + "\nEnter Username: " + ANSI_RESET);
             String username = input.nextLine();
-            System.out.print("Enter Password: ");
+            System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
             for (Account registeredCustomer : Customer.getRegisteredCustomers()) {
                 if (registeredCustomer.getUserName().equals(username) && registeredCustomer.getPassWord().equals(password)) {
@@ -261,7 +291,6 @@ public class Adult extends Customer {
                     this.CustomerMainTransaction(a);
                 }
                 trial++;
-                System.err.println("Incorrect filled inputs.\n");
             }
         }
         if (trial == 3) {
@@ -274,8 +303,8 @@ public class Adult extends Customer {
         while (true) {
             System.out.println("\n--- CHOOSE OPERATION ---");
             System.out.println("\n1. View Available Medicines\n2. Purchase Medicines\n3. View Purchased Medicines\n4. My Account\n5. Account Money\n6. Logout");
-            System.out.print("\nSelect Transaction: ");
-            String selection = int_input.next();
+            System.out.print(ANSI_CYAN + "\nSelect Transaction: " + ANSI_RESET);
+            String selection = input.nextLine();
             switch (selection) {
                 case "1":
                     this.viewAvailableMedicines(a);
@@ -289,7 +318,7 @@ public class Adult extends Customer {
                 case "4":
                     for (int i = 0; i < User.getRegisteredCustomers().size(); i++) {
                         if (User.getRegisteredCustomers().get(i).equals(a)) {
-                            System.out.println("Personal Profile:");
+                            System.out.println("\nPersonal Profile:");
                             User.getRegisteredCustomers().get(i).myAccountC();
                             System.out.println("");
                         }
@@ -299,7 +328,7 @@ public class Adult extends Customer {
                     System.out.println("\nYou have ₱ " + super.getEcoin());
                     break;
                 case "6":
-                    System.out.print("\nAre you sure to Logout? yes/no : ");
+                    System.out.print(ANSI_RED + "\nAre you sure to Logout? " + ANSI_WHITE + "yes/no : " + ANSI_RESET);
                     String logout = input.nextLine();
                     switch (logout) {
                         case "yes":
