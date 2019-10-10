@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class SeniorCitizen extends Customer {
 
     Scanner input = new Scanner(System.in);
+    Scanner int_input = new Scanner(System.in);
 
     public SeniorCitizen() {
     }
@@ -82,11 +83,11 @@ public class SeniorCitizen extends Customer {
         Pharmacist p = new Pharmacist();
         p.displayAvailableMedicinesForHeadache();
         System.out.print("\nSelect the ID of the medicine you want to buy: ");
-        int id = input.nextInt();
+        int id = int_input.nextInt();
         for (int i = 0; i < User.getMedicineForHeadache().size(); i++) {
             if (User.getMedicineForHeadache().get(i).getId() == id) {
                 System.out.print("\nHow many " + User.getMedicineForHeadache().get(i).getBrandName() + " do you want to buy? : ");
-                int buy = input.nextInt();
+                int buy = int_input.nextInt();
                 if (buy == User.getMedicineForHeadache().get(i).getQuantity()) {
                     User.getMedicineForHeadache().remove(User.getMedicineForHeadache().get(i));
                     for (int x = 0; x < User.getMedicineForHeadache().size(); x++) {
@@ -122,11 +123,11 @@ public class SeniorCitizen extends Customer {
         Pharmacist p = new Pharmacist();
         p.displayAvailableMedicinesForBodyPain();
         System.out.print("\nSelect the ID of the medicine you want to buy: ");
-        int id = input.nextInt();
+        int id = int_input.nextInt();
         for (int i = 0; i < User.getMedicineForBodyPain().size(); i++) {
             if (User.getMedicineForBodyPain().get(i).getId() == id) {
                 System.out.print("\nHow many " + User.getMedicineForBodyPain().get(i).getBrandName() + " do you want to buy? : ");
-                int buy = input.nextInt();
+                int buy = int_input.nextInt();
                 if (buy == User.getMedicineForBodyPain().get(i).getQuantity()) {
                     User.getMedicineForBodyPain().remove(User.getMedicineForBodyPain().get(i));
                     for (int x = 0; x < User.getMedicineForBodyPain().size(); x++) {
@@ -162,11 +163,11 @@ public class SeniorCitizen extends Customer {
         Pharmacist p = new Pharmacist();
         p.displayAvailableMedicinesForAllergies();
         System.out.print("\nSelect the ID of the medicine you want to buy: ");
-        int id = input.nextInt();
+        int id = int_input.nextInt();
         for (int i = 0; i < User.getMedicineForAllergies().size(); i++) {
             if (User.getMedicineForAllergies().get(i).getId() == id) {
                 System.out.print("\nHow many " + User.getMedicineForAllergies().get(i).getBrandName() + " do you want to buy? : ");
-                int buy = input.nextInt();
+                int buy = int_input.nextInt();
                 if (buy == User.getMedicineForAllergies().get(i).getQuantity()) {
                     User.getMedicineForAllergies().remove(User.getMedicineForAllergies().get(i));
                     for (int x = 0; x < User.getMedicineForAllergies().size(); x++) {
@@ -202,11 +203,11 @@ public class SeniorCitizen extends Customer {
         Pharmacist p = new Pharmacist();
         p.displayAvailableMedicinesForCough();
         System.out.print("\nSelect the ID of the medicine you want to buy: ");
-        int id = input.nextInt();
+        int id = int_input.nextInt();
         for (int i = 0; i < User.getMedicineForCough().size(); i++) {
             if (User.getMedicineForCough().get(i).getId() == id) {
                 System.out.print("\nHow many " + User.getMedicineForCough().get(i).getBrandName() + " do you want to buy? : ");
-                int buy = input.nextInt();
+                int buy = int_input.nextInt();
                 if (buy == User.getMedicineForCough().get(i).getQuantity()) {
                     User.getMedicineForCough().remove(User.getMedicineForCough().get(i));
                     for (int x = 0; x < User.getMedicineForCough().size(); x++) {

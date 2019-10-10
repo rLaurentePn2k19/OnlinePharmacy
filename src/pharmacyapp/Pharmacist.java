@@ -22,48 +22,48 @@ public class Pharmacist extends User implements PharmacistOperation {
     @Override
     public void inventoryMedicineForCough() {
         System.out.println("\n\t\t--- INVENTORY OF MEDICINES FOR COUGH ---");
-        System.out.println("____________________________________________");
-        System.out.printf("  %-12s  |  %-11s   |   %-6s   |   %-8s   ", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
-        System.out.println("____________________________________________");
+        System.out.println("____________________________________________________________");
+        System.out.printf("%-12s \t %-11s \t %-6s \t %-8s", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
+        System.out.println("____________________________________________________________");
         for (int i = 0; i < User.getMedicineForCough().size(); i++) {
-            System.out.printf(" %-12s  | %-14s | %-14s | %-8d  \n", User.getMedicineForCough().get(i).getBrandName(), User.getMedicineForCough().get(i).getGenericName(), User.getMedicineForCough().get(i).getType(), User.getMedicineForCough().get(i).getQuantity());
-            System.out.println("_________________________________________");
+            System.out.printf("%-12s \t %-11s \t %-6s \t %-8d \n", User.getMedicineForCough().get(i).getBrandName(), User.getMedicineForCough().get(i).getGenericName(), User.getMedicineForCough().get(i).getType(), User.getMedicineForCough().get(i).getQuantity());
+            System.out.println("____________________________________________________________");
         }
     }
 
     @Override
     public void inventoryMedicineForHeadache() {
-        System.out.println("\n\t\t--- INVENTORY OF MEDICINES FOR HEADACHE ---");
-        System.out.println("_____________________________________________");
-        System.out.printf("  %-12s  |  %-11s   |   %-6s   |   %-8s   ", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
-        System.out.println("_____________________________________________");
+        System.out.println("\n\t\t--- INVENTORY OF MEDICINES FOR HEAD ACHE ---");
+        System.out.println("____________________________________________________________");
+        System.out.printf("%-12s \t %-11s \t %-6s \t %-8s", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
+        System.out.println("____________________________________________________________");
         for (int i = 0; i < User.getMedicineForHeadache().size(); i++) {
-            System.out.printf(" %-12s  | %-14s | %-14s | %-8d  \n", User.getMedicineForHeadache().get(i).getBrandName(), User.getMedicineForHeadache().get(i).getGenericName(), User.getMedicineForHeadache().get(i).getType(), User.getMedicineForHeadache().get(i).getQuantity());
-            System.out.println("____________________________________________");
+            System.out.printf("%-12s \t %-11s \t %-6s \t %-8d \n", User.getMedicineForHeadache().get(i).getBrandName(), User.getMedicineForHeadache().get(i).getGenericName(), User.getMedicineForHeadache().get(i).getType(), User.getMedicineForHeadache().get(i).getQuantity());
+            System.out.println("____________________________________________________________");
         }
     }
 
     @Override
     public void inventoryMedicineForBodyPain() {
         System.out.println("\n\t\t--- INVENTORY OF MEDICINES FOR BODY PAIN ---");
-        System.out.println("____________________________________________");
-        System.out.printf("  %-12s  |  %-11s   |   %-6s   |   %-8s   ", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
-        System.out.println("_____________________________________________");
+        System.out.println("____________________________________________________________");
+        System.out.printf("%-12s \t %-11s \t %-6s \t %-8s", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
+        System.out.println("____________________________________________________________");
         for (int i = 0; i < User.getMedicineForBodyPain().size(); i++) {
-            System.out.printf(" %-12s  | %-14s | %-14s | %-8d  \n", User.getMedicineForBodyPain().get(i).getBrandName(), User.getMedicineForBodyPain().get(i).getGenericName(), User.getMedicineForBodyPain().get(i).getType(), User.getMedicineForBodyPain().get(i).getQuantity());
-            System.out.println("____________________________________________");
+            System.out.printf("%-12s \t %-11s \t %-6s \t %-8d \n", User.getMedicineForBodyPain().get(i).getBrandName(), User.getMedicineForBodyPain().get(i).getGenericName(), User.getMedicineForBodyPain().get(i).getType(), User.getMedicineForBodyPain().get(i).getQuantity());
+            System.out.println("____________________________________________________________");
         }
     }
 
     @Override
     public void inventoryMedicineForAllergies() {
         System.out.println("\n\t\t--- INVENTORY OF MEDICINES FOR ALLERGIES ---");
-        System.out.println("____________________________________________");
-        System.out.printf("  %-12s  |  %-11s   |   %-6s   |   %-8s   ", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
-        System.out.println("_____________________________________________");
+        System.out.println("____________________________________________________________");
+        System.out.printf("%-12s \t %-11s \t %-6s \t %-8s", ANSI_GREEN + "Brand Name", "Generic Name", "Type", "Quantity\n" + ANSI_RESET);
+        System.out.println("____________________________________________________________");
         for (int i = 0; i < User.getMedicineForAllergies().size(); i++) {
-            System.out.printf(" %-12s  | %-14s | %-14s | %-8d  \n", User.getMedicineForAllergies().get(i).getBrandName(), User.getMedicineForAllergies().get(i).getGenericName(), User.getMedicineForAllergies().get(i).getType(), User.getMedicineForAllergies().get(i).getQuantity());
-            System.out.println("____________________________________________");
+            System.out.printf("%-12s \t %-11s \t %-6s \t %-8d \n", User.getMedicineForAllergies().get(i).getBrandName(), User.getMedicineForAllergies().get(i).getGenericName(), User.getMedicineForAllergies().get(i).getType(), User.getMedicineForAllergies().get(i).getQuantity());
+            System.out.println("____________________________________________________________");
         }
     }
 
