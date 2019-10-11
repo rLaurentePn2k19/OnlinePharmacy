@@ -462,10 +462,13 @@ public class Pharmacist extends User implements PharmacistOperation {
                 case "6":
                     System.out.print(ANSI_RED + "\nAre you sure to Logout? " + ANSI_WHITE + "yes/no : " + ANSI_RESET);
                     String logout = input.nextLine();
-                    if (logout.equals("yes")) {
-                        this.Logout(a);
-                    } else if (logout.equals("no")) {
-                        this.PharmacistMainTransaction(a);
+                    switch (logout) {
+                        case "yes":
+                            this.Logout(a);
+                            break;
+                        case "no":
+                            this.PharmacistMainTransaction(a);
+                            break;
                     }
                     break;
                 default:

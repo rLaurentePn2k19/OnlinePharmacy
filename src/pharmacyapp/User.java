@@ -98,10 +98,27 @@ public class User implements UserTransaction {
                 a1.Register(newAcc);
                 break;
             case "2":
-                this.Login(a);
+                this.LoginAs(a);
                 break;
             default:
                 this.AfterLoggedout(a);
+                break;
+        }
+    }
+    
+    @Override
+    public void LoginAs(Account a) {
+        System.out.print("\n1. Customer\n2. Pharmacist\n\nLogin as: ");
+        String log = user_input.nextLine();
+        switch (log) {
+            case "1":
+                this.LoginAsCustomer(a);
+                break;
+            case "2":
+                this.LoginAsPharmacist(a);
+                break;
+            default:
+                this.Login(a);
                 break;
         }
     }
@@ -118,7 +135,6 @@ public class User implements UserTransaction {
                 this.LoginAsPharmacist(a);
                 break;
             default:
-                System.err.println("\nIncorrect Input!");
                 this.Login(a);
                 break;
         }
@@ -199,8 +215,10 @@ public class User implements UserTransaction {
                 case "yes":
                     System.out.println("\nExit");
                     Runtime.getRuntime().exit(0);
-            }
-            break;
+                default:
+                    this.Logout(a);
+                    break;
+            }   
         }
     }
 

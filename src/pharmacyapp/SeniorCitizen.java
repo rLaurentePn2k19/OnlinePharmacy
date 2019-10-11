@@ -297,7 +297,7 @@ public class SeniorCitizen extends Customer {
             String username = input.nextLine();
             System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
-            for (Account registeredCustomer : Customer.getRegisteredCustomers()) {
+            for (Account registeredCustomer : User.getRegisteredCustomers()) {
                 if (registeredCustomer.getUserName().equals(username) && registeredCustomer.getPassWord().equals(password)) {
                     System.out.println("\n--- WELCOME to ROSE PHARMACY ---\n\n" + a.getUserName() + " you are now logged in.\n");
                     System.out.println("\nYou can now purchase medicines.");

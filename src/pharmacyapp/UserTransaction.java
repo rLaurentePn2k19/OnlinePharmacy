@@ -12,6 +12,8 @@ package pharmacyapp;
 public interface UserTransaction {
     
     public void Login(Account a);
+    
+    public void LoginAs(Account a);
 
     public void LoginAsCustomer(Account a);
 

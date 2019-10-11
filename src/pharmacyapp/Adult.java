@@ -104,7 +104,7 @@ public class Adult extends Customer {
                     System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForHeadache().get(i).getQuantity()) {
                     User.getMedicineForHeadache().get(i).setQuantity(User.getMedicineForHeadache().get(i).getQuantity() - buy);
-                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "\nSuccessfully purchased!" + ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForHeadache().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForHeadache().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForHeadache().get(i).getBrandName()) + buy);
                     } else {
@@ -152,7 +152,7 @@ public class Adult extends Customer {
                     System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForBodyPain().get(i).getQuantity()) {
                     User.getMedicineForBodyPain().get(i).setQuantity(User.getMedicineForBodyPain().get(i).getQuantity() - buy);
-                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "\nSuccessfully purchased!" + ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForBodyPain().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForBodyPain().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForBodyPain().get(i).getBrandName()) + buy);
                     } else {
@@ -200,7 +200,7 @@ public class Adult extends Customer {
                     System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForAllergies().get(i).getQuantity()) {
                     User.getMedicineForAllergies().get(i).setQuantity(User.getMedicineForAllergies().get(i).getQuantity() - buy);
-                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "\nSuccessfully purchased!" + ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForAllergies().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForAllergies().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForAllergies().get(i).getBrandName()) + buy);
                     } else {
@@ -248,7 +248,7 @@ public class Adult extends Customer {
                     System.out.println("\nAccount money: " + remaining);
                 } else if (buy < User.getMedicineForCough().get(i).getQuantity()) {
                     User.getMedicineForCough().get(i).setQuantity(User.getMedicineForCough().get(i).getQuantity() - buy);
-                    System.out.println(ANSI_GREEN+"\nSuccessfully purchased!"+ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "\nSuccessfully purchased!" + ANSI_RESET);
                     if (super.getPurchased_med().containsKey(User.getMedicineForCough().get(i).getBrandName())) {
                         super.getPurchased_med().put(User.getMedicineForCough().get(i).getBrandName(), super.getPurchased_med().get(User.getMedicineForCough().get(i).getBrandName()) + buy);
                     } else {
@@ -284,7 +284,7 @@ public class Adult extends Customer {
             String username = input.nextLine();
             System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
-            for (Account registeredCustomer : Customer.getRegisteredCustomers()) {
+            for (Account registeredCustomer : User.getRegisteredCustomers()) {
                 if (registeredCustomer.getUserName().equals(username) && registeredCustomer.getPassWord().equals(password)) {
                     System.out.println("\n--- WELCOME to ROSE PHARMACY ---\n\n" + a.getUserName() + " you are now logged in.\n");
                     System.out.println("\nYou can now purchase medicines.");
@@ -339,6 +339,8 @@ public class Adult extends Customer {
                             this.CustomerMainTransaction(a);
                             break;
                     }
+                    break;
+                default:
                     break;
             }
         }
