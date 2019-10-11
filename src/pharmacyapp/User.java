@@ -206,7 +206,7 @@ public class User implements UserTransaction {
     public void Logout(Account a) {
         while (true) {
             System.out.println("\nYou are now logged out.\n");
-            System.out.print("Do you want to exit the program? yes/no: ");
+            System.out.print(ANSI_CYAN+"Do you want to exit the program? yes/no: "+ANSI_RESET);
             String exit = user_input.nextLine();
             switch (exit) {
                 case "no":

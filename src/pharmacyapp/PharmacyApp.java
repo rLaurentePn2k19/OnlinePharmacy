@@ -17,22 +17,6 @@ public class PharmacyApp {
         Account newAccount = new Account();
         Pharmacy rose = new Pharmacy("Rose");
         
-        //Registered Customers instances
-//        Account acc1 = new Account("Rangie","Laurente","rLaurente","GwapoAko","Cebu",20);
-//        Account acc2 = new Account("James","Reid","jReid","GwapoSad","Manila",25);
-//        Account acc3 = new Account("Nadine","Lustre","nLustre","GwapaAko","Manila",25);
-//        
-//        //Registered Pharmacist instances
-//        Account p1 = new Account("Piolo","Pascual","papaPi","MasGwapo","Cebu",20);
-//        
-//        // Adding them to the list of Registered Customers
-//        user.addRegisteredCustomer(acc1);
-//        user.addRegisteredCustomer(acc2);
-//        user.addRegisteredCustomer(acc3);
-//        
-//        //Adding to Registered Pharmacists
-//        user.addRegisteredPharmacist(p1);
-        
         // Stored medicines in the Pharamacy
         
         // Medicines for allergies
@@ -63,7 +47,6 @@ public class PharmacyApp {
         MedicineForBodyPain mfb4 = new MedicineForBodyPain(0,"Eficascent","Anti-Katol",15,"Tablet","March 10, 2020", 20);
         MedicineForBodyPain mfb5 = new MedicineForBodyPain(0,"Vicks","Anti-Katol",15,"Tablet","March 10, 2020", 20);
        
-        
         rose.storedMedicineForAllergies(mfa1);
         rose.storedMedicineForAllergies(mfa2);
         rose.storedMedicineForAllergies(mfa3);
@@ -87,7 +70,6 @@ public class PharmacyApp {
         rose.storedMedicineForHeadache(mfh3);
         rose.storedMedicineForHeadache(mfh4);
         rose.storedMedicineForHeadache(mfh5);
-        
         
         user.Basic(newAccount);
     }

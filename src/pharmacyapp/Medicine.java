@@ -10,6 +10,7 @@ package pharmacyapp;
  * @author 2ndyrGroupB
  */
 public class Medicine {
+    
     private int id;
     private String brandName;
     private String genericName;
@@ -18,6 +19,7 @@ public class Medicine {
     private String type;
     private int quantity;
     
+    
     public Medicine() {
     }
 
@@ -25,14 +27,14 @@ public class Medicine {
         this.id = id;
     }
     
-    public Medicine(String brandName, String genericName,  int price, String type, String expirationDate, int quantity){
-        this.brandName = brandName;
-        this.genericName = genericName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-        this.type = type;
-        this.quantity = quantity;
-    }
+//    public Medicine(String brandName, String genericName,  int price, String type, String expirationDate, int quantity){
+//        this.brandName = brandName;
+//        this.genericName = genericName;
+//        this.price = price;
+//        this.expirationDate = expirationDate;
+//        this.type = type;
+//        this.quantity = quantity;
+//    }
     
     public Medicine(int id, String brandName, String genericName, int price, String type, String expirationDate, int quantity) {
         this.id = id;

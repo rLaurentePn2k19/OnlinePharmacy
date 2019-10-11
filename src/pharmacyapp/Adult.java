@@ -120,7 +120,7 @@ public class Adult extends Customer {
                     System.out.println("______________\nTotal: " + price * buy);
                     System.out.println("\nAccount money: " + remaining);
                 } else if (buy > User.getMedicineForCough().get(i).getQuantity()) {
-                    System.err.println("\nThe quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
+                    System.err.println("The quantity of the medicine you want to buy is only " + User.getMedicineForCough().get(i).getQuantity());
                 }
             }
         }
@@ -321,15 +321,15 @@ public class Adult extends Customer {
                         if (User.getRegisteredCustomers().get(i).equals(a)) {
                             System.out.println("\nPersonal Profile:");
                             User.getRegisteredCustomers().get(i).myAccountC();
-                            System.out.println("");
+                            System.out.println("\n");
                         }
                     }
                     break;
                 case "5":
-                    System.out.println("\nYou have ₱ " + super.getEcoin());
+                    System.out.println("\nYou have ₱" + super.getEcoin()+ " ecoin.");
                     break;
                 case "6":
-                    System.out.print(ANSI_RED + "\nAre you sure to Logout? " + ANSI_WHITE + "yes/no : " + ANSI_RESET);
+                    System.out.print(ANSI_CYAN + "\nAre you sure to Logout? " + ANSI_WHITE + "yes/no : " + ANSI_RESET);
                     String logout = input.nextLine();
                     switch (logout) {
                         case "yes":
