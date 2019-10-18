@@ -8,12 +8,29 @@ package pharmacyapp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import javax.swing.*;
 
 /**
  *
  * @author 2ndyrGroupB
  */
 public class User implements UserTransaction {
+//    JPanel panel2;
+//    JPanel panel;
+//    JLabel user_label, password_label, message;
+//    JTextField userName_text;
+//    JPasswordField password_text;
+//    JButton submit, cancel;
+
+    JButton LoginBtn = new JButton("Login");
+    JButton RegisterBtn = new JButton("Register");
+    JFrame LoginFrame = new JFrame("Login");
+    JFrame RegFrame = new JFrame("Register");
+    JFrame Frame = new JFrame("Home");
+    JPanel LoginPanel = new JPanel();
+    JPanel RegPanel = new JPanel();
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -105,7 +122,7 @@ public class User implements UserTransaction {
                 break;
         }
     }
-    
+
     @Override
     public void LoginAs(Account a) {
         System.out.print("\n1. Customer\n2. Pharmacist\n\nLogin as: ");
@@ -142,20 +159,46 @@ public class User implements UserTransaction {
 
     @Override
     public void Basic(Account a) {
-        System.err.println(ANSI_CYAN + "Notice to the users: \n\t\tJust type the number assigned to the transaction that you will do later in the program.\n\t\t" + ANSI_YELLOW + "Example: 1.Purchase\n" + ANSI_RESET);
-        System.out.print("\nAlready have an account? yes/no : ");
-        String log = user_input.nextLine();
-        switch (log) {
-            case "yes":
-                this.Login(a);
-                break;
-            case "no":
-                this.Register(a);
-                break;
-            default:
-                this.Basic(a);
-                break;
-        }
+
+        LoginBtn.setVisible(true);
+        RegisterBtn.setVisible(true);
+        RegisterBtn.addActionListener((ActionEvent e) -> {
+            JPanel popUpReg = new JPanel(new BorderLayout(5, 5));
+            JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
+            label.add(new JLabel("Username", SwingConstants.RIGHT));
+            label.add(new JLabel("Email", SwingConstants.RIGHT));
+            label.add(new JLabel("Password", SwingConstants.RIGHT));
+            popUpReg.add(label, BorderLayout.WEST);
+            JPanel InputFields = new JPanel(new GridLayout(0, 1, 2, 2));
+            JTextField username = new JTextField();
+            InputFields.add(username);
+            JTextField email = new JTextField();
+            InputFields.add(email);
+            JPasswordField password = new JPasswordField();
+            InputFields.add(password);
+            popUpReg.add(InputFields, BorderLayout.CENTER);
+            JOptionPane.showMessageDialog(Frame, popUpReg, "Register", JOptionPane.PLAIN_MESSAGE);
+        });
+        Frame.setSize(400, 400);
+        Frame.setVisible(true);
+        LoginPanel.add(LoginBtn);
+        RegPanel.add(RegisterBtn);
+        Frame.add(LoginPanel);
+        Frame.add(RegPanel);
+        //        System.err.println(ANSI_CYAN + "Notice to the users: \n\t\tJust type the number assigned to the transaction that you will do later in the program.\n\t\t" + ANSI_YELLOW + "Example: 1.Purchase\n" + ANSI_RESET);
+        //        System.out.print("\nAlready have an account? yes/no : ");
+        //        String log = user_input.nextLine();
+        //        switch (log) {
+        //            case "yes":
+        //                this.Login(a);
+        //                break;
+        //            case "no":
+        //                this.Register(a);
+        //                break;
+        //            default:
+        //                this.Basic(a);
+        //                break;
+        //        }
     }
 
     @Override
@@ -206,7 +249,7 @@ public class User implements UserTransaction {
     public void Logout(Account a) {
         while (true) {
             System.out.println("\nYou are now logged out.\n");
-            System.out.print(ANSI_CYAN+"Do you want to exit the program? yes/no: "+ANSI_RESET);
+            System.out.print(ANSI_CYAN + "Do you want to exit the program? yes/no: " + ANSI_RESET);
             String exit = user_input.nextLine();
             switch (exit) {
                 case "no":
@@ -218,7 +261,7 @@ public class User implements UserTransaction {
                 default:
                     this.Logout(a);
                     break;
-            }   
+            }
         }
     }
 

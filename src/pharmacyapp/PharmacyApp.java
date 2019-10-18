@@ -9,13 +9,14 @@ package pharmacyapp;
  *
  * @author 2ndyrGroupB
  */
-public class PharmacyApp {
-
+public class PharmacyApp{
+    
     public static void main(String[] args) {
         
         User user = new User();
         Account newAccount = new Account();
         Pharmacy rose = new Pharmacy("Rose");
+        
         
         // Stored medicines in the Pharamacy
         
@@ -70,7 +71,7 @@ public class PharmacyApp {
         rose.storedMedicineForHeadache(mfh3);
         rose.storedMedicineForHeadache(mfh4);
         rose.storedMedicineForHeadache(mfh5);
-        
+
         user.Basic(newAccount);
     }
 }

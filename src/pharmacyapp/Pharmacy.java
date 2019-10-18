@@ -8,11 +8,12 @@ package pharmacyapp;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author 2ndyrGroupB
  */
-public class Pharmacy {
+public class Pharmacy  {
     
     private String name;
     private static List<Pharmacist> pharmacist = new ArrayList<>();
