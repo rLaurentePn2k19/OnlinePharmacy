@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+//import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
@@ -17,20 +18,12 @@ import javax.swing.*;
  * @author 2ndyrGroupB
  */
 public class User implements UserTransaction {
-//    JPanel panel2;
-//    JPanel panel;
-//    JLabel user_label, password_label, message;
-//    JTextField userName_text;
-//    JPasswordField password_text;
-//    JButton submit, cancel;
 
     JButton LoginBtn = new JButton("Login");
     JButton RegisterBtn = new JButton("Register");
-    JFrame LoginFrame = new JFrame("Login");
-    JFrame RegFrame = new JFrame("Register");
-    JFrame Frame = new JFrame("Home");
-    JPanel LoginPanel = new JPanel();
-    JPanel RegPanel = new JPanel();
+    JFrame Frame = new JFrame("Rangie's Drug Store");
+    JPanel Panel = new JPanel();
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -159,32 +152,93 @@ public class User implements UserTransaction {
 
     @Override
     public void Basic(Account a) {
+        JLabel loginText, username, password;
+        JTextField inputField;
+        JPasswordField passwordField;
 
-        LoginBtn.setVisible(true);
-        RegisterBtn.setVisible(true);
-        RegisterBtn.addActionListener((ActionEvent e) -> {
-            JPanel popUpReg = new JPanel(new BorderLayout(5, 5));
-            JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
-            label.add(new JLabel("Username", SwingConstants.RIGHT));
-            label.add(new JLabel("Email", SwingConstants.RIGHT));
-            label.add(new JLabel("Password", SwingConstants.RIGHT));
-            popUpReg.add(label, BorderLayout.WEST);
-            JPanel InputFields = new JPanel(new GridLayout(0, 1, 2, 2));
-            JTextField username = new JTextField();
-            InputFields.add(username);
-            JTextField email = new JTextField();
-            InputFields.add(email);
-            JPasswordField password = new JPasswordField();
-            InputFields.add(password);
-            popUpReg.add(InputFields, BorderLayout.CENTER);
-            JOptionPane.showMessageDialog(Frame, popUpReg, "Register", JOptionPane.PLAIN_MESSAGE);
+        loginText = new JLabel("Login");
+        loginText.setFont(new Font("Serif", Font.BOLD, 20));
+
+        
+        username = new JLabel("Username");
+        password = new JLabel("Password");
+        inputField = new JTextField();
+        passwordField = new JPasswordField();
+
+
+        loginText.setBounds(180, 30, 400, 30);
+        username.setBounds(50, 70, 200, 30);
+        password.setBounds(50, 110, 200, 30);
+        inputField.setBounds(120, 70, 200, 30);
+        passwordField.setBounds(120, 110, 200, 30);
+        LoginBtn.setBounds(150, 160, 100, 30);
+
+        LoginBtn.addActionListener((ActionEvent e) -> {
+            String uname = inputField.getText();
+            String pass = passwordField.getText();
+            if (uname.equals("rangie") && pass.equals("gwapo")) {
+                JLabel label = new JLabel("Welcome:" + uname );
+                JOptionPane.showMessageDialog(Frame,"Welcome to Rangie's Drug Store",
+                "Success",JOptionPane.PLAIN_MESSAGE);  
+            } else {
+                JOptionPane.showMessageDialog(Frame,"Incorrect login or password",
+                "Error",JOptionPane.ERROR_MESSAGE);  
+            }
+
         });
+        
+        Panel.add(RegisterBtn);
+        Frame.add(Panel);
+        Frame.add(loginText);
+        Frame.add(username);
+        Frame.add(inputField);
+        Frame.add(password);
+        Frame.add(passwordField);
+        Frame.add(LoginBtn);
         Frame.setSize(400, 400);
+        Frame.setLayout(null);
         Frame.setVisible(true);
-        LoginPanel.add(LoginBtn);
-        RegPanel.add(RegisterBtn);
-        Frame.add(LoginPanel);
-        Frame.add(RegPanel);
+
+//        RegisterBtn.addActionListener((ActionEvent e) -> {
+//            JPanel popUpReg = new JPanel(new BorderLayout(5, 5));
+//            JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
+//            label.add(new JLabel("Username", SwingConstants.RIGHT));
+//            label.add(new JLabel("Password", SwingConstants.RIGHT));
+//            popUpReg.add(label, BorderLayout.WEST);
+//            JPanel InputFields = new JPanel(new GridLayout(3, 1, 2, 2));
+//            JTextField username = new JTextField();
+//            InputFields.add(username);
+//            JPasswordField password = new JPasswordField();
+//            InputFields.add(password);
+//            popUpReg.add(InputFields, BorderLayout.CENTER);
+//            JOptionPane.showMessageDialog(Frame, popUpReg, "Register", JOptionPane.PLAIN_MESSAGE);
+//        });
+//        LoginBtn.addActionListener((ActionEvent e) -> {
+//            JPanel popUpLogin = new JPanel(new BorderLayout(5, 5));
+//            JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
+//            label.add(new JLabel("Username", SwingConstants.RIGHT));
+//            label.add(new JLabel("Password", SwingConstants.RIGHT));
+//            popUpLogin.add(label, BorderLayout.WEST);
+//            JPanel InputFields = new JPanel(new GridLayout(3, 1, 2, 2));
+//            JTextField username = new JTextField();
+//            InputFields.add(username);
+//            JPasswordField password = new JPasswordField();
+//            InputFields.add(password);
+//            popUpLogin.add(InputFields, BorderLayout.CENTER);
+//            JOptionPane.showMessageDialog(Frame, popUpLogin, "Login", JOptionPane.PLAIN_MESSAGE);
+//        });
+//        RegisterBtn.setVisible(true);
+//        LoginBtn.setVisible(true);
+//        Frame.setSize(400, 400);
+//        Frame.setVisible(true);
+//        Panel.add(LoginBtn);
+//        Panel.add(RegisterBtn);
+//        Frame.add(Panel);
+//        Frame.add(Panel);
+        int x = (int) ((dimension.getWidth() - Frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - Frame.getHeight()) / 2);
+        Frame.setLocation(x, y);
+
         //        System.err.println(ANSI_CYAN + "Notice to the users: \n\t\tJust type the number assigned to the transaction that you will do later in the program.\n\t\t" + ANSI_YELLOW + "Example: 1.Purchase\n" + ANSI_RESET);
         //        System.out.print("\nAlready have an account? yes/no : ");
         //        String log = user_input.nextLine();
