@@ -12,74 +12,43 @@ package pharmacyapp;
 public class Account {
 
 
-    private String fname;
-    private String lname;
-    private String userName;
-    private String passWord;
-    private String address;
-    private int pharLicensedNo;
+    private String name;
+    private String email;
+    private String password;
     private int age;
 
     public Account() {
     }
 
-    public Account(String fname, String lname, String userName, String passWord, String address, int age) {
-        this.fname = fname;
-        this.lname = lname;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.address = address;
+    public Account(String name, String email, String password, int age) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
         this.age = age;
     }
 
-    public Account(String fname, String lname, String userName, String passWord, int pharLicensedNo, String address, int age) {
-        this.fname = fname;
-        this.lname = lname;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.pharLicensedNo = pharLicensedNo;
-        this.address = address;
-        this.age = age;
+    public String getName() {
+        return name;
     }
 
-    public String getFname() {
-        return fname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public String getEmail() {
+        return email;
     }
 
-    public String getLname() {
-        return lname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public String getPassword() {
+        return password;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassWord() {
-        return passWord;
-    }
-
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAge() {
@@ -90,20 +59,8 @@ public class Account {
         this.age = age;
     }
 
-    public int getPharLicensedNo() {
-        return pharLicensedNo;
-    }
-
-    public void setPharLicensedNo(int pharLicensedNo) {
-        this.pharLicensedNo = pharLicensedNo;
-    }
-    
-    public void myAccountP(){
-        System.out.printf("\t> First name: %s\n\t> Last name: %s\n\t> Address: %s\n\t> Username: %s\n\t> Password: %s\n\t> Age: %d\n\t> Licensed No: %d",fname,lname,address,userName,passWord,age,pharLicensedNo);
-    }
-    
-    public void myAccountC(){
-        System.out.printf("\t> First name: %s\n\t> Last name: %s\n\t> Address: %s\n\t> Username: %s\n\t> Password: %s\n\t> Age: %d",fname,lname,address,userName,passWord,age);
+    public void myAccount(){
+        System.out.printf("\t> Name: %s\n\t> Email: %s\n\t> Password: %s\n\t> Age: %d",name,email,password,age);
     }
     
 }

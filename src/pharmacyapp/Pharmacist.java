@@ -487,8 +487,8 @@ public class Pharmacist extends User implements PharmacistOperation {
             System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
             for (Account registeredPharmacist : User.getRegisteredPharmacists()) {
-                if (registeredPharmacist.getUserName().equals(username) && registeredPharmacist.getPassWord().equals(password)) {
-                    System.out.println("\n" + a.getUserName() + " You are now logged in.\n");
+                if (registeredPharmacist.getEmail().equals(username) && registeredPharmacist.getPassword().equals(password)) {
+                    System.out.println("\n" + a.getEmail() + " You are now logged in.\n");
                     System.out.println("You can now do the transaction.");
                     this.PharmacistMainTransaction(a);
                 }
@@ -519,7 +519,7 @@ public class Pharmacist extends User implements PharmacistOperation {
         System.out.printf("%-10s \t| %-8s \t| %-6s \t| %-1s ", "First name", "Last name", "Address", "Age\n");
         System.out.println("_____________________________________________________");
         for (int i = 0; i < User.getRegisteredCustomers().size(); i++) {
-            System.out.printf("%-10s \t| %-8s \t| %-6s \t| %-1d\n", User.getRegisteredCustomers().get(i).getFname(), User.getRegisteredCustomers().get(i).getLname(), User.getRegisteredCustomers().get(i).getAddress(), getRegisteredCustomers().get(i).getAge());
+            System.out.printf("%-10s \t| %-8s \t| %-6s \t| %-1d\n", User.getRegisteredCustomers().get(i).getName(), getRegisteredCustomers().get(i).getAge());
             System.out.println("_____________________________________________________");
         }
     }

@@ -321,13 +321,9 @@ public class User implements UserTransaction {
 
     @Override
     public void RegisterAsCustomer(Account a) {
-        System.out.print(ANSI_YELLOW + "\nEnter first name: " + ANSI_RESET);
-        String fname = user_input.nextLine();
-        a.setFname(fname);
-        System.out.print(ANSI_YELLOW + "Enter last name: " + ANSI_RESET);
-        String lname = user_input.nextLine();
-        a.setLname(lname);
-        System.out.print(ANSI_YELLOW + "Enter age: " + ANSI_RESET);
+        System.out.print(ANSI_YELLOW + "\nEnter name: " + ANSI_RESET);
+        String name = user_input.nextLine();
+        a.setName(name);
         int age = int_input.nextInt();
         if (age < 18) {
             System.err.println("\nMinor is restricted.");
@@ -336,27 +332,20 @@ public class User implements UserTransaction {
             a.setAge(age);
         }
         System.out.print(ANSI_YELLOW + "Enter username: " + ANSI_RESET);
-        String uname = user_input.nextLine();
-        a.setUserName(uname);
+        String email = user_input.nextLine();
+        a.setEmail(email);
         System.out.print(ANSI_YELLOW + "Enter password: " + ANSI_RESET);
         String pass = user_input.nextLine();
-        a.setPassWord(pass);
-        System.out.print(ANSI_YELLOW + "Enter address: " + ANSI_RESET);
-        String address = user_input.nextLine();
-        a.setAddress(address);
+        a.setPassword(pass);
         this.addRegisteredCustomer(a);
         this.LoginAsCustomer(a);
     }
 
     @Override
     public void RegisterAsPharmacist(Account a) {
-        System.out.print(ANSI_YELLOW + "\nEnter first name: " + ANSI_RESET);
-        String fname = user_input.nextLine();
-        a.setFname(fname);
-        System.out.print(ANSI_YELLOW + "Enter last name: " + ANSI_RESET);
-        String lname = user_input.nextLine();
-        a.setLname(lname);
-        System.out.print(ANSI_YELLOW + "Enter age : " + ANSI_RESET);
+                System.out.print(ANSI_YELLOW + "\nEnter name: " + ANSI_RESET);
+        String name = user_input.nextLine();
+        a.setName(name);
         int age = int_input.nextInt();
         if (age < 18) {
             System.err.println("\nMinor is restricted.");
@@ -365,17 +354,11 @@ public class User implements UserTransaction {
             a.setAge(age);
         }
         System.out.print(ANSI_YELLOW + "Enter username: " + ANSI_RESET);
-        String uname = user_input.nextLine();
-        a.setUserName(uname);
+        String email = user_input.nextLine();
+        a.setEmail(email);
         System.out.print(ANSI_YELLOW + "Enter password: " + ANSI_RESET);
         String pass = user_input.nextLine();
-        a.setPassWord(pass);
-        System.out.print(ANSI_YELLOW + "Enter Licensed No: " + ANSI_RESET);
-        String licensed = user_input.nextLine();
-        a.setPharLicensedNo(Integer.valueOf(licensed));
-        System.out.print(ANSI_YELLOW + "Enter address: " + ANSI_RESET);
-        String address = user_input.nextLine();
-        a.setAddress(address);
+        a.setPassword(pass);
         this.addRegisteredPharmacist(a);
         this.LoginAsPharmacist(a);
     }

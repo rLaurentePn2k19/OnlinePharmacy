@@ -303,8 +303,8 @@ public class SeniorCitizen extends Customer {
             System.out.print(ANSI_YELLOW + "Enter Password: " + ANSI_RESET);
             String password = input.nextLine();
             for (Account registeredCustomer : User.getRegisteredCustomers()) {
-                if (registeredCustomer.getUserName().equals(username) && registeredCustomer.getPassWord().equals(password)) {
-                    System.out.println("\n--- WELCOME to ROSE PHARMACY ---\n\n" + a.getUserName() + " you are now logged in.\n");
+                if (registeredCustomer.getEmail().equals(username) && registeredCustomer.getPassword().equals(password)) {
+                    System.out.println("\n--- WELCOME to ROSE PHARMACY ---\n\n" + a.getEmail() + " you are now logged in.\n");
                     System.out.println("\nYou can now purchase medicines.");
                     System.out.println(ANSI_GREEN+"\nYou can avail 20% discount in every medicine you want to buy."+ ANSI_RESET);
                     this.CustomerMainTransaction(a);
@@ -339,7 +339,7 @@ public class SeniorCitizen extends Customer {
                     for (int i = 0; i < User.getRegisteredCustomers().size(); i++) {
                         if (User.getRegisteredCustomers().get(i).equals(a)) {
                             System.out.println("\nPersonal Profile:");
-                            User.getRegisteredCustomers().get(i).myAccountC();
+                            User.getRegisteredCustomers().get(i).myAccount();
                             System.out.println("\n");
                         }
                     }
