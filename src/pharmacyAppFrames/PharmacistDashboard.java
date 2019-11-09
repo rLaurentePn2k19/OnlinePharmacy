@@ -5,13 +5,13 @@
  */
 package pharmacyAppFrames;
 
+import Db.dbUser;
+import Db.pharmacistOperation;
 import java.awt.Color;
-import javax.swing.Box;
-import javax.swing.JLabel;
+import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -62,18 +62,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
         pharTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Paracetamol", "Biogesic", "5", "Tablet", "20"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
-                {"Paracetamol", "Bioflu", "6", "Tablet", "30"}
+
             },
             new String [] {
                 "Brand name", "Generic name", "Price", "Type", "Quantity"
@@ -162,23 +151,29 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        if(selected.equals("Medicine For Headache")){
-            pharTable.setBackground(Color.red);
-            System.out.println("hey");
-        }else if(selected.equals("Medicine For Cough")){
-            pharTable.setBackground(Color.blue);
+        pharmacistOperation po = new pharmacistOperation();
+
+        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+
+        Object[][] data = po.viewMedicineForCough();
+        
+        DefaultTableModel model = new DefaultTableModel(data,columns);
+        if (selected.equals("Medicine For Headache")) {
+            pharTable.setModel(model);
+        } else if (selected.equals("Medicine For Cough")) {
+            
             System.out.println("Hay");
-        }else if(selected.equals("Medicine For Allergies")){
+        } else if (selected.equals("Medicine For Allergies")) {
             pharTable.setBackground(Color.yellow);
             System.out.println("Hoy");
-        }else if(selected.equals("Medicine For Body pain")){
+        } else if (selected.equals("Medicine For Body pain")) {
             pharTable.setBackground(Color.black);
             System.out.println("Huy");
         }
     }//GEN-LAST:event_medNavActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-
+        DefaultTableModel model = new DefaultTableModel();
         JTextField addBrandname = new JTextField();
         JTextField addGenericname = new JTextField();
         JTextField addPrice = new JTextField();
@@ -187,11 +182,32 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         Object[] message = {
             "Brand name:", addBrandname,
             "Generic name:", addGenericname,
-            "Price:",addPrice,
+            "Price:", addPrice,
             "Type:", addType,
             "Quantity:", addQuantity
         };
-       JOptionPane.showConfirmDialog(null, message, "Add Medicine", JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane.showConfirmDialog(null, message, "Add Medicine", JOptionPane.OK_CANCEL_OPTION);
+
+        String brandname = addBrandname.getText();
+        String genericname = addGenericname.getText();
+        String price = addPrice.getText();
+        String type = addType.getText();
+        String quantity = addQuantity.getText();
+
+        pharmacistOperation po = new pharmacistOperation();
+
+        po.addMedicineForCough(brandname, genericname, parseInt(price), type, parseInt(quantity));
+
+        model.addColumn("Brand name");
+        model.addColumn("Generic name");
+        model.addColumn("Price");
+        model.addColumn("Type");
+        model.addColumn("Quantity");
+
+        model.addRow(new Object[]{brandname, genericname, price, type, quantity});
+
+        pharTable.setModel(model);
+
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
@@ -205,11 +221,11 @@ public class PharmacistDashboard extends javax.swing.JFrame {
             "Type:", remType,
             "Quantity:", remQuantity
         };
-       JOptionPane.showConfirmDialog(null, message, "Remove Medicine", JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane.showConfirmDialog(null, message, "Remove Medicine", JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_removeBtnMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
-       Login login = new Login();
+        Login login = new Login();
         int input = JOptionPane.showConfirmDialog(null, "Do you want to logout?");
         // 0=yes, 1=no, 2=cancel
         if (input == 0) {

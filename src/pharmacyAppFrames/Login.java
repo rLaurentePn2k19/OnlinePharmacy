@@ -5,9 +5,9 @@
  */
 package pharmacyAppFrames;
 
-import javax.swing.*;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import Db.dbUser;
+import pharmacyapp.User;
+
 
 /**
  *
@@ -168,28 +168,17 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterTextBtnMouseClicked
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        CustomerDashboard customer = new CustomerDashboard();
-        PharmacistDashboard pharmacist = new PharmacistDashboard();
+
+        User user = new User();
         String em = emailLogin.getText();
         String pass = passLogin.getText();
         
-        System.out.println(em);
-        System.out.println(pass);
+        dbUser db = new dbUser();
         
-        if(em.equals("admin") && pass.equals("admin")){
-            pharmacist.setVisible(true);
-        }else{
-            customer.setVisible(true);    
-        }
+        db.getUser(em, pass);
+ 
         this.setVisible(false);
-//        if(.equals(em) && passLogin.getPassword().equals(pass)){
-//            pharmacist.setVisible(true);
-//            System.out.println("123");
-//        }else{
-//            customer.setVisible(true);    
-//            System.out.println("as");
-//        }
-//        this.setVisible(false);
+        
         
     }//GEN-LAST:event_loginBtnActionPerformed
 

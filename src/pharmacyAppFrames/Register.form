@@ -68,7 +68,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="passwordText" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          <Component id="passReg" min="-2" pref="171" max="-2" attributes="0"/>
+                                          <Component id="regPass" min="-2" pref="171" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -78,7 +78,7 @@
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="regEmail2" alignment="1" min="-2" pref="171" max="-2" attributes="0"/>
+                                              <Component id="regEmail" alignment="1" min="-2" pref="171" max="-2" attributes="0"/>
                                               <Component id="regName" alignment="1" min="-2" pref="171" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -113,12 +113,12 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="emailText" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="regEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="regEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="passwordText" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="passReg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="regPass" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -162,9 +162,9 @@
             <Property name="text" type="java.lang.String" value="Password:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="passReg">
+        <Component class="javax.swing.JPasswordField" name="regPass">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passRegActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regPassActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="registerBtn">
@@ -215,9 +215,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regNameActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="regEmail2">
+        <Component class="javax.swing.JTextField" name="regEmail">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regEmail2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regEmailActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

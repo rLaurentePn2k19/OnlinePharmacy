@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import pharmacyAppFrames.*;
+
+/**
+ *
+ * @author 2ndyrGroupB
+ */
+public class dbUser implements DbConnect {
+
+    public void CreateAccount(String name, int age, String email, String password) {
+
+        Connection conn = null;
+        Statement stmt = null;
+        String insertQuery;
+
+        insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password) "
+                + "VALUES ('%s','%d','%s','%s')", name, age, email, password);
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            int result = stmt.executeUpdate(insertQuery);
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void getUser(String email, String password) {
+        Connection conn = null;
+        Statement stmt = null;
+        String retrievetQuery;
+        String em = "";
+        String pass = "";
+
+        retrievetQuery = "SELECT email,password from `accounts` where email = '" + email
+                + "' and password = '" + password + "'";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(retrievetQuery);
+            while (result.next()) {
+                em = result.getString("email");
+                pass = result.getString("password");
+            }
+            if (email.equals(em) && password.equals(pass)) {
+                CustomerDashboard cd = new CustomerDashboard();
+                cd.setVisible(true);
+            } else if(email.equals("admin") && password.equals("admin")) {
+                PharmacistDashboard pd = new PharmacistDashboard();
+                pd.setVisible(true);
+            }else{
+                System.out.println("Incorrect Password\n----");
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}

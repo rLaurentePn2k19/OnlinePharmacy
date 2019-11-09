@@ -16,7 +16,7 @@
 //        User user = new User();
 //        Account newAccount = new Account();
 //        Pharmacy rose = new Pharmacy("Rose");
-//        
+//       
 //        
 //        // Stored medicines in the Pharamacy
 //        
@@ -66,12 +66,7 @@
 //        rose.storedMedicineForCough(mfc4);
 //        rose.storedMedicineForCough(mfc5);
 //        
-//        rose.storedMedicineForHeadache(mfh1);
-//        rose.storedMedicineForHeadache(mfh2);
-//        rose.storedMedicineForHeadache(mfh3);
-//        rose.storedMedicineForHeadache(mfh4);
-//        rose.storedMedicineForHeadache(mfh5);
-//
-//        user.Basic(newAccount);
+//        
+//        
 //    }
 //}

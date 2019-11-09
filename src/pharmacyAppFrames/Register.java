@@ -5,8 +5,9 @@
  */
 package pharmacyAppFrames;
 
-import pharmacyapp.Account;
-import pharmacyapp.User;
+import Db.dbUser;
+import static java.lang.Integer.parseInt;
+import pharmacyapp.*;
 /**
  *
  * @author laurentera_sd2022
@@ -34,14 +35,14 @@ public class Register extends javax.swing.JFrame {
         emailText = new javax.swing.JLabel();
         regAge = new javax.swing.JTextField();
         passwordText = new javax.swing.JLabel();
-        passReg = new javax.swing.JPasswordField();
+        regPass = new javax.swing.JPasswordField();
         registerBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         LoginTextBtn = new javax.swing.JLabel();
         ageText = new javax.swing.JLabel();
         nameText = new javax.swing.JLabel();
         regName = new javax.swing.JTextField();
-        regEmail2 = new javax.swing.JTextField();
+        regEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,9 +61,9 @@ public class Register extends javax.swing.JFrame {
         passwordText.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         passwordText.setText("Password:");
 
-        passReg.addActionListener(new java.awt.event.ActionListener() {
+        regPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passRegActionPerformed(evt);
+                regPassActionPerformed(evt);
             }
         });
 
@@ -96,9 +97,9 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        regEmail2.addActionListener(new java.awt.event.ActionListener() {
+        regEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regEmail2ActionPerformed(evt);
+                regEmailActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ public class Register extends javax.swing.JFrame {
                                     .addGroup(LoginPanelLayout.createSequentialGroup()
                                         .addComponent(passwordText)
                                         .addGap(27, 27, 27)
-                                        .addComponent(passReg, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(regPass, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(LoginPanelLayout.createSequentialGroup()
                                         .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(ageText)
@@ -134,7 +135,7 @@ public class Register extends javax.swing.JFrame {
                                             .addComponent(emailText))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(regEmail2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(regEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(regName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(LoginPanelLayout.createSequentialGroup()
                         .addGap(165, 165, 165)
@@ -157,11 +158,11 @@ public class Register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailText)
-                    .addComponent(regEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(regEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordText)
-                    .addComponent(passReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(regPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerBtn)
@@ -191,9 +192,9 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void regEmail2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regEmail2ActionPerformed
+    private void regEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_regEmail2ActionPerformed
+    }//GEN-LAST:event_regEmailActionPerformed
 
     private void regNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNameActionPerformed
         // TODO add your handling code here:
@@ -206,14 +207,24 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginTextBtnMouseClicked
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        User user = new User();
+        String name = regName.getText();
+        String age = regAge.getText();
+        String email = regEmail.getText();
+        String pass = regPass.getText();
+        
+        dbUser db = new dbUser();
+        
+        db.CreateAccount(name, parseInt(age), email, pass);
+ 
         CustomerDashboard customer = new CustomerDashboard();
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerBtnActionPerformed
 
-    private void passRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passRegActionPerformed
+    private void regPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passRegActionPerformed
+    }//GEN-LAST:event_regPassActionPerformed
 
     private void regAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAgeActionPerformed
         // TODO add your handling code here:
@@ -262,11 +273,11 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel emailText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameText;
-    private javax.swing.JPasswordField passReg;
     private javax.swing.JLabel passwordText;
     private javax.swing.JTextField regAge;
-    private javax.swing.JTextField regEmail2;
+    private javax.swing.JTextField regEmail;
     private javax.swing.JTextField regName;
+    private javax.swing.JPasswordField regPass;
     private javax.swing.JButton registerBtn;
     // End of variables declaration//GEN-END:variables
 }
