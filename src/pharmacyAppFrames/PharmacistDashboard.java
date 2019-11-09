@@ -205,7 +205,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         model.addColumn("Quantity");
 
         model.addRow(new Object[]{brandname, genericname, price, type, quantity});
-
+        
         pharTable.setModel(model);
 
     }//GEN-LAST:event_addBtnMouseClicked
