@@ -169,8 +169,28 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         CustomerDashboard customer = new CustomerDashboard();
-        customer.setVisible(true);
+        PharmacistDashboard pharmacist = new PharmacistDashboard();
+        String em = emailLogin.getText();
+        String pass = passLogin.getText();
+        
+        System.out.println(em);
+        System.out.println(pass);
+        
+        if(em.equals("admin") && pass.equals("admin")){
+            pharmacist.setVisible(true);
+        }else{
+            customer.setVisible(true);    
+        }
         this.setVisible(false);
+//        if(.equals(em) && passLogin.getPassword().equals(pass)){
+//            pharmacist.setVisible(true);
+//            System.out.println("123");
+//        }else{
+//            customer.setVisible(true);    
+//            System.out.println("as");
+//        }
+//        this.setVisible(false);
+        
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**

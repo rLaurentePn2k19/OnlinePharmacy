@@ -5,6 +5,14 @@
  */
 package pharmacyAppFrames;
 
+import java.awt.Color;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author laurentera_sd2022
@@ -27,21 +35,188 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PharContainer = new javax.swing.JPanel();
+        medNav = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pharTable = new javax.swing.JTable();
+        addBtn = new javax.swing.JButton();
+        removeBtn = new javax.swing.JButton();
+        pharMenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        Logout = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
+        medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                medNavComponentShown(evt);
+            }
+        });
+        medNav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medNavActionPerformed(evt);
+            }
+        });
+
+        pharTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Paracetamol", "Biogesic", "5", "Tablet", "20"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"},
+                {"Paracetamol", "Bioflu", "6", "Tablet", "30"}
+            },
+            new String [] {
+                "Brand name", "Generic name", "Price", "Type", "Quantity"
+            }
+        ));
+        jScrollPane1.setViewportView(pharTable);
+
+        addBtn.setText("Add");
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBtnMouseClicked(evt);
+            }
+        });
+
+        removeBtn.setText("Remove");
+        removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeBtnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PharContainerLayout = new javax.swing.GroupLayout(PharContainer);
+        PharContainer.setLayout(PharContainerLayout);
+        PharContainerLayout.setHorizontalGroup(
+            PharContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PharContainerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PharContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PharContainerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PharContainerLayout.createSequentialGroup()
+                        .addComponent(addBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(removeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        PharContainerLayout.setVerticalGroup(
+            PharContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PharContainerLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(PharContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBtn)
+                    .addComponent(removeBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jMenu1.setText("File");
+        pharMenu.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        pharMenu.add(jMenu2);
+
+        Logout.setText("Logout");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutMouseClicked(evt);
+            }
+        });
+        pharMenu.add(Logout);
+
+        setJMenuBar(pharMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(PharContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(PharContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
+
+    }//GEN-LAST:event_medNavComponentShown
+
+    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
+        Object selected = medNav.getSelectedItem();
+        if(selected.equals("Medicine For Headache")){
+            pharTable.setBackground(Color.red);
+            System.out.println("hey");
+        }else if(selected.equals("Medicine For Cough")){
+            pharTable.setBackground(Color.blue);
+            System.out.println("Hay");
+        }else if(selected.equals("Medicine For Allergies")){
+            pharTable.setBackground(Color.yellow);
+            System.out.println("Hoy");
+        }else if(selected.equals("Medicine For Body pain")){
+            pharTable.setBackground(Color.black);
+            System.out.println("Huy");
+        }
+    }//GEN-LAST:event_medNavActionPerformed
+
+    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+
+        JTextField addBrandname = new JTextField();
+        JTextField addGenericname = new JTextField();
+        JTextField addPrice = new JTextField();
+        JTextField addType = new JTextField();
+        JTextField addQuantity = new JTextField();
+        Object[] message = {
+            "Brand name:", addBrandname,
+            "Generic name:", addGenericname,
+            "Price:",addPrice,
+            "Type:", addType,
+            "Quantity:", addQuantity
+        };
+       JOptionPane.showConfirmDialog(null, message, "Add Medicine", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_addBtnMouseClicked
+
+    private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
+        JTextField remBrandname = new JTextField();
+        JTextField remGenericname = new JTextField();
+        JTextField remType = new JTextField();
+        JTextField remQuantity = new JTextField();
+        Object[] message = {
+            "Brand name:", remBrandname,
+            "Generic name:", remGenericname,
+            "Type:", remType,
+            "Quantity:", remQuantity
+        };
+       JOptionPane.showConfirmDialog(null, message, "Remove Medicine", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_removeBtnMouseClicked
+
+    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+       Login login = new Login();
+        int input = JOptionPane.showConfirmDialog(null, "Do you want to logout?");
+        // 0=yes, 1=no, 2=cancel
+        if (input == 0) {
+            login.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_LogoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +254,15 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Logout;
+    private javax.swing.JPanel PharContainer;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> medNav;
+    private javax.swing.JMenuBar pharMenu;
+    private javax.swing.JTable pharTable;
+    private javax.swing.JButton removeBtn;
     // End of variables declaration//GEN-END:variables
 }
