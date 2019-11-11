@@ -5,9 +5,7 @@
  */
 package pharmacyAppFrames;
 
-import Db.dbUser;
 import Db.pharmacistOperation;
-import java.awt.Color;
 import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,11 +17,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PharmacistDashboard extends javax.swing.JFrame {
 
+    pharmacistOperation po = new pharmacistOperation();
+    Object[][] medCough = po.viewMedicineForCough();
+    String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+
+    DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            //all ceisCellEditablells false
+            return false;
+        }
+    };
+
+    
+
     /**
      * Creates new form PharmacistDashboard
      */
     public PharmacistDashboard() {
         initComponents();
+        pharTable.setModel(tableMedCough);
     }
 
     /**
@@ -151,24 +164,46 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        pharmacistOperation po = new pharmacistOperation();
-
-        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-
-        Object[][] data = po.viewMedicineForCough();
-        
-        DefaultTableModel model = new DefaultTableModel(data,columns);
+        Object[][] medCough = po.viewMedicineForCough();
+        Object[][] medHeadache = po.viewMedicineForHeadache();
+        Object[][] medBodyPain = po.viewMedicineForBodyPain();
+        Object[][] medAllergies = po.viewMedicineForAllergies();
         if (selected.equals("Medicine For Headache")) {
-            pharTable.setModel(model);
+            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            pharTable.setModel(tableMedHeadache);
         } else if (selected.equals("Medicine For Cough")) {
-            
-            System.out.println("Hay");
+            DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            pharTable.setModel(tableMedCough);
         } else if (selected.equals("Medicine For Allergies")) {
-            pharTable.setBackground(Color.yellow);
-            System.out.println("Hoy");
+            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            pharTable.setModel(tableMedAllergies);
         } else if (selected.equals("Medicine For Body pain")) {
-            pharTable.setBackground(Color.black);
-            System.out.println("Huy");
+            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            pharTable.setModel(tableMedBodyPain);
         }
     }//GEN-LAST:event_medNavActionPerformed
 
@@ -194,8 +229,6 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         String type = addType.getText();
         String quantity = addQuantity.getText();
 
-        pharmacistOperation po = new pharmacistOperation();
-
         po.addMedicineForCough(brandname, genericname, parseInt(price), type, parseInt(quantity));
 
         model.addColumn("Brand name");
@@ -205,7 +238,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         model.addColumn("Quantity");
 
         model.addRow(new Object[]{brandname, genericname, price, type, quantity});
-        
+
         pharTable.setModel(model);
 
     }//GEN-LAST:event_addBtnMouseClicked
@@ -213,15 +246,19 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
         JTextField remBrandname = new JTextField();
         JTextField remGenericname = new JTextField();
-        JTextField remType = new JTextField();
         JTextField remQuantity = new JTextField();
         Object[] message = {
             "Brand name:", remBrandname,
             "Generic name:", remGenericname,
-            "Type:", remType,
             "Quantity:", remQuantity
         };
         JOptionPane.showConfirmDialog(null, message, "Remove Medicine", JOptionPane.OK_CANCEL_OPTION);
+
+        String brandname = remBrandname.getText();
+        String genericname = remGenericname.getText();
+        String quantity = remQuantity.getText();
+
+        po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
     }//GEN-LAST:event_removeBtnMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
@@ -238,35 +275,16 @@ public class PharmacistDashboard extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PharmacistDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PharmacistDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PharmacistDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PharmacistDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new PharmacistDashboard().setVisible(true);
+
             }
+
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

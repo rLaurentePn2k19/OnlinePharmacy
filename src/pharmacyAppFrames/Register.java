@@ -110,7 +110,7 @@ public class Register extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(RegisterText)
-                .addGap(169, 169, 169))
+                .addGap(176, 176, 176))
             .addGroup(LoginPanelLayout.createSequentialGroup()
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -138,7 +138,7 @@ public class Register extends javax.swing.JFrame {
                                             .addComponent(regEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(regName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(LoginPanelLayout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addGap(153, 153, 153)
                         .addComponent(LoginTextBtn)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
