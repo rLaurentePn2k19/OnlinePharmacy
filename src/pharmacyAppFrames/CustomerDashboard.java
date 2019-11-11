@@ -5,22 +5,34 @@
  */
 package pharmacyAppFrames;
 
+import Db.customerOperation;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import pharmacyAppFrames.PharmacistDashboard;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author laurentera_sd2022
  */
 public class CustomerDashboard extends javax.swing.JFrame {
+    customerOperation co = new customerOperation();
+    Object[][] medCough = co.viewMedicineForCough();
+    String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
 
+    DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            //all ceisCellEditablells false
+            return false;
+        }
+    };
     /**
      * Creates new form CustomerDashboard
      */
     public CustomerDashboard() {
         initComponents();
+        tableCustomer.setModel(tableMedCough);
     }
 
     /**
@@ -181,18 +193,46 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        if(selected.equals("Medicine For Headache")){
-            tableCustomer.setBackground(Color.red);
-            System.out.println("hey");
-        }else if(selected.equals("Medicine For Cough")){
-            tableCustomer.setBackground(Color.blue);
-            System.out.println("Hay");
-        }else if(selected.equals("Medicine For Allergies")){
-            tableCustomer.setBackground(Color.yellow);
-            System.out.println("Hoy");
-        }else if(selected.equals("Medicine For Body pain")){
-            tableCustomer.setBackground(Color.black);
-            System.out.println("Huy");
+        Object[][] medCough = co.viewMedicineForCough();
+        Object[][] medHeadache = co.viewMedicineForHeadache();
+        Object[][] medBodyPain = co.viewMedicineForBodyPain();
+        Object[][] medAllergies = co.viewMedicineForAllergies();
+        if (selected.equals("Medicine For Headache")) {
+            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            tableCustomer.setModel(tableMedHeadache);
+        } else if (selected.equals("Medicine For Cough")) {
+            DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            tableCustomer.setModel(tableMedCough);
+        } else if (selected.equals("Medicine For Allergies")) {
+            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            tableCustomer.setModel(tableMedAllergies);
+        } else if (selected.equals("Medicine For Body pain")) {
+            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            tableCustomer.setModel(tableMedBodyPain);
         }
     }//GEN-LAST:event_medNavActionPerformed
 
