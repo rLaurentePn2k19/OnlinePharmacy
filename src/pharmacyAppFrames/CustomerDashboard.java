@@ -6,7 +6,6 @@
 package pharmacyAppFrames;
 
 import Db.customerOperation;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -197,6 +196,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         Object[][] medHeadache = co.viewMedicineForHeadache();
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
         Object[][] medAllergies = co.viewMedicineForAllergies();
+        
         if (selected.equals("Medicine For Headache")) {
             DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
                 @Override
@@ -237,7 +237,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavActionPerformed
 
     private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
-
+           
     }//GEN-LAST:event_medNavComponentShown
 
     private void purchaseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseBtnMouseClicked

@@ -29,11 +29,6 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         }
     };
 
-    
-
-    /**
-     * Creates new form PharmacistDashboard
-     */
     public PharmacistDashboard() {
         initComponents();
         pharTable.setModel(tableMedCough);
@@ -208,6 +203,13 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+        
+        String[] options = {"Medicine For Cough\n", "Medicine For Headache", "Medicine For Body Pain", "Medicine For Allrgies"};
+        int x = JOptionPane.showOptionDialog(null, "SELECT A LIST OF MEDICINE",
+                "Click a button",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        
+        
         DefaultTableModel model = new DefaultTableModel();
         JTextField addBrandname = new JTextField();
         JTextField addGenericname = new JTextField();
@@ -230,15 +232,15 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         String quantity = addQuantity.getText();
 
         po.addMedicineForCough(brandname, genericname, parseInt(price), type, parseInt(quantity));
-
+        
         model.addColumn("Brand name");
         model.addColumn("Generic name");
         model.addColumn("Price");
         model.addColumn("Type");
         model.addColumn("Quantity");
-
+        
         model.addRow(new Object[]{brandname, genericname, price, type, quantity});
-
+        
         pharTable.setModel(model);
 
     }//GEN-LAST:event_addBtnMouseClicked

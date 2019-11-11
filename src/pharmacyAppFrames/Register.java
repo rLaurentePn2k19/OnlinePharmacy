@@ -207,7 +207,6 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginTextBtnMouseClicked
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        User user = new User();
         String name = regName.getText();
         String age = regAge.getText();
         String email = regEmail.getText();
@@ -216,7 +215,7 @@ public class Register extends javax.swing.JFrame {
         dbUser db = new dbUser();
         
         db.CreateAccount(name, parseInt(age), email, pass);
- 
+        
         CustomerDashboard customer = new CustomerDashboard();
         customer.setVisible(true);
         this.setVisible(false);
