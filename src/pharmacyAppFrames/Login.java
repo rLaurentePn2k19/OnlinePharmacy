@@ -6,22 +6,26 @@
 package pharmacyAppFrames;
 
 import Db.dbUser;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import pharmacyapp.User;
-
 
 /**
  *
  * @author laurentera_sd2022
  */
 public class Login extends javax.swing.JFrame {
-    
-    static String email = "rang@gmail.com";
-    
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
     }
 
     /**
@@ -44,6 +48,9 @@ public class Login extends javax.swing.JFrame {
         RegisterTextBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rangie Drug Strore");
+
+        LoginPanel.setBackground(new java.awt.Color(255, 153, 204));
 
         LoginText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LoginText.setText("LOGIN");
@@ -172,14 +179,17 @@ public class Login extends javax.swing.JFrame {
         User user = new User();
         String em = emailLogin.getText();
         String pass = passLogin.getText();
-        
-        dbUser db = new dbUser();
-        
-        db.getUser(em, pass);
- 
-        this.setVisible(false);
-        
-        
+
+        if (em.equals("") && pass.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.setVisible(true);
+        } else {
+            dbUser db = new dbUser();
+            db.getUser(em, pass);    
+            this.setVisible(false);
+        }
+
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import pharmacyAppFrames.*;
 
 /**
@@ -56,11 +57,13 @@ public class dbUser implements DbConnect {
             if (email.equals(em) && password.equals(pass)) {
                 CustomerDashboard cd = new CustomerDashboard();
                 cd.setVisible(true);
-            } else if(email.equals("admin") && password.equals("admin")) {
+            } else if(email.equals("pharma") && password.equals("pharma")) {
                 PharmacistDashboard pd = new PharmacistDashboard();
                 pd.setVisible(true);
             }else{
-                System.out.println("Incorrect Password\n----");
+                Login login = new Login();
+                JOptionPane.showMessageDialog(null, "Incorrect email or password.", "Error", JOptionPane.ERROR_MESSAGE);
+                login.setVisible(true);
             }
             System.out.println(result);
         } catch (SQLException ex) {

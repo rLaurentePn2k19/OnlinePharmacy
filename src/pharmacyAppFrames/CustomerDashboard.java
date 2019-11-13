@@ -6,6 +6,8 @@
 package pharmacyAppFrames;
 
 import Db.customerOperation;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -31,7 +33,12 @@ public class CustomerDashboard extends javax.swing.JFrame {
      */
     public CustomerDashboard() {
         initComponents();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
         tableCustomer.setModel(tableMedCough);
+        
     }
 
     /**
@@ -55,6 +62,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rangie Drug Store");
+
+        OuterContainer.setBackground(new java.awt.Color(255, 153, 204));
 
         medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
         medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -115,7 +125,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         OuterContainerLayout.setVerticalGroup(
             OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OuterContainerLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(purchaseBtn))

@@ -6,6 +6,8 @@
 package pharmacyAppFrames;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +22,10 @@ public class ProfileCustomer extends javax.swing.JFrame {
     public ProfileCustomer() {
 
         initComponents();
-        
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
     }
 
     /**
@@ -50,6 +55,9 @@ public class ProfileCustomer extends javax.swing.JFrame {
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rangie Drug Store");
+
+        jPanel1.setBackground(new java.awt.Color(255, 153, 204));
 
         jLabel1.setText("Name: ");
 
@@ -96,7 +104,7 @@ public class ProfileCustomer extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(name))))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +129,7 @@ public class ProfileCustomer extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel11))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         Profile.setText("Profile");

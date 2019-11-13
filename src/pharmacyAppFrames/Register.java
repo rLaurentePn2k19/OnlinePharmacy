@@ -6,8 +6,11 @@
 package pharmacyAppFrames;
 
 import Db.dbUser;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
-import pharmacyapp.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author laurentera_sd2022
@@ -19,6 +22,10 @@ public class Register extends javax.swing.JFrame {
      */
     public Register() {
         initComponents();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
     }
 
     /**
@@ -45,6 +52,9 @@ public class Register extends javax.swing.JFrame {
         regEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rangie Drug Store");
+
+        LoginPanel.setBackground(new java.awt.Color(255, 153, 204));
 
         RegisterText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         RegisterText.setText("Register");
@@ -211,14 +221,21 @@ public class Register extends javax.swing.JFrame {
         String age = regAge.getText();
         String email = regEmail.getText();
         String pass = regPass.getText();
-        
-        dbUser db = new dbUser();
-        
-        db.CreateAccount(name, parseInt(age), email, pass);
-        
-        CustomerDashboard customer = new CustomerDashboard();
-        customer.setVisible(true);
-        this.setVisible(false);
+
+        if (name.equals("") || age.equals("") || email.equals("") || pass.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.setVisible(true);
+        } else {
+            dbUser db = new dbUser();
+
+            db.CreateAccount(name, parseInt(age), email, pass);
+
+            CustomerDashboard customer = new CustomerDashboard();
+            customer.setVisible(true);
+            this.setVisible(false);
+        }
+
+
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void regPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regPassActionPerformed

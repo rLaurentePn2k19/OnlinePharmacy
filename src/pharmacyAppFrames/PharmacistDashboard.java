@@ -6,6 +6,8 @@
 package pharmacyAppFrames;
 
 import Db.pharmacistOperation;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -31,6 +33,10 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     public PharmacistDashboard() {
         initComponents();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
         pharTable.setModel(tableMedCough);
     }
 
@@ -50,11 +56,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
         pharMenu = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rangie Drug Store");
+
+        PharContainer.setBackground(new java.awt.Color(255, 153, 204));
 
         medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
         medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -122,12 +129,6 @@ public class PharmacistDashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("File");
-        pharMenu.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        pharMenu.add(jMenu2);
 
         Logout.setText("Logout");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -293,8 +294,6 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     private javax.swing.JMenu Logout;
     private javax.swing.JPanel PharContainer;
     private javax.swing.JButton addBtn;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
     private javax.swing.JMenuBar pharMenu;
