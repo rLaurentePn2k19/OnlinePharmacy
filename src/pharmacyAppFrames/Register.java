@@ -227,11 +227,8 @@ public class Register extends javax.swing.JFrame {
             this.setVisible(true);
         } else {
             dbUser db = new dbUser();
-
             db.CreateAccount(name, parseInt(age), email, pass);
-
-            CustomerDashboard customer = new CustomerDashboard();
-            customer.setVisible(true);
+            
             this.setVisible(false);
         }
 

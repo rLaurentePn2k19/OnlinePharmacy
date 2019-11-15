@@ -24,6 +24,8 @@ public class dbUser implements DbConnect {
         Connection conn = null;
         Statement stmt = null;
         String insertQuery;
+        CustomerDashboard customer = new CustomerDashboard();
+        SeniorCDashboard scd = new SeniorCDashboard();
 
         insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password) "
                 + "VALUES ('%s','%d','%s','%s')", name, age, email, password);
@@ -31,6 +33,12 @@ public class dbUser implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
+            if (age > 60) {
+                JOptionPane.showMessageDialog(null, "You can purchase our medicine with 20% discount..", null, JOptionPane.PLAIN_MESSAGE);
+                scd.setVisible(true);
+            }else{
+                customer.setVisible(true);
+            }
             System.out.println(result);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

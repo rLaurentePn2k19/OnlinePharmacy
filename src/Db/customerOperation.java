@@ -27,7 +27,7 @@ public class customerOperation {
     public Object[][] viewMedicineForCough() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[10][5];
 
         String selectQuery;
 
@@ -55,7 +55,7 @@ public class customerOperation {
     public Object[][] viewMedicineForHeadache() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[10][5];
 
         String selectQuery;
 
@@ -84,7 +84,7 @@ public class customerOperation {
     public Object[][] viewMedicineForAllergies() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[10][5];
 
         String selectQuery;
 
@@ -113,7 +113,7 @@ public class customerOperation {
     public Object[][] viewMedicineForBodyPain() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[10][5];
 
         String selectQuery;
 

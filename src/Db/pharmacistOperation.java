@@ -32,7 +32,7 @@ public class pharmacistOperation implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
-            JOptionPane.showMessageDialog(null, genericname + " is succesfully added.");
+            JOptionPane.showMessageDialog(null, genericname + " is succesfully added to medicines for Cough.");
             System.out.println(result);
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -52,7 +52,7 @@ public class pharmacistOperation implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
-            JOptionPane.showMessageDialog(null, genericname + " is succesfully added.");
+            JOptionPane.showMessageDialog(null, genericname + " is succesfully added to medicines for Headache.");
             System.out.println(result);
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -72,7 +72,7 @@ public class pharmacistOperation implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
-            JOptionPane.showMessageDialog(null, genericname + " is succesfully added.");
+            JOptionPane.showMessageDialog(null, genericname + " is succesfully added to medicines for Body pain.");
             System.out.println(result);
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -92,7 +92,7 @@ public class pharmacistOperation implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
-            JOptionPane.showMessageDialog(null, genericname + " is succesfully added.");
+            JOptionPane.showMessageDialog(null, genericname + " is succesfully added to medicines for Allergies");
             System.out.println(result);
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -100,44 +100,43 @@ public class pharmacistOperation implements DbConnect {
         }
     }
 
-    public void removeMedicineForCough(String brandname, String genericname, int quantity) {
+    public Object[][] removeMedicineForCough(String brandname, String genericname, int quantity) {
+        Object[][] data = new Object[15][5];
         Connection conn = null;
         Statement stmt = null;
         String deleteQuery;
         String selectQuery;
-        String updateQuery;
-
-        selectQuery = "SELECT * FROM `medicineforcough` WHERE brandname ='" + brandname + "' and genericname= '" + genericname + "' and quantity= '" + quantity + "'";
-        deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname ='" + brandname + "' and genericname= '" + genericname + "' and quantity= '" + quantity + "'";
-//        updateQuery = String.format("UPDATE `medicineforcough` SET (quantity)" + "VALUES('%d')", quantity);
-        updateQuery = "UPDATE medicineforcough set quantity=? where brandname=?";
-
+        String insertQuery;
+        int upqty = 0;
+        selectQuery = "SELECT * from `medicineforcough`";
+        deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        insertQuery = String.format("INSERT INTO `medicineforcough` (quantity)"
+                + "VALUES ('%d')", upqty);
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery(selectQuery);
-            while (res.next()) {
-                String qty = res.getString("quantity");
-                if (parseInt(qty) == quantity) {
-                    int result = stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed.");
-                    System.out.println(result);
-                } else if (parseInt(qty) < quantity) {
-                    int result = stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by "+quantity);
-                }
+            ResultSet retrieve = stmt.executeQuery(selectQuery);
+            int qty = retrieve.getInt("quantity");
+            if (qty == quantity) {
+                int result = stmt.executeUpdate(deleteQuery);
+                System.out.println(result);
+                JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+            } else if (qty > quantity) {
+                upqty = qty - quantity;
+                ResultSet res = stmt.executeQuery(insertQuery);
+                JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
             }
-
-        } catch (SQLException | HeadlessException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
+        return data;
     }
 
     public Object[][] viewMedicineForCough() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[15][5];
 
         String selectQuery;
 
@@ -165,7 +164,7 @@ public class pharmacistOperation implements DbConnect {
     public Object[][] viewMedicineForHeadache() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[15][5];
 
         String selectQuery;
 
@@ -194,7 +193,7 @@ public class pharmacistOperation implements DbConnect {
     public Object[][] viewMedicineForAllergies() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[15][5];
 
         String selectQuery;
 
@@ -211,7 +210,6 @@ public class pharmacistOperation implements DbConnect {
                 data[cols][3] = result.getString("type");
                 data[cols][4] = result.getString("quantity");
                 ++cols;
-
             }
             System.out.println(result);
         } catch (SQLException | HeadlessException ex) {
@@ -223,7 +221,7 @@ public class pharmacistOperation implements DbConnect {
     public Object[][] viewMedicineForBodyPain() {
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[100][5];
+        Object[][] data = new Object[15][5];
 
         String selectQuery;
 

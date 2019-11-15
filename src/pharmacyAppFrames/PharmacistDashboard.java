@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -77,7 +78,21 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
         pharTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Brand name", "Generic name", "Price", "Type", "Quantity"
@@ -204,14 +219,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-        
-        String[] options = {"Medicine For Cough\n", "Medicine For Headache", "Medicine For Body Pain", "Medicine For Allrgies"};
+
+        String[] options = {"Medicine For Cough", "Medicine For Headache", "Medicine For Body Pain", "Medicine For Allrgies"};
         int x = JOptionPane.showOptionDialog(null, "SELECT A LIST OF MEDICINE",
-                "Click a button",
+                "Add Medicine",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        
-        
-        DefaultTableModel model = new DefaultTableModel();
+
         JTextField addBrandname = new JTextField();
         JTextField addGenericname = new JTextField();
         JTextField addPrice = new JTextField();
@@ -232,21 +245,72 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         String type = addType.getText();
         String quantity = addQuantity.getText();
 
-        po.addMedicineForCough(brandname, genericname, parseInt(price), type, parseInt(quantity));
-        
-        model.addColumn("Brand name");
-        model.addColumn("Generic name");
-        model.addColumn("Price");
-        model.addColumn("Type");
-        model.addColumn("Quantity");
-        
-        model.addRow(new Object[]{brandname, genericname, price, type, quantity});
-        
-        pharTable.setModel(model);
+        switch (x) {
+            case 0:
+                Object[][] medicalForCough = po.viewMedicineForCough();
+                DefaultTableModel tableForMedCough = new DefaultTableModel(medicalForCough, columns) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        //all ceisCellEditablells false
+                        return false;
+                    }
+                };
+                po.addMedicineForCough(brandname, genericname, parseInt(price), type, parseInt(quantity));
+                pharTable.setModel(tableForMedCough);
+                medNav.setSelectedItem("Medicine For Cough");
+                break;
+            case 1:
+                Object[][] medHeadache = po.viewMedicineForHeadache();
+                DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        //all ceisCellEditablells false
+                        return false;
+                    }
+                };
+                po.addMedicineForHeadache(brandname, genericname, parseInt(price), type, parseInt(quantity));
+                pharTable.setModel(tableMedHeadache);
+                medNav.setSelectedItem("Medicine For Headache");
+                break;
+            case 2:
+                Object[][] medBodyPain = po.viewMedicineForBodyPain();
+                DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        //all ceisCellEditablells false
+                        return false;
+                    }
+                };
+                po.addMedicineForBodyPain(brandname, genericname, parseInt(price), type, parseInt(quantity));
+                pharTable.setModel(tableMedBodyPain);
+                medNav.setSelectedItem("Medicine For Body pain");
+                break;
+            case 3:
+                Object[][] medAllergies = po.viewMedicineForAllergies();
+                DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        //all ceisCellEditablells false
+                        return false;
+                    }
+                };
+                po.addMedicineForAllergies(brandname, genericname, parseInt(price), type, parseInt(quantity));
+                pharTable.setModel(tableMedAllergies);
+                medNav.setSelectedItem("Medicine For Allergies");
+                break;
+            default:
+                break;
+        }
 
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
+
+        String[] options = {"Medicine For Cough", "Medicine For Headache", "Medicine For Body Pain", "Medicine For Allrgies"};
+        int x = JOptionPane.showOptionDialog(null, "SELECT A LIST OF MEDICINE",
+                "Remove Medicine",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
         JTextField remBrandname = new JTextField();
         JTextField remGenericname = new JTextField();
         JTextField remQuantity = new JTextField();
@@ -261,7 +325,55 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         String genericname = remGenericname.getText();
         String quantity = remQuantity.getText();
 
-        po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
+        if (x == 0) {
+            Object[][] medicalForCough = po.viewMedicineForCough();
+            DefaultTableModel tableForMedCough = new DefaultTableModel(medicalForCough, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
+            pharTable.setModel(tableForMedCough);
+            medNav.setSelectedItem("Medicine For Cough");
+        } else if (x == 1) {
+            Object[][] medHeadache = po.viewMedicineForHeadache();
+            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
+            pharTable.setModel(tableMedHeadache);
+            medNav.setSelectedItem("Medicine For Headache");
+        } else if (x == 2) {
+            Object[][] medBodyPain = po.viewMedicineForBodyPain();
+            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
+            pharTable.setModel(tableMedBodyPain);
+            medNav.setSelectedItem("Medicine For Body pain");
+        } else if (x == 3) {
+            Object[][] medAllergies = po.viewMedicineForAllergies();
+            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all ceisCellEditablells false
+                    return false;
+                }
+            };
+            po.removeMedicineForCough(brandname, genericname, parseInt(quantity));
+            pharTable.setModel(tableMedAllergies);
+            medNav.setSelectedItem("Medicine For Allergies");
+        }
     }//GEN-LAST:event_removeBtnMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
