@@ -6,7 +6,6 @@
 package Db;
 
 import java.awt.HeadlessException;
-import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -113,21 +112,103 @@ public class pharmacistOperation implements DbConnect {
             stmt = conn.createStatement();
             ResultSet select = stmt.executeQuery(selectQuery);
             while (select.next()) {
-                String bname = select.getString("brandname");
-                String gname = select.getString("genericname");
-                if (brandname.equals(bname) && genericname.equals(gname)) {
-                    int qty = select.getInt("quantity");
-                    if (qty == quantity) {
-                        stmt.executeUpdate(deleteQuery);
-                        JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
-                    } else if (qty > quantity) {
-                        int upqty = qty - quantity;
-                        updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                        stmt.executeUpdate(updateQuery);
-                        JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
-                    }
+                int qty = select.getInt("quantity");
+                if (qty == quantity) {
+                    stmt.executeUpdate(deleteQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                } else if (qty > quantity) {
+                    int upqty = qty - quantity;
+                    updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                 }
-                JOptionPane.showMessageDialog(null, "Invalid action.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void removeMedicineForHeadache(String brandname, String genericname, int quantity) {
+        Connection conn = null;
+        Statement stmt = null;
+        String deleteQuery;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT quantity,brandname,genericname from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        deleteQuery = "DELETE FROM `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                int qty = select.getInt("quantity");
+                if (qty == quantity) {
+                    stmt.executeUpdate(deleteQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                } else if (qty > quantity) {
+                    int upqty = qty - quantity;
+                    updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void removeMedicineForBodyPain(String brandname, String genericname, int quantity) {
+        Connection conn = null;
+        Statement stmt = null;
+        String deleteQuery;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT quantity,brandname,genericname from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        deleteQuery = "DELETE FROM `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                int qty = select.getInt("quantity");
+                if (qty == quantity) {
+                    stmt.executeUpdate(deleteQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                } else if (qty > quantity) {
+                    int upqty = qty - quantity;
+                    updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void removeMedicineForAllergies(String brandname, String genericname, int quantity) {
+        Connection conn = null;
+        Statement stmt = null;
+        String deleteQuery;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT quantity,brandname,genericname from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        deleteQuery = "DELETE FROM `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                int qty = select.getInt("quantity");
+                if (qty == quantity) {
+                    stmt.executeUpdate(deleteQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                } else if (qty > quantity) {
+                    int upqty = qty - quantity;
+                    updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                }
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);

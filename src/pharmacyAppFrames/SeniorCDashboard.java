@@ -212,7 +212,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        Object[][] medCough = co.viewMedicineForCough();
+        Object[][] medForCough = co.viewMedicineForCough();
         Object[][] medHeadache = co.viewMedicineForHeadache();
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
         Object[][] medAllergies = co.viewMedicineForAllergies();
@@ -227,14 +227,14 @@ public class SeniorCDashboard extends javax.swing.JFrame {
             };
             tableCustomer.setModel(tableMedHeadache);
         } else if (selected.equals("Medicine For Cough")) {
-            DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+            DefaultTableModel tableMedForCouh = new DefaultTableModel(medForCough, columns) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     //all ceisCellEditablells false
                     return false;
                 }
             };
-            tableCustomer.setModel(tableMedCough);
+            tableCustomer.setModel(tableMedForCouh);
         } else if (selected.equals("Medicine For Allergies")) {
             DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
                 @Override
@@ -300,6 +300,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SeniorCDashboard().setVisible(true);
             }

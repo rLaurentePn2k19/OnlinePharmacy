@@ -30,6 +30,7 @@ public class dbUser implements DbConnect {
         insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password) "
                 + "VALUES ('%s','%d','%s','%s')", name, age, email, password);
         try {
+            System.out.println("asdsadsad");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);

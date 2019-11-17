@@ -228,7 +228,6 @@ public class Register extends javax.swing.JFrame {
         } else {
             dbUser db = new dbUser();
             db.CreateAccount(name, parseInt(age), email, pass);
-            
             this.setVisible(false);
         }
 
