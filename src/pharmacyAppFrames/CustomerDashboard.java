@@ -8,6 +8,7 @@ package pharmacyAppFrames;
 import Db.customerOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -269,6 +270,18 @@ public class CustomerDashboard extends javax.swing.JFrame {
             "Quantity:", Quantity
         };
         JOptionPane.showConfirmDialog(null, message, "Purchase Medicine", JOptionPane.OK_CANCEL_OPTION);
+        
+        String brandname = Brandname.getText();
+        String genericname = Genericname.getText();
+        String quantity = Quantity.getText();
+        String type = Type.getText();
+        
+        if(medNav.getSelectedItem().equals("Medicine For Cough")){
+            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+        }else if(medNav.getSelectedItem().equals("Medicine For Headache")){
+            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+        }
+
     }//GEN-LAST:event_purchaseBtnMouseClicked
 
     /**
