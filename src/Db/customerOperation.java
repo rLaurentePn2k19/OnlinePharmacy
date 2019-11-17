@@ -19,9 +19,6 @@ import javax.swing.JOptionPane;
  */
 public class customerOperation implements DbConnect{
 
-    public void purchaseMedicine() {
-
-    }
 
     public Object[][] viewMedicineForCough() {
         Connection conn = null;
@@ -155,12 +152,12 @@ public class customerOperation implements DbConnect{
                 int qty = select.getInt("quantity");
                 if (qty == quantity) {
                     stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                    JOptionPane.showMessageDialog(null,"You purchased all "+ genericname);
                 } else if (qty > quantity) {
                     int upqty = qty - quantity;
                     updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
                     stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                    JOptionPane.showMessageDialog(null, "You purchased "+ quantity +" of "+ genericname );
                 }
             }
         } catch (SQLException ex) {

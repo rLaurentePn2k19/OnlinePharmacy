@@ -278,10 +278,17 @@ public class CustomerDashboard extends javax.swing.JFrame {
         
         if(medNav.getSelectedItem().equals("Medicine For Cough")){
             co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+            medNav.setSelectedItem("Medicine For Cough");
         }else if(medNav.getSelectedItem().equals("Medicine For Headache")){
-            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+            co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
+            medNav.setSelectedItem("Medicine For Headache");
+        }else if(medNav.getSelectedItem().equals("Medicine For Body pain")){
+            co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
+            medNav.setSelectedItem("Medicine For Headache");
+        }else if(medNav.getSelectedItem().equals("Medicine For Allergies")){
+            co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
+            medNav.setSelectedItem("Medicine For Allergies");
         }
-
     }//GEN-LAST:event_purchaseBtnMouseClicked
 
     /**
