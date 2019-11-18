@@ -23,14 +23,14 @@ public class dbUser implements DbConnect {
 
         Connection conn = null;
         Statement stmt = null;
+        int ecoin = 5000;
         String insertQuery;
-        CustomerDashboard customer = new CustomerDashboard();
-        SeniorCDashboard scd = new SeniorCDashboard();
+        CustomerDashboard customer = new CustomerDashboard(ecoin);
+        SeniorCDashboard scd = new SeniorCDashboard(ecoin);
 
-        insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password) "
-                + "VALUES ('%s','%d','%s','%s')", name, age, email, password);
+        insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password,ecoin) "
+                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password,ecoin);
         try {
-            System.out.println("asdsadsad");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             int result = stmt.executeUpdate(insertQuery);
@@ -52,8 +52,8 @@ public class dbUser implements DbConnect {
         String retrievetQuery;
         String em = "";
         String pass = "";
-
-        retrievetQuery = "SELECT email,password from `accounts` where email = '" + email
+        int age = 0;
+        retrievetQuery = "SELECT age,ecoin,email,password from `accounts` where email = '" + email
                 + "' and password = '" + password + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -62,10 +62,17 @@ public class dbUser implements DbConnect {
             while (result.next()) {
                 em = result.getString("email");
                 pass = result.getString("password");
+                age = result.getInt("age");
             }
             if (email.equals(em) && password.equals(pass)) {
-                CustomerDashboard cd = new CustomerDashboard();
-                cd.setVisible(true);
+                int e = result.getInt("ecoin");
+                if(age <60){
+                    CustomerDashboard cd = new CustomerDashboard(e);
+                    cd.setVisible(true);
+                }else if(age > 60){
+                    SeniorCDashboard sc = new SeniorCDashboard(e);
+                    sc.setVisible(true);
+                }
             } else if(email.equals("pharma") && password.equals("pharma")) {
                 PharmacistDashboard pd = new PharmacistDashboard();
                 pd.setVisible(true);

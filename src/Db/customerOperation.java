@@ -5,20 +5,21 @@
  */
 package Db;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import pharmacyAppFrames.CustomerDashboard;
 
 /**
  *
  * @author 2ndyrGroupB
  */
-public class customerOperation implements DbConnect{
+public class customerOperation implements DbConnect {
 
+    CustomerDashboard cd = new CustomerDashboard();
 
     public Object[][] viewMedicineForCough() {
         Connection conn = null;
@@ -143,7 +144,6 @@ public class customerOperation implements DbConnect{
         String selectQuery;
         selectQuery = "SELECT quantity from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
-
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
@@ -152,22 +152,21 @@ public class customerOperation implements DbConnect{
                 int qty = select.getInt("quantity");
                 if (qty == quantity) {
                     stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null,"You purchased all "+ genericname);
+                    JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
                 } else if (qty > quantity) {
                     int upqty = qty - quantity;
                     updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
                     stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, "You purchased "+ quantity +" of "+ genericname );
+                    JOptionPane.showMessageDialog(null, "You purchased " + quantity + " of " + genericname);
                 }
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
-        
-        
 
     }
+
     public void purchaseMedForHeadache(String brandname, String genericname, String type, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -197,10 +196,9 @@ public class customerOperation implements DbConnect{
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
-        
-        
 
     }
+
     public void purchaseMedForBodyPain(String brandname, String genericname, String type, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -230,10 +228,9 @@ public class customerOperation implements DbConnect{
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
-        
-        
 
     }
+
     public void purchaseMedForAllergies(String brandname, String genericname, String type, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -263,8 +260,6 @@ public class customerOperation implements DbConnect{
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
-        
-        
 
     }
 }

@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author laurentera_sd2022
  */
 public class CustomerDashboard extends javax.swing.JFrame {
+
     customerOperation co = new customerOperation();
     Object[][] medCough = co.viewMedicineForCough();
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
@@ -29,6 +30,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return false;
         }
     };
+
     /**
      * Creates new form CustomerDashboard
      */
@@ -39,7 +41,12 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         tableCustomer.setModel(tableMedCough);
-        
+
+    }
+
+    public CustomerDashboard(int ecoin) {
+        initComponents();
+        this.Ecoin.setText(Integer.toString(ecoin));
     }
 
     /**
@@ -56,6 +63,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
         purchaseBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustomer = new javax.swing.JTable();
+        Ecoin = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Profile = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
@@ -110,6 +119,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableCustomer);
 
+        Ecoin.setText("1000");
+
+        jLabel2.setText("Ecoin left: ₱");
+
         javax.swing.GroupLayout OuterContainerLayout = new javax.swing.GroupLayout(OuterContainer);
         OuterContainer.setLayout(OuterContainerLayout);
         OuterContainerLayout.setHorizontalGroup(
@@ -120,6 +133,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(purchaseBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ecoin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,11 +146,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
         OuterContainerLayout.setVerticalGroup(
             OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OuterContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(purchaseBtn))
-                .addGap(11, 11, 11)
+                    .addComponent(purchaseBtn)
+                    .addComponent(Ecoin, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -213,7 +232,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         Object[][] medHeadache = co.viewMedicineForHeadache();
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
         Object[][] medAllergies = co.viewMedicineForAllergies();
-        
+
         if (selected.equals("Medicine For Headache")) {
             DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
                 @Override
@@ -254,7 +273,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavActionPerformed
 
     private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
-           
+
     }//GEN-LAST:event_medNavComponentShown
 
     private void purchaseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseBtnMouseClicked
@@ -270,22 +289,22 @@ public class CustomerDashboard extends javax.swing.JFrame {
             "Quantity:", Quantity
         };
         JOptionPane.showConfirmDialog(null, message, "Purchase Medicine", JOptionPane.OK_CANCEL_OPTION);
-        
+
         String brandname = Brandname.getText();
         String genericname = Genericname.getText();
         String quantity = Quantity.getText();
         String type = Type.getText();
-        
-        if(medNav.getSelectedItem().equals("Medicine For Cough")){
+
+        if (medNav.getSelectedItem().equals("Medicine For Cough")) {
             co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
             medNav.setSelectedItem("Medicine For Cough");
-        }else if(medNav.getSelectedItem().equals("Medicine For Headache")){
+        } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
             co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
             medNav.setSelectedItem("Medicine For Headache");
-        }else if(medNav.getSelectedItem().equals("Medicine For Body pain")){
+        } else if (medNav.getSelectedItem().equals("Medicine For Body pain")) {
             co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
             medNav.setSelectedItem("Medicine For Headache");
-        }else if(medNav.getSelectedItem().equals("Medicine For Allergies")){
+        } else if (medNav.getSelectedItem().equals("Medicine For Allergies")) {
             co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
             medNav.setSelectedItem("Medicine For Allergies");
         }
@@ -320,19 +339,22 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CustomerDashboard().setVisible(true);
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Ecoin;
     private javax.swing.JMenu Logout;
     private javax.swing.JPanel OuterContainer;
     private javax.swing.JMenu Profile;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu ViewHistory;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
