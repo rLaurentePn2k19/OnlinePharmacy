@@ -68,6 +68,11 @@ public class Login extends javax.swing.JFrame {
         passwordText.setText("Password:");
 
         loginBtn.setText("Login");
+        loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginBtnMouseClicked(evt);
+            }
+        });
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
@@ -171,11 +176,15 @@ public class Login extends javax.swing.JFrame {
     private void RegisterTextBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterTextBtnMouseClicked
         Register register = new Register();
         register.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_RegisterTextBtnMouseClicked
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
+        // TODO add your handling code here:
         User user = new User();
         String em = emailLogin.getText();
         String pass = passLogin.getText();
@@ -186,11 +195,9 @@ public class Login extends javax.swing.JFrame {
         } else {
             dbUser db = new dbUser();
             db.getUser(em, pass);    
-            this.setVisible(false);
+            this.dispose();
         }
-
-
-    }//GEN-LAST:event_loginBtnActionPerformed
+    }//GEN-LAST:event_loginBtnMouseClicked
 
     /**
      * @param args the command line arguments

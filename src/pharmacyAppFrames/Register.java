@@ -78,6 +78,11 @@ public class Register extends javax.swing.JFrame {
         });
 
         registerBtn.setText("Register");
+        registerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerBtnMouseClicked(evt);
+            }
+        });
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerBtnActionPerformed(evt);
@@ -213,23 +218,10 @@ public class Register extends javax.swing.JFrame {
     private void LoginTextBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginTextBtnMouseClicked
         Login login = new Login();
         login.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_LoginTextBtnMouseClicked
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        String name = regName.getText();
-        String age = regAge.getText();
-        String email = regEmail.getText();
-        String pass = regPass.getText();
-
-        if (name.equals("") || age.equals("") || email.equals("") || pass.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
-            this.setVisible(true);
-        } else {
-            dbUser db = new dbUser();
-            db.CreateAccount(name, parseInt(age), email, pass);
-            this.setVisible(false);
-        }
 
 
     }//GEN-LAST:event_registerBtnActionPerformed
@@ -241,6 +233,24 @@ public class Register extends javax.swing.JFrame {
     private void regAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regAgeActionPerformed
+
+    private void registerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMouseClicked
+        // TODO add your handling code here:
+        String name = regName.getText();
+        String age = regAge.getText();
+        String email = regEmail.getText();
+        String pass = regPass.getText();
+
+        if (name.equals("") || age.equals("") || email.equals("") || pass.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.setVisible(true);
+        } else {
+            dbUser db = new dbUser();
+            db.CreateAccount(name, parseInt(age), email, pass);
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_registerBtnMouseClicked
 
     /**
      * @param args the command line arguments

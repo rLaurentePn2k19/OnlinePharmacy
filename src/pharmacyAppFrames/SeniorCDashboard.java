@@ -31,13 +31,13 @@ public class SeniorCDashboard extends javax.swing.JFrame {
     /**
      * Creates new form SeniorCDashboard
      */
-    public SeniorCDashboard(int ecoin) {
+    public SeniorCDashboard() {
         initComponents();
-        this.Ecoin.setText(Integer.toString(ecoin));
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
-        this.setLocation(x, y);
+//        this.Ecoin.setText(Integer.toString(ecoin));
+//        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+//        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+//        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+//        this.setLocation(x, y);
         tableCustomer.setModel(tableMedCough);
     }
 
@@ -206,13 +206,13 @@ public class SeniorCDashboard extends javax.swing.JFrame {
     private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
         ProfileCustomer profile = new ProfileCustomer();
         profile.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_ProfileMouseClicked
 
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
         ViewHistory view = new ViewHistory();
         view.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_ViewHistoryMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
@@ -221,7 +221,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if (input == 0) {
             login.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
@@ -321,7 +321,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SeniorCDashboard(1).setVisible(true);
+                new SeniorCDashboard().setVisible(true);
             }
         });
     }

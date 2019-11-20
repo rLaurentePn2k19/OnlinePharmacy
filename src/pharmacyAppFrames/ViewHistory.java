@@ -124,20 +124,20 @@ public class ViewHistory extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if(input == 0){
             login.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
         CustomerDashboard customer = new CustomerDashboard();
         customer.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_PurchaseMouseClicked
 
     private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
         ProfileCustomer profile = new ProfileCustomer();
         profile.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_ProfileMouseClicked
 
     /**
@@ -169,6 +169,7 @@ public class ViewHistory extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ViewHistory().setVisible(true);
             }

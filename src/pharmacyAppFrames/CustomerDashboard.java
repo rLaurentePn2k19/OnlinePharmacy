@@ -41,14 +41,12 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         tableCustomer.setModel(tableMedCough);
-
     }
 
-    public CustomerDashboard(int ecoin) {
-        initComponents();
-        this.Ecoin.setText(Integer.toString(ecoin));
-    }
-
+//    public CustomerDashboard(int ecoin) {
+//        initComponents();
+//        this.Ecoin.setText(Integer.toString(ecoin));
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -206,13 +204,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
         ProfileCustomer profile = new ProfileCustomer();
         profile.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_ProfileMouseClicked
 
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
         ViewHistory view = new ViewHistory();
         view.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
 
     }//GEN-LAST:event_ViewHistoryMouseClicked
 
@@ -222,13 +220,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if (input == 0) {
             login.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        Object[][] medCough = co.viewMedicineForCough();
+        Object[][] medForCough = co.viewMedicineForCough();
         Object[][] medHeadache = co.viewMedicineForHeadache();
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
         Object[][] medAllergies = co.viewMedicineForAllergies();
@@ -243,7 +241,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             };
             tableCustomer.setModel(tableMedHeadache);
         } else if (selected.equals("Medicine For Cough")) {
-            DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
+            DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     //all ceisCellEditablells false
@@ -296,17 +294,33 @@ public class CustomerDashboard extends javax.swing.JFrame {
         String type = Type.getText();
 
         if (medNav.getSelectedItem().equals("Medicine For Cough")) {
-            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
-            medNav.setSelectedItem("Medicine For Cough");
+            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
+                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+                medNav.setSelectedItem("Medicine For Cough");
+            }
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
-            co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
-            medNav.setSelectedItem("Medicine For Headache");
+            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
+                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
+                medNav.setSelectedItem("Medicine For Headache");
+            }
         } else if (medNav.getSelectedItem().equals("Medicine For Body pain")) {
-            co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
-            medNav.setSelectedItem("Medicine For Headache");
+            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
+                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
+                medNav.setSelectedItem("Medicine For Headache");
+            }
         } else if (medNav.getSelectedItem().equals("Medicine For Allergies")) {
-            co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
-            medNav.setSelectedItem("Medicine For Allergies");
+            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
+                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
+                medNav.setSelectedItem("Medicine For Allergies");
+            }
         }
     }//GEN-LAST:event_purchaseBtnMouseClicked
 

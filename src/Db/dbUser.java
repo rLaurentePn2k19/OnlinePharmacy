@@ -23,13 +23,12 @@ public class dbUser implements DbConnect {
 
         Connection conn = null;
         Statement stmt = null;
-        int ecoin = 5000;
         String insertQuery;
-        CustomerDashboard customer = new CustomerDashboard(ecoin);
-        SeniorCDashboard scd = new SeniorCDashboard(ecoin);
+        CustomerDashboard customer = new CustomerDashboard();
+        SeniorCDashboard scd = new SeniorCDashboard();
 
         insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password,ecoin) "
-                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password,ecoin);
+                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password, 1);
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
@@ -37,10 +36,11 @@ public class dbUser implements DbConnect {
             if (age > 60) {
                 JOptionPane.showMessageDialog(null, "You can purchase our medicine with 20% discount..", null, JOptionPane.PLAIN_MESSAGE);
                 scd.setVisible(true);
-            }else{
+            } else {
                 customer.setVisible(true);
             }
             System.out.println(result);
+//            conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -65,23 +65,24 @@ public class dbUser implements DbConnect {
                 age = result.getInt("age");
             }
             if (email.equals(em) && password.equals(pass)) {
-                int e = result.getInt("ecoin");
-                if(age <60){
-                    CustomerDashboard cd = new CustomerDashboard(e);
+//                int e = result.getInt("ecoin");
+                if (age < 60) {
+                    CustomerDashboard cd = new CustomerDashboard();
                     cd.setVisible(true);
-                }else if(age > 60){
-                    SeniorCDashboard sc = new SeniorCDashboard(e);
+                } else if (age > 60) {
+                    SeniorCDashboard sc = new SeniorCDashboard();
                     sc.setVisible(true);
                 }
-            } else if(email.equals("pharma") && password.equals("pharma")) {
+            } else if (email.equals("pharma") && password.equals("pharma")) {
                 PharmacistDashboard pd = new PharmacistDashboard();
                 pd.setVisible(true);
-            }else{
+            } else {
                 Login login = new Login();
                 JOptionPane.showMessageDialog(null, "Incorrect email or password.", "Error", JOptionPane.ERROR_MESSAGE);
                 login.setVisible(true);
             }
             System.out.println(result);
+//            conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

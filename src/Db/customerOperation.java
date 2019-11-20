@@ -11,15 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import pharmacyAppFrames.CustomerDashboard;
 
 /**
  *
  * @author 2ndyrGroupB
  */
 public class customerOperation implements DbConnect {
-
-    CustomerDashboard cd = new CustomerDashboard();
 
     public Object[][] viewMedicineForCough() {
         Connection conn = null;
@@ -144,6 +141,7 @@ public class customerOperation implements DbConnect {
         String selectQuery;
         selectQuery = "SELECT quantity from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
@@ -163,7 +161,7 @@ public class customerOperation implements DbConnect {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
-        }
+        } 
 
     }
 
@@ -224,6 +222,7 @@ public class customerOperation implements DbConnect {
                     JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
@@ -256,6 +255,7 @@ public class customerOperation implements DbConnect {
                     JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());

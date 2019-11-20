@@ -9,23 +9,23 @@ package pharmacyAppFrames;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-
+import Db.dbUser;
 /**
  *
  * @author laurentera_sd2022
  */
 public class ProfileCustomer extends javax.swing.JFrame {
-
+    dbUser user = new dbUser();
     /**
      * Creates new form ProfileCustomer
      */
     public ProfileCustomer() {
-
         initComponents();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
+        
     }
 
     /**
@@ -44,10 +44,10 @@ public class ProfileCustomer extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        age = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
+        money = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Profile = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
@@ -71,13 +71,13 @@ public class ProfileCustomer extends javax.swing.JFrame {
 
         name.setText("James Reid");
 
-        jLabel7.setText("james@gmail.com");
+        email.setText("james@gmail.com");
 
-        jLabel8.setText("25");
+        age.setText("25");
 
-        jLabel9.setText("************");
+        password.setText("************");
 
-        jLabel11.setText("5000");
+        money.setText("5000");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,11 +89,11 @@ public class ProfileCustomer extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
+                        .addComponent(password))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11))
+                        .addComponent(money))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -101,8 +101,8 @@ public class ProfileCustomer extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
+                            .addComponent(age)
+                            .addComponent(email)
                             .addComponent(name))))
                 .addContainerGap(242, Short.MAX_VALUE))
         );
@@ -116,19 +116,19 @@ public class ProfileCustomer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel7))
+                    .addComponent(email))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel8))
+                    .addComponent(age))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel9))
+                    .addComponent(password))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel11))
+                    .addComponent(money))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
 
@@ -181,7 +181,7 @@ public class ProfileCustomer extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if (input == 0) {
             login.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
@@ -194,7 +194,7 @@ public class ProfileCustomer extends javax.swing.JFrame {
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
         ViewHistory view = new ViewHistory();
         view.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_ViewHistoryMouseClicked
 
     /**
@@ -245,17 +245,17 @@ public class ProfileCustomer extends javax.swing.JFrame {
     private javax.swing.JMenu Profile;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu ViewHistory;
+    private javax.swing.JLabel age;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel money;
     private javax.swing.JLabel name;
+    private javax.swing.JLabel password;
     // End of variables declaration//GEN-END:variables
 }
