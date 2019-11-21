@@ -6,7 +6,6 @@
 package API;
 
 import javax.swing.JOptionPane;
-import pharmacyAppFrames.*;
 import Db.*;
 
 /**
@@ -14,10 +13,10 @@ import Db.*;
  * @author 2ndyrGroupB
  */
 public class PharmacistTransaction {
-    
+
     pharmacistOperation po = new pharmacistOperation();
-    
-    public void addMedicineForCough(String brandname, String genericname, String price, String type, String quantity) {
+
+    public void addMedForCough(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -25,7 +24,7 @@ public class PharmacistTransaction {
         }
     }
 
-    public void addMedicineForHeadache(String brandname, String genericname, String price, String type, String quantity) {
+    public void addMedForHeadache(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -33,7 +32,7 @@ public class PharmacistTransaction {
         }
     }
 
-    public void addMedicineForBodyPain(String brandname, String genericname, String price, String type, String quantity) {
+    public void addMedForBodyPain(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -41,7 +40,7 @@ public class PharmacistTransaction {
         }
     }
 
-    public void addMedicineForAllergies(String brandname, String genericname, String price, String type, String quantity) {
+    public void addMedForAllergies(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -49,11 +48,68 @@ public class PharmacistTransaction {
         }
     }
 
-    public void removeMedicineForCough(String brandname, String genericname, String quantity) {
+    public void removeMedForCough(String brandname, String genericname, String quantity) {
         if (brandname.equals("") || genericname.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             po.removeMedicineForCough(brandname, genericname, Integer.valueOf(quantity));
         }
     }
+
+    public void removeMedForHeadache(String brandname, String genericname, String quantity) {
+        if (brandname.equals("") || genericname.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.removeMedicineForHeadache(brandname, genericname, Integer.valueOf(quantity));
+        }
+    }
+
+    public void removeMedForBodyPain(String brandname, String genericname, String quantity) {
+        if (brandname.equals("") || genericname.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.removeMedicineForBodyPain(brandname, genericname, Integer.valueOf(quantity));
+        }
+    }
+
+    public void removeMedForAllergies(String brandname, String genericname, String quantity) {
+        if (brandname.equals("") || genericname.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.removeMedicineForAllergies(brandname, genericname, Integer.valueOf(quantity));
+        }
+    }
+
+    public void updateMedForCough(String brandname, String genericname) {
+        if (brandname.equals("") || genericname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Update failed", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.UpdateMedicineForCough(brandname, genericname);
+        }
+    }
+
+    public void updateMedForHeadache(String brandname, String genericname) {
+        if (brandname.equals("") || genericname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Update failed", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.UpdateMedicineForHeadache(brandname, genericname);
+        }
+    }
+
+    public void updateMedForBodyPain(String brandname, String genericname) {
+        if (brandname.equals("") || genericname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Update failed", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.UpdateMedicineForBodyPain(brandname, genericname);
+        }
+    }
+
+    public void updateMedForAllergies(String brandname, String genericname) {
+        if (brandname.equals("") || genericname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Update failed", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            po.UpdateMedicineForAllergies(brandname, genericname);
+        }
+    }
+
 }

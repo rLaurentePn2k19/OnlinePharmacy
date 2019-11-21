@@ -162,7 +162,7 @@ public class customerOperation implements DbConnect {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         } 
-
+        
     }
 
     public void purchaseMedForHeadache(String brandname, String genericname, String type, int quantity) {

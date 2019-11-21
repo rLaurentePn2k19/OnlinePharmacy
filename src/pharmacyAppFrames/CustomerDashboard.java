@@ -5,10 +5,10 @@
  */
 package pharmacyAppFrames;
 
+import API.CustomerTransaction;
 import Db.customerOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -20,16 +20,8 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerDashboard extends javax.swing.JFrame {
 
     customerOperation co = new customerOperation();
-    Object[][] medCough = co.viewMedicineForCough();
-    String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+    
 
-    DefaultTableModel tableMedCough = new DefaultTableModel(medCough, columns) {
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            //all ceisCellEditablells false
-            return false;
-        }
-    };
 
     /**
      * Creates new form CustomerDashboard
@@ -40,13 +32,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        tableCustomer.setModel(tableMedCough);
+        medNav.setSelectedItem("Medicine For Cough");
     }
 
-//    public CustomerDashboard(int ecoin) {
-//        initComponents();
-//        this.Ecoin.setText(Integer.toString(ecoin));
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,6 +214,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
+        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
         Object[][] medForCough = co.viewMedicineForCough();
         Object[][] medHeadache = co.viewMedicineForHeadache();
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
@@ -275,7 +264,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavComponentShown
 
     private void purchaseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseBtnMouseClicked
-//        DefaultTableModel model = new DefaultTableModel();
+        CustomerTransaction ct = new CustomerTransaction();
         JTextField Brandname = new JTextField();
         JTextField Genericname = new JTextField();
         JTextField Type = new JTextField();
@@ -286,6 +275,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             "Type:", Type,
             "Quantity:", Quantity
         };
+        
         JOptionPane.showConfirmDialog(null, message, "Purchase Medicine", JOptionPane.OK_CANCEL_OPTION);
 
         String brandname = Brandname.getText();
@@ -294,39 +284,20 @@ public class CustomerDashboard extends javax.swing.JFrame {
         String type = Type.getText();
 
         if (medNav.getSelectedItem().equals("Medicine For Cough")) {
-            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
-                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
-                medNav.setSelectedItem("Medicine For Cough");
-            }
+            ct.purchaseMedicineForCough(brandname, genericname, type, quantity);
+            medNav.setSelectedItem("Medicine For Cough");
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
-            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
-                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
-                medNav.setSelectedItem("Medicine For Headache");
-            }
+            ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity);
+            medNav.setSelectedItem("Medicine For Headache");
         } else if (medNav.getSelectedItem().equals("Medicine For Body pain")) {
-            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
-                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
-                medNav.setSelectedItem("Medicine For Headache");
-            }
+            ct.purchaseMedicineForBodyPain(brandname, genericname, type, quantity);
+            medNav.setSelectedItem("Medicine For Headache");
         } else if (medNav.getSelectedItem().equals("Medicine For Allergies")) {
-            if (brandname.equals("") || genericname.equals("") || type.equals("") || String.valueOf(quantity).equals("")) {
-                JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
-                medNav.setSelectedItem("Medicine For Allergies");
-            }
+            ct.purchaseMedicineForAllergies(brandname, genericname, type, quantity);
+            medNav.setSelectedItem("Medicine For Allergies");
         }
     }//GEN-LAST:event_purchaseBtnMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

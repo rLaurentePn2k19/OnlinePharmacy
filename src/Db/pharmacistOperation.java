@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -112,15 +113,17 @@ public class pharmacistOperation implements DbConnect {
             stmt = conn.createStatement();
             ResultSet select = stmt.executeQuery(selectQuery);
             while (select.next()) {
-                int qty = select.getInt("quantity");
-                if (qty == quantity) {
-                    stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
-                } else if (qty > quantity) {
-                    int upqty = qty - quantity;
-                    updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
+                    int qty = select.getInt("quantity");
+                    if (qty == quantity) {
+                        stmt.executeUpdate(deleteQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                    } else if (qty > quantity) {
+                        int upqty = qty - quantity;
+                        updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                        stmt.executeUpdate(updateQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -128,6 +131,7 @@ public class pharmacistOperation implements DbConnect {
             System.out.println(ex.getMessage());
         }
     }
+
     public void removeMedicineForHeadache(String brandname, String genericname, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -141,15 +145,17 @@ public class pharmacistOperation implements DbConnect {
             stmt = conn.createStatement();
             ResultSet select = stmt.executeQuery(selectQuery);
             while (select.next()) {
-                int qty = select.getInt("quantity");
-                if (qty == quantity) {
-                    stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
-                } else if (qty > quantity) {
-                    int upqty = qty - quantity;
-                    updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
+                    int qty = select.getInt("quantity");
+                    if (qty == quantity) {
+                        stmt.executeUpdate(deleteQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                    } else if (qty > quantity) {
+                        int upqty = qty - quantity;
+                        updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                        stmt.executeUpdate(updateQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -157,6 +163,7 @@ public class pharmacistOperation implements DbConnect {
             System.out.println(ex.getMessage());
         }
     }
+
     public void removeMedicineForBodyPain(String brandname, String genericname, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -170,15 +177,17 @@ public class pharmacistOperation implements DbConnect {
             stmt = conn.createStatement();
             ResultSet select = stmt.executeQuery(selectQuery);
             while (select.next()) {
-                int qty = select.getInt("quantity");
-                if (qty == quantity) {
-                    stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
-                } else if (qty > quantity) {
-                    int upqty = qty - quantity;
-                    updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
+                    int qty = select.getInt("quantity");
+                    if (qty == quantity) {
+                        stmt.executeUpdate(deleteQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                    } else if (qty > quantity) {
+                        int upqty = qty - quantity;
+                        updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                        stmt.executeUpdate(updateQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -186,6 +195,7 @@ public class pharmacistOperation implements DbConnect {
             System.out.println(ex.getMessage());
         }
     }
+
     public void removeMedicineForAllergies(String brandname, String genericname, int quantity) {
         Connection conn = null;
         Statement stmt = null;
@@ -199,15 +209,17 @@ public class pharmacistOperation implements DbConnect {
             stmt = conn.createStatement();
             ResultSet select = stmt.executeQuery(selectQuery);
             while (select.next()) {
-                int qty = select.getInt("quantity");
-                if (qty == quantity) {
-                    stmt.executeUpdate(deleteQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
-                } else if (qty > quantity) {
-                    int upqty = qty - quantity;
-                    updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
-                    JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
+                    int qty = select.getInt("quantity");
+                    if (qty == quantity) {
+                        stmt.executeUpdate(deleteQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
+                    } else if (qty > quantity) {
+                        int upqty = qty - quantity;
+                        updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                        stmt.executeUpdate(updateQuery);
+                        JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -328,5 +340,154 @@ public class pharmacistOperation implements DbConnect {
             System.out.println(ex.getMessage());
         }
         return data;
+    }
+
+    public void UpdateMedicineForCough(String brandname, String genericname) {
+        Connection conn = null;
+        Statement stmt = null;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                String bname = select.getString("brandname");
+                String gname = select.getString("genericname");
+                if (bname.equalsIgnoreCase(brandname) && gname.equalsIgnoreCase(genericname)) {
+                    JTextField Price = new JTextField();
+                    JTextField Type = new JTextField();
+                    JTextField Quantity = new JTextField();
+                    Object[] message = {
+                        "Price:", Price,
+                        "Type:", Type,
+                        "Quantity:", Quantity
+                    };
+                    JOptionPane.showConfirmDialog(null, message, "Update Medicine", JOptionPane.OK_CANCEL_OPTION);
+                    String Updatedprice = Price.getText();
+                    String Updatedtype = Type.getText();
+                    String Updatedquantity = Quantity.getText();
+                    updateQuery = "UPDATE `medicineforcough` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
+                            + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void UpdateMedicineForAllergies(String brandname, String genericname) {
+        Connection conn = null;
+        Statement stmt = null;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                String bname = select.getString("brandname");
+                String gname = select.getString("genericname");
+                if (bname.equalsIgnoreCase(brandname) && gname.equalsIgnoreCase(genericname)) {
+                    JTextField Price = new JTextField();
+                    JTextField Type = new JTextField();
+                    JTextField Quantity = new JTextField();
+                    Object[] message = {
+                        "Price:", Price,
+                        "Type:", Type,
+                        "Quantity:", Quantity
+                    };
+                    JOptionPane.showConfirmDialog(null, message, "Update Medicine", JOptionPane.OK_CANCEL_OPTION);
+                    String Updatedprice = Price.getText();
+                    String Updatedtype = Type.getText();
+                    String Updatedquantity = Quantity.getText();
+                    updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
+                            + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void UpdateMedicineForHeadache(String brandname, String genericname) {
+        Connection conn = null;
+        Statement stmt = null;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                String bname = select.getString("brandname");
+                String gname = select.getString("genericname");
+                if (bname.equalsIgnoreCase(brandname) && gname.equalsIgnoreCase(genericname)) {
+                    JTextField Price = new JTextField();
+                    JTextField Type = new JTextField();
+                    JTextField Quantity = new JTextField();
+                    Object[] message = {
+                        "Price:", Price,
+                        "Type:", Type,
+                        "Quantity:", Quantity
+                    };
+                    JOptionPane.showConfirmDialog(null, message, "Update Medicine", JOptionPane.OK_CANCEL_OPTION);
+                    String Updatedprice = Price.getText();
+                    String Updatedtype = Type.getText();
+                    String Updatedquantity = Quantity.getText();
+                    updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
+                            + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void UpdateMedicineForBodyPain(String brandname, String genericname) {
+        Connection conn = null;
+        Statement stmt = null;
+        String selectQuery;
+        String updateQuery;
+        selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet select = stmt.executeQuery(selectQuery);
+            while (select.next()) {
+                String bname = select.getString("brandname");
+                String gname = select.getString("genericname");
+
+                if (bname.equalsIgnoreCase(brandname) && gname.equalsIgnoreCase(genericname)) {
+                    JTextField Price = new JTextField();
+                    JTextField Type = new JTextField();
+                    JTextField Quantity = new JTextField();
+                    Object[] message = {
+                        "Price:", Price,
+                        "Type:", Type,
+                        "Quantity:", Quantity
+                    };
+                    JOptionPane.showConfirmDialog(null, message, "Update Medicine", JOptionPane.OK_CANCEL_OPTION);
+                    String Updatedprice = Price.getText();
+                    String Updatedtype = Type.getText();
+                    String Updatedquantity = Quantity.getText();
+                    updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
+                            + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
+                    stmt.executeUpdate(updateQuery);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex.getMessage());
+        }
     }
 }
