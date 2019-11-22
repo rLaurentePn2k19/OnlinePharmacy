@@ -59,7 +59,6 @@ public class SeniorCDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Ecoin = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Profile = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
         ViewHistory = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
@@ -160,14 +159,6 @@ public class SeniorCDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Profile.setText("Profile");
-        Profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfileMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(Profile);
-
         Purchase.setText("Purchase");
         jMenuBar1.add(Purchase);
 
@@ -202,12 +193,6 @@ public class SeniorCDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
-        ProfileCustomer profile = new ProfileCustomer();
-        profile.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ProfileMouseClicked
 
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
         ViewHistory view = new ViewHistory();
@@ -330,7 +315,6 @@ public class SeniorCDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Ecoin;
     private javax.swing.JMenu Logout;
     private javax.swing.JPanel OuterContainer;
-    private javax.swing.JMenu Profile;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu ViewHistory;
     private javax.swing.JLabel jLabel1;

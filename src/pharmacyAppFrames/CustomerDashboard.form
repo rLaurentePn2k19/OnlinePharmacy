@@ -4,14 +4,6 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="Profile">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Profile"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ProfileMouseClicked"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="Purchase">
           <Properties>
             <Property name="text" type="java.lang.String" value="Purchase"/>
@@ -90,10 +82,6 @@
                       <Group type="102" attributes="0">
                           <Component id="purchaseBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Ecoin" min="-2" pref="47" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="medNav" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -112,8 +100,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="medNav" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="purchaseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Ecoin" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="233" max="-2" attributes="0"/>
@@ -200,16 +186,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="Ecoin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="1000"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ecoin left: &#x20b1;"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

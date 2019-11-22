@@ -9,10 +9,8 @@ import API.PharmacistTransaction;
 import Db.pharmacistOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-//import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +21,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     PharmacistTransaction pt = new PharmacistTransaction();
     pharmacistOperation po = new pharmacistOperation();
-    String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+   
 
     public PharmacistDashboard() {
         initComponents();

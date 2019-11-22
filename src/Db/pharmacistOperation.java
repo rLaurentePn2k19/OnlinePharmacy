@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 public class pharmacistOperation implements DbConnect {
 
     public void addMedicineForCough(String brandname, String genericname, int price, String type, int quantity) {
-
         Connection conn = null;
         Statement stmt = null;
         String insertQuery;

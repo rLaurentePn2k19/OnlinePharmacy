@@ -135,9 +135,7 @@ public class ViewHistory extends javax.swing.JFrame {
     }//GEN-LAST:event_PurchaseMouseClicked
 
     private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
-        ProfileCustomer profile = new ProfileCustomer();
-        profile.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_ProfileMouseClicked
 
     /**

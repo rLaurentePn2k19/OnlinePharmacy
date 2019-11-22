@@ -20,8 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerDashboard extends javax.swing.JFrame {
 
     customerOperation co = new customerOperation();
-    
-
+    CustomerTransaction ct = new CustomerTransaction();
 
     /**
      * Creates new form CustomerDashboard
@@ -35,6 +34,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         medNav.setSelectedItem("Medicine For Cough");
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,10 +49,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         purchaseBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustomer = new javax.swing.JTable();
-        Ecoin = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Profile = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
         ViewHistory = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
@@ -105,10 +102,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableCustomer);
 
-        Ecoin.setText("1000");
-
-        jLabel2.setText("Ecoin left: ₱");
-
         javax.swing.GroupLayout OuterContainerLayout = new javax.swing.GroupLayout(OuterContainer);
         OuterContainer.setLayout(OuterContainerLayout);
         OuterContainerLayout.setHorizontalGroup(
@@ -119,10 +112,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(purchaseBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Ecoin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,21 +124,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(purchaseBtn)
-                    .addComponent(Ecoin, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(purchaseBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        Profile.setText("Profile");
-        Profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfileMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(Profile);
 
         Purchase.setText("Purchase");
         jMenuBar1.add(Purchase);
@@ -188,12 +167,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
-        ProfileCustomer profile = new ProfileCustomer();
-        profile.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ProfileMouseClicked
 
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
         ViewHistory view = new ViewHistory();
@@ -265,6 +238,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void purchaseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseBtnMouseClicked
         CustomerTransaction ct = new CustomerTransaction();
+
         JTextField Brandname = new JTextField();
         JTextField Genericname = new JTextField();
         JTextField Type = new JTextField();
@@ -275,7 +249,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             "Type:", Type,
             "Quantity:", Quantity
         };
-        
+
         JOptionPane.showConfirmDialog(null, message, "Purchase Medicine", JOptionPane.OK_CANCEL_OPTION);
 
         String brandname = Brandname.getText();
@@ -333,13 +307,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Ecoin;
     private javax.swing.JMenu Logout;
     private javax.swing.JPanel OuterContainer;
-    private javax.swing.JMenu Profile;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu ViewHistory;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
