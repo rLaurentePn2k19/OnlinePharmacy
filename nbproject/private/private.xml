@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/API/User.java</file>
+            <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/Db/pharmacistOperation.java</file>
             <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/API/CustomerTransaction.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/API/PharmacistTransaction.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/pharmacyAppFrames/CustomerDashboard.java</file>
+            <file>file:/C:/Users/2ndyrgroupb/Documents/NetBeansProjects/OnlinePharmacy/src/Db/customerOperation.java</file>
         </group>
     </open-files>
 </project-private>

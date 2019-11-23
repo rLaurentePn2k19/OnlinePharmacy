@@ -7,6 +7,7 @@ package API;
 
 import javax.swing.JOptionPane;
 import Db.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +15,7 @@ import Db.*;
  */
 public class PharmacistTransaction {
 
+    String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
     pharmacistOperation po = new pharmacistOperation();
 
     public void addMedForCough(String brandname, String genericname, String price, String type, String quantity) {
@@ -110,6 +112,54 @@ public class PharmacistTransaction {
         } else {
             po.UpdateMedicineForAllergies(brandname, genericname);
         }
+    }
+
+    public DefaultTableModel tableCough() {
+        Object[][] medForCough = po.viewMedicineForCough();
+        DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tableMedCough;
+    }
+
+    public DefaultTableModel tableHeadache() {
+        Object[][] medHeadache = po.viewMedicineForHeadache();
+        DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tableMedHeadache;
+    }
+
+    public DefaultTableModel tableBodyPain() {
+        Object[][] medAllergies = po.viewMedicineForCough();
+        DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tableMedAllergies;
+    }
+
+    public DefaultTableModel tableAllergies() {
+        Object[][] medBodyPain = po.viewMedicineForCough();
+        DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tableMedBodyPain;
     }
 
 }

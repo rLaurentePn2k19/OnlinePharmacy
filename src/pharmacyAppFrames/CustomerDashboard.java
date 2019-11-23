@@ -34,7 +34,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
         medNav.setSelectedItem("Medicine For Cough");
     }
 
-  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,7 +171,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
         ViewHistory view = new ViewHistory();
         view.setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_ViewHistoryMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
@@ -187,48 +185,52 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-        Object[][] medForCough = co.viewMedicineForCough();
-        Object[][] medHeadache = co.viewMedicineForHeadache();
-        Object[][] medBodyPain = co.viewMedicineForBodyPain();
-        Object[][] medAllergies = co.viewMedicineForAllergies();
+//        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+//        Object[][] medForCough = co.viewMedicineForCough();
+//        Object[][] medHeadache = co.viewMedicineForHeadache();
+//        Object[][] medBodyPain = co.viewMedicineForBodyPain();
+//        Object[][] medAllergies = co.viewMedicineForAllergies();
 
         if (selected.equals("Medicine For Headache")) {
-            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            tableCustomer.setModel(tableMedHeadache);
+            tableCustomer.setModel(ct.tableHeadache());
+//            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            tableCustomer.setModel(tableMedHeadache);
         } else if (selected.equals("Medicine For Cough")) {
-            DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            tableCustomer.setModel(tableMedCough);
+            tableCustomer.setModel(ct.tableCough());
+//            DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            tableCustomer.setModel(tableMedCough);
         } else if (selected.equals("Medicine For Allergies")) {
-            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            tableCustomer.setModel(tableMedAllergies);
+            tableCustomer.setModel(ct.tableAllergies());
+//            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            tableCustomer.setModel(tableMedAllergies);
         } else if (selected.equals("Medicine For Body pain")) {
-            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            tableCustomer.setModel(tableMedBodyPain);
+            tableCustomer.setModel(ct.tableBodyPain());
+//            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            tableCustomer.setModel(tableMedBodyPain);
         }
     }//GEN-LAST:event_medNavActionPerformed
 

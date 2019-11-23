@@ -177,47 +177,51 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
         Object selected = medNav.getSelectedItem();
-        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-        Object[][] medForCough = po.viewMedicineForCough();
-        Object[][] medHeadache = po.viewMedicineForHeadache();
-        Object[][] medBodyPain = po.viewMedicineForBodyPain();
-        Object[][] medAllergies = po.viewMedicineForAllergies();
+//        String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+//        Object[][] medForCough = po.viewMedicineForCough();
+//        Object[][] medHeadache = po.viewMedicineForHeadache();
+//        Object[][] medBodyPain = po.viewMedicineForBodyPain();
+//        Object[][] medAllergies = po.viewMedicineForAllergies();
         if (selected.equals("Medicine For Headache")) {
-            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            pharTable.setModel(tableMedHeadache);
+            pharTable.setModel(pt.tableHeadache());
+//            DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            pharTable.setModel(tableMedHeadache);
         } else if (selected.equals("Medicine For Cough")) {
-            DefaultTableModel tableForMedCough = new DefaultTableModel(medForCough, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            pharTable.setModel(tableForMedCough);
+            pharTable.setModel(pt.tableCough());
+//            DefaultTableModel tableForMedCough = new DefaultTableModel(medForCough, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            pharTable.setModel(tableForMedCough);
         } else if (selected.equals("Medicine For Allergies")) {
-            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            pharTable.setModel(tableMedAllergies);
+            pharTable.setModel(pt.tableAllergies());
+//            DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            pharTable.setModel(tableMedAllergies);
         } else if (selected.equals("Medicine For Body pain")) {
-            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all ceisCellEditablells false
-                    return false;
-                }
-            };
-            pharTable.setModel(tableMedBodyPain);
+            pharTable.setModel(pt.tableBodyPain());
+//            DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
+//                @Override
+//                public boolean isCellEditable(int row, int column) {
+//                    //all ceisCellEditablells false
+//                    return false;
+//                }
+//            };
+//            pharTable.setModel(tableMedBodyPain);
         }
     }//GEN-LAST:event_medNavActionPerformed
 
