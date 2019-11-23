@@ -20,17 +20,17 @@ public class CustomerTransaction {
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
 //    int ecoin;
     customerOperation co = new customerOperation();
-
-    public CustomerTransaction() {
-
-    }
-
-//    public void setEcoin(int ecoin) {
-//        this.ecoin = ecoin;
+//
+//    public CustomerTransaction() {
+//
+//    }
+//    
+//    public void setEcoin(int Ecoin) {
+//        System.out.println(ecoin + " this is the value");
+//        this.ecoin = Ecoin;
 //    }
 //
 //    public int getEcoin() {
-//        System.out.println(ecoin + " is get");
 //        return ecoin;
 //    }
 
@@ -91,19 +91,7 @@ public class CustomerTransaction {
     }
 
     public DefaultTableModel tableBodyPain() {
-        Object[][] medAllergies = co.viewMedicineForCough();
-        DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                //all ceisCellEditablells false
-                return false;
-            }
-        };
-        return tableMedAllergies;
-    }
-
-    public DefaultTableModel tableAllergies() {
-        Object[][] medBodyPain = co.viewMedicineForCough();
+        Object[][] medBodyPain = co.viewMedicineForBodyPain();
         DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -112,5 +100,17 @@ public class CustomerTransaction {
             }
         };
         return tableMedBodyPain;
+    }
+
+    public DefaultTableModel tableAllergies() {
+        Object[][] medAllergies = co.viewMedicineForAllergies();
+        DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tableMedAllergies;
     }
 }

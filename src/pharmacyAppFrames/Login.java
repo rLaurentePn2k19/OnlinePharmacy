@@ -5,6 +5,7 @@
  */
 package pharmacyAppFrames;
 
+import API.UserLogReg;
 import Db.dbUser;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -188,15 +189,10 @@ public class Login extends javax.swing.JFrame {
         User user = new User();
         String em = emailLogin.getText();
         String pass = passLogin.getText();
+        UserLogReg login = new UserLogReg();
+        login.userLogin(em, pass);
+        this.dispose();
 
-        if (em.equals("") && pass.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
-            this.setVisible(true);
-        } else {
-            dbUser db = new dbUser();
-            db.getUser(em, pass);    
-            this.dispose();
-        }
     }//GEN-LAST:event_loginBtnMouseClicked
 
     /**

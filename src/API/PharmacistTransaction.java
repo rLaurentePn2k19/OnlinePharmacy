@@ -139,7 +139,7 @@ public class PharmacistTransaction {
     }
 
     public DefaultTableModel tableBodyPain() {
-        Object[][] medAllergies = po.viewMedicineForCough();
+        Object[][] medAllergies = po.viewMedicineForBodyPain();
         DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -151,7 +151,7 @@ public class PharmacistTransaction {
     }
 
     public DefaultTableModel tableAllergies() {
-        Object[][] medBodyPain = po.viewMedicineForCough();
+        Object[][] medBodyPain = po.viewMedicineForAllergies();
         DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {

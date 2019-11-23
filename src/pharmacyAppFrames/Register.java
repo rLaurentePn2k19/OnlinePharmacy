@@ -5,11 +5,10 @@
  */
 package pharmacyAppFrames;
 
-import Db.dbUser;
+import API.UserLogReg;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import static java.lang.Integer.parseInt;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -240,16 +239,9 @@ public class Register extends javax.swing.JFrame {
         String age = regAge.getText();
         String email = regEmail.getText();
         String pass = regPass.getText();
-
-        if (name.equals("") || age.equals("") || email.equals("") || pass.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please provide an Input.", "Error", JOptionPane.ERROR_MESSAGE);
-            this.setVisible(true);
-        } else {
-            dbUser db = new dbUser();
-            db.CreateAccount(name, parseInt(age), email, pass);
-            this.dispose();
-        }
-
+        UserLogReg register = new UserLogReg();
+        register.userRegister(email, pass, age, name);
+        this.dispose();
     }//GEN-LAST:event_registerBtnMouseClicked
 
     /**

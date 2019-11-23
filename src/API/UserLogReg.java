@@ -13,14 +13,15 @@ import Db.*;
  *
  * @author 2ndyrGroupB
  */
-public class User {
+public class UserLogReg {
 
     Login loginFrame = new Login();
     Register registerFrame = new Register();
 
     public void userLogin(String email, String password) {
         if (email.equals("") || password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please input username and password", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please input username and password.", "Error", JOptionPane.ERROR_MESSAGE);
+            loginFrame.setVisible(true);
         } else {
             dbUser db = new dbUser();
             db.getUser(email, password);
@@ -30,7 +31,8 @@ public class User {
 
     public void userRegister(String email, String password, String age, String name) {
         if (name.equals("") || email.equals("") || password.equals("") || age.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please input username and password", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please input the given fields to register.", "Error", JOptionPane.ERROR_MESSAGE);
+            registerFrame.setVisible(true);
         }else{
             dbUser db = new dbUser();
             db.CreateAccount(name, Integer.valueOf(age), email, password);

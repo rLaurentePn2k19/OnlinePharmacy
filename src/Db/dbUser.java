@@ -5,7 +5,6 @@
  */
 package Db;
 
-import API.CustomerTransaction;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import pharmacyAppFrames.*;
-
+//import API.CustomerTransaction;
 /**
  *
  * @author 2ndyrGroupB
@@ -39,11 +38,9 @@ public class dbUser implements DbConnect {
             if (age > 60) {
                 ResultSet res = stmt.executeQuery(retrieveUser);
                 while (res.next()) {
-//                    CustomerTransaction ct = new CustomerTransaction();
                     int e = res.getInt("ecoin");
-                    customer.setEcoin(e);
-                    System.out.println(e);
-//                    ct.setEcoin(e);
+//                    customer.setEcoin(e);
+                    System.out.println(e + " Ecoin given");
                 }
                 scd.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
@@ -52,11 +49,8 @@ public class dbUser implements DbConnect {
             } else {
                 ResultSet res = stmt.executeQuery(retrieveUser);
                 while (res.next()) {
-//                    CustomerTransaction ct = new CustomerTransaction();
-                    int e = res.getInt("ecoin");
-                    System.out.println(e);
-                    customer.setEcoin(e);
-//                    ct.setEcoin(e);
+//                    customer.setEcoin(e);
+                    System.out.println(res.getInt("ecoin") + " Ecoin given");
                 }
                 customer.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
