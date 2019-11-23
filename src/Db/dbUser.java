@@ -39,10 +39,11 @@ public class dbUser implements DbConnect {
             if (age > 60) {
                 ResultSet res = stmt.executeQuery(retrieveUser);
                 while (res.next()) {
-                    CustomerTransaction ct = new CustomerTransaction();
+//                    CustomerTransaction ct = new CustomerTransaction();
                     int e = res.getInt("ecoin");
+                    customer.setEcoin(e);
                     System.out.println(e);
-                    ct.setEcoin(e);
+//                    ct.setEcoin(e);
                 }
                 scd.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
@@ -51,10 +52,11 @@ public class dbUser implements DbConnect {
             } else {
                 ResultSet res = stmt.executeQuery(retrieveUser);
                 while (res.next()) {
-                    CustomerTransaction ct = new CustomerTransaction();
+//                    CustomerTransaction ct = new CustomerTransaction();
                     int e = res.getInt("ecoin");
                     System.out.println(e);
-                    ct.setEcoin(e);
+                    customer.setEcoin(e);
+//                    ct.setEcoin(e);
                 }
                 customer.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);

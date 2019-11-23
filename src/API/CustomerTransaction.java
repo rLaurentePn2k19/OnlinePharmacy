@@ -18,22 +18,21 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerTransaction {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-
-    int ecoin;
+//    int ecoin;
     customerOperation co = new customerOperation();
 
     public CustomerTransaction() {
 
     }
 
-    public void setEcoin(int ecoin) {
-        this.ecoin = ecoin;
-    }
-
-    public int getEcoin() {
-        System.out.println(ecoin + " is get");
-        return ecoin;
-    }
+//    public void setEcoin(int ecoin) {
+//        this.ecoin = ecoin;
+//    }
+//
+//    public int getEcoin() {
+//        System.out.println(ecoin + " is get");
+//        return ecoin;
+//    }
 
     public void purchaseMedicineForCough(String brandname, String genericname, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {

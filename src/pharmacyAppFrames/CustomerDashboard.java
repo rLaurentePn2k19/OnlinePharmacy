@@ -21,7 +21,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     customerOperation co = new customerOperation();
     CustomerTransaction ct = new CustomerTransaction();
-
+    int ecoin;
     /**
      * Creates new form CustomerDashboard
      */
@@ -32,8 +32,16 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         medNav.setSelectedItem("Medicine For Cough");
+        myEcoin.setText(String.valueOf(this.getEcoin()));
     }
-
+    
+    public void setEcoin(int ecoin){
+        this.ecoin = ecoin;
+    }
+    
+    public int getEcoin(){
+        return this.ecoin;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +56,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         purchaseBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustomer = new javax.swing.JTable();
+        myEcoin = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Purchase = new javax.swing.JMenu();
         ViewHistory = new javax.swing.JMenu();
@@ -101,6 +110,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableCustomer);
 
+        myEcoin.setText("emoney");
+
         javax.swing.GroupLayout OuterContainerLayout = new javax.swing.GroupLayout(OuterContainer);
         OuterContainer.setLayout(OuterContainerLayout);
         OuterContainerLayout.setHorizontalGroup(
@@ -110,6 +121,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(purchaseBtn)
+                        .addGap(28, 28, 28)
+                        .addComponent(myEcoin, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OuterContainerLayout.createSequentialGroup()
@@ -123,7 +136,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(purchaseBtn))
+                    .addComponent(purchaseBtn)
+                    .addComponent(myEcoin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -316,6 +330,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
+    private javax.swing.JLabel myEcoin;
     private javax.swing.JButton purchaseBtn;
     private javax.swing.JTable tableCustomer;
     // End of variables declaration//GEN-END:variables

@@ -81,6 +81,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="purchaseBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="myEcoin" min="-2" pref="107" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="medNav" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
@@ -100,6 +102,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="medNav" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="purchaseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="myEcoin" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="233" max="-2" attributes="0"/>
@@ -186,6 +189,11 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="myEcoin">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="emoney"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
