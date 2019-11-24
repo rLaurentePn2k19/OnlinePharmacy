@@ -59,7 +59,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         myEcoin = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Purchase = new javax.swing.JMenu();
-        ViewHistory = new javax.swing.JMenu();
+        PurchasedMedBtn = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,8 +107,20 @@ public class CustomerDashboard extends javax.swing.JFrame {
             new String [] {
                 "Brand name", "Generic name", "Price", "Type", "Quantity"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableCustomer);
+        if (tableCustomer.getColumnModel().getColumnCount() > 0) {
+            tableCustomer.getColumnModel().getColumn(0).setResizable(false);
+            tableCustomer.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         myEcoin.setText("emoney");
 
@@ -146,13 +158,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
         Purchase.setText("Purchase");
         jMenuBar1.add(Purchase);
 
-        ViewHistory.setText("View History");
-        ViewHistory.addMouseListener(new java.awt.event.MouseAdapter() {
+        PurchasedMedBtn.setText("Purchased Medicines");
+        PurchasedMedBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewHistoryMouseClicked(evt);
+                PurchasedMedBtnMouseClicked(evt);
             }
         });
-        jMenuBar1.add(ViewHistory);
+        jMenuBar1.add(PurchasedMedBtn);
 
         Logout.setText("Logout");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,11 +193,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
+    private void PurchasedMedBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchasedMedBtnMouseClicked
         ViewHistory view = new ViewHistory();
         view.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_ViewHistoryMouseClicked
+    }//GEN-LAST:event_PurchasedMedBtnMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
         Login login = new Login();
@@ -289,7 +301,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JMenu Logout;
     private javax.swing.JPanel OuterContainer;
     private javax.swing.JMenu Purchase;
-    private javax.swing.JMenu ViewHistory;
+    private javax.swing.JMenu PurchasedMedBtn;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;

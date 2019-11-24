@@ -139,9 +139,12 @@ public class customerOperation implements DbConnect {
         String deleteQuery;
         String updateQuery;
         String selectQuery;
+//        String insertPurchasedMed;
         selectQuery = "SELECT quantity from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
-        
+//        insertPurchasedMed = "INSERT INTO from 'purchasedmedcough' (medcough_id, user   _id,)";
+//        insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password,ecoin) "
+//                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password, 2000);
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
@@ -260,6 +263,35 @@ public class customerOperation implements DbConnect {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public Object[][] viewPurchasedMedForCough() {
+        Connection conn = null;
+        Statement stmt = null;
+        Object[][] data = new Object[10][4];
 
+        String selectQuery;
+
+        selectQuery = "SELECT * from `purchasedmedforcough`";
+        
+        try {
+            int cols = 0;
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(selectQuery);
+            while (result.next()) {
+                data[cols][0] = result.getString("brandname");
+                data[cols][1] = result.getString("genericname");
+                data[cols][2] = result.getString("price");
+                data[cols][3] = result.getString("type");
+                data[cols][4] = result.getString("quantity");
+                ++cols;
+
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data;
     }
 }

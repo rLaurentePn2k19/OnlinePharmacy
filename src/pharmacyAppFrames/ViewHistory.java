@@ -5,6 +5,7 @@
  */
 package pharmacyAppFrames;
 
+import API.CustomerTransaction;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author laurentera_sd2022
  */
 public class ViewHistory extends javax.swing.JFrame {
-
+    CustomerTransaction ct = new CustomerTransaction();
     /**
      * Creates new form ViewHistory
      */
@@ -24,6 +25,7 @@ public class ViewHistory extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
+        tablePurchased.setModel(ct.purchasedMedCough());
     }
 
     /**
@@ -37,11 +39,11 @@ public class ViewHistory extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        tablePurchased = new javax.swing.JTable();
+        medNav = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Profile = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
-        ViewHistory = new javax.swing.JMenu();
+        PurchasedMedBtn = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,37 +51,78 @@ public class ViewHistory extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 204));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        tablePurchased.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Brand name", "Generic name", "Quantity", "Amount paid"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(tablePurchased);
+        if (tablePurchased.getColumnModel().getColumnCount() > 0) {
+            tablePurchased.getColumnModel().getColumn(0).setResizable(false);
+            tablePurchased.getColumnModel().getColumn(1).setResizable(false);
+            tablePurchased.getColumnModel().getColumn(2).setResizable(false);
+            tablePurchased.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
+        medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                medNavComponentShown(evt);
+            }
+        });
+        medNav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medNavActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        Profile.setText("Profile");
-        Profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfileMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(Profile);
 
         Purchase.setText("Purchase");
         Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,8 +132,8 @@ public class ViewHistory extends javax.swing.JFrame {
         });
         jMenuBar1.add(Purchase);
 
-        ViewHistory.setText("View History");
-        jMenuBar1.add(ViewHistory);
+        PurchasedMedBtn.setText("Purchased Medicines");
+        jMenuBar1.add(PurchasedMedBtn);
 
         Logout.setText("Logout");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,9 +177,23 @@ public class ViewHistory extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_PurchaseMouseClicked
 
-    private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
+    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
 
-    }//GEN-LAST:event_ProfileMouseClicked
+    }//GEN-LAST:event_medNavComponentShown
+
+    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
+        Object selected = medNav.getSelectedItem();
+
+        if (selected.equals("Medicine For Headache")) {
+            tablePurchased.setModel(ct.purchasedMedHeadache());
+        } else if (selected.equals("Medicine For Cough")) {
+            tablePurchased.setModel(ct.purchasedMedCough());
+        } else if (selected.equals("Medicine For Allergies")) {
+            tablePurchased.setModel(ct.purchasedMedAllergies());
+        } else if (selected.equals("Medicine For Body pain")) {
+            tablePurchased.setModel(ct.purchasedMedBodyPain());
+        }
+    }//GEN-LAST:event_medNavActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,12 +233,12 @@ public class ViewHistory extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Logout;
-    private javax.swing.JMenu Profile;
     private javax.swing.JMenu Purchase;
-    private javax.swing.JMenu ViewHistory;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JMenu PurchasedMedBtn;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> medNav;
+    private javax.swing.JTable tablePurchased;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerTransaction {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
+    String[] columnForPurchased = {"Brand name", "Generic name", "Quantity","Amount paid"};
+
 //    int ecoin;
     customerOperation co = new customerOperation();
 //
@@ -112,5 +114,53 @@ public class CustomerTransaction {
             }
         };
         return tableMedAllergies;
+    }
+
+    public DefaultTableModel purchasedMedCough() {
+        Object[][] medCough = co.viewMedicineForCough();
+        DefaultTableModel tablePurchasedMedCough= new DefaultTableModel(medCough, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedCough;
+    }
+    
+    public DefaultTableModel purchasedMedHeadache() {
+        Object[][] medHeadache = co.viewMedicineForAllergies();
+        DefaultTableModel tablePurchasedMedHeadache= new DefaultTableModel(medHeadache, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedHeadache;
+    }
+    
+    public DefaultTableModel purchasedMedBodyPain() {
+        Object[][] medBodyPain = co.viewMedicineForAllergies();
+        DefaultTableModel tablePurchasedMedBodyPain= new DefaultTableModel(medBodyPain, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedBodyPain;
+    }
+    
+    public DefaultTableModel purchasedMedAllergies() {
+        Object[][] medAllergies = co.viewMedicineForAllergies();
+        DefaultTableModel tablePurchasedMedAllergies= new DefaultTableModel(medAllergies, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedAllergies;
     }
 }
