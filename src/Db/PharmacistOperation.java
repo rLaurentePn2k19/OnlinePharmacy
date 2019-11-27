@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author 2ndyrGroupB
  */
-public class pharmacistOperation implements DbConnect {
+public class PharmacistOperation implements DbConnect {
 
     public void addMedicineForCough(String brandname, String genericname, int price, String type, int quantity) {
         Connection conn = null;
@@ -488,5 +488,32 @@ public class pharmacistOperation implements DbConnect {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
         }
+    }
+    
+   public Object[][] getAllCustomer() {
+        Connection conn = null;
+        Statement stmt = null;
+        Object[][] data = new Object[15][3];
+
+        String selectQuery;
+
+        selectQuery = "SELECT name,age,email from `accounts`";
+        try {
+            int cols = 0;
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(selectQuery);
+            while (result.next()) {
+                data[cols][0] = result.getString("name");
+                data[cols][1] = result.getString("age");
+                data[cols][2] = result.getString("email");
+                ++cols;
+
+            }
+            System.out.println(result);
+        } catch (SQLException | HeadlessException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data;
     }
 }

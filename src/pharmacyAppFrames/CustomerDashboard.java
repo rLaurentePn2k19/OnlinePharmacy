@@ -6,7 +6,7 @@
 package pharmacyAppFrames;
 
 import API.CustomerTransaction;
-import Db.customerOperation;
+import Db.CustomerOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  */
 public class CustomerDashboard extends javax.swing.JFrame {
 
-    customerOperation co = new customerOperation();
+    CustomerOperation co = new CustomerOperation();
     CustomerTransaction ct = new CustomerTransaction();
 //    int ecoin;
 

@@ -17,7 +17,7 @@ import pharmacyAppFrames.*;
  *
  * @author 2ndyrGroupB
  */
-public class dbUser implements DbConnect {
+public class DbUser implements DbConnect {
 
     public void CreateAccount(String name, int age, String email, String password) {
         Connection conn = null;

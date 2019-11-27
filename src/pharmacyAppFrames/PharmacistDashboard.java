@@ -5,8 +5,8 @@
  */
 package pharmacyAppFrames;
 
-import API.PharmacistTransaction;
-import Db.pharmacistOperation;
+import API.PharmacistTransac;
+import Db.PharmacistOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -18,8 +18,8 @@ import javax.swing.JTextField;
  */
 public class PharmacistDashboard extends javax.swing.JFrame {
 
-    PharmacistTransaction pt = new PharmacistTransaction();
-    pharmacistOperation po = new pharmacistOperation();
+    PharmacistTransac pt = new PharmacistTransac();
+    PharmacistOperation po = new PharmacistOperation();
 
     public PharmacistDashboard() {
         initComponents();
@@ -47,6 +47,8 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         removeBtn = new javax.swing.JButton();
         UpdateBtn = new javax.swing.JButton();
         pharMenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        viewCustomer = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,6 +146,17 @@ public class PharmacistDashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Dashboard");
+        pharMenu.add(jMenu1);
+
+        viewCustomer.setText("View Customers");
+        viewCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewCustomerMouseClicked(evt);
+            }
+        });
+        pharMenu.add(viewCustomer);
 
         Logout.setText("Logout");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -294,6 +307,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_UpdateBtnMouseClicked
 
+    private void viewCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCustomerMouseClicked
+        ViewCustomers vc = new ViewCustomers();
+        vc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_viewCustomerMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -315,10 +334,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel PharContainer;
     private javax.swing.JButton UpdateBtn;
     private javax.swing.JButton addBtn;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
     private javax.swing.JMenuBar pharMenu;
     private javax.swing.JTable pharTable;
     private javax.swing.JButton removeBtn;
+    private javax.swing.JMenu viewCustomer;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package pharmacyAppFrames;
 
-import Db.customerOperation;
+import Db.CustomerOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author laurentera_sd2022
  */
 public class SeniorCDashboard extends javax.swing.JFrame {
-    customerOperation co = new customerOperation();
+    CustomerOperation co = new CustomerOperation();
     Object[][] medCough = co.viewMedicineForCough();
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
 

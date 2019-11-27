@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author 2ndyrGroupB
  */
-public class customerOperation implements DbConnect {
+public class CustomerOperation implements DbConnect {
 
     public Object[][] viewMedicineForCough() {
         Connection conn = null;

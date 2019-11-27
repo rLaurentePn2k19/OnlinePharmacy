@@ -20,21 +20,7 @@ public class CustomerTransaction {
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
     String[] columnForPurchased = {"Brand name", "Generic name", "Quantity","Amount paid"};
 
-//    int ecoin;
-    customerOperation co = new customerOperation();
-//
-//    public CustomerTransaction() {
-//
-//    }
-//    
-//    public void setEcoin(int Ecoin) {
-//        System.out.println(ecoin + " this is the value");
-//        this.ecoin = Ecoin;
-//    }
-//
-//    public int getEcoin() {
-//        return ecoin;
-//    }
+    CustomerOperation co = new CustomerOperation();
 
     public void purchaseMedicineForCough(String brandname, String genericname, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
