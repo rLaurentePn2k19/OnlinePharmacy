@@ -149,4 +149,16 @@ public class CustomerTransaction {
         };
         return tablePurchasedMedAllergies;
     }
+    
+    public DefaultTableModel viewPurchasedMedicines() {
+        Object[][] viewTable = co.viewPurchasedMedicines();
+        DefaultTableModel tablePurchasedMedicines= new DefaultTableModel(viewTable, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedicines;
+    }
 }

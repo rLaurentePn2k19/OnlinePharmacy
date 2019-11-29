@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class PharmacistTransac {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-    PharmacistOperation po = new PharmacistOperation();
+    PharmaOperations po = new PharmaOperations();
 
     public void addMedForCough(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {

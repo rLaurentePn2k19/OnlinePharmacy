@@ -6,11 +6,8 @@
 package pharmacyAppFrames;
 
 import API.UserLogReg;
-import Db.DbUser;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
-import pharmacyapp.User;
 
 /**
  *
@@ -186,7 +183,6 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         // TODO add your handling code here:
-        User user = new User();
         String em = emailLogin.getText();
         String pass = passLogin.getText();
         UserLogReg login = new UserLogReg();

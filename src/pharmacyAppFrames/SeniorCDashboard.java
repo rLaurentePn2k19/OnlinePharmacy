@@ -195,7 +195,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ViewHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewHistoryMouseClicked
-        ViewHistory view = new ViewHistory();
+        PurchasedMedicines view = new PurchasedMedicines();
         view.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ViewHistoryMouseClicked

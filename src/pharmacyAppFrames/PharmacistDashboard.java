@@ -6,7 +6,7 @@
 package pharmacyAppFrames;
 
 import API.PharmacistTransac;
-import Db.PharmacistOperation;
+import Db.PharmaOperations;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 public class PharmacistDashboard extends javax.swing.JFrame {
 
     PharmacistTransac pt = new PharmacistTransac();
-    PharmacistOperation po = new PharmacistOperation();
+    PharmaOperations po = new PharmaOperations();
 
     public PharmacistDashboard() {
         initComponents();

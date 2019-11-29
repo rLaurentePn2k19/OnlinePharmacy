@@ -23,7 +23,7 @@ public class UserLogReg {
             JOptionPane.showMessageDialog(null, "Please input username and password.", "Error", JOptionPane.ERROR_MESSAGE);
             loginFrame.setVisible(true);
         } else {
-            DbUser db = new DbUser();
+            UserOperation db = new UserOperation();
             db.getUser(email, password);
             loginFrame.dispose();
         }
@@ -34,7 +34,7 @@ public class UserLogReg {
             JOptionPane.showMessageDialog(null, "Please input the given fields to register.", "Error", JOptionPane.ERROR_MESSAGE);
             registerFrame.setVisible(true);
         }else{
-            DbUser db = new DbUser();
+            UserOperation db = new UserOperation();
             db.CreateAccount(name, Integer.valueOf(age), email, password);
             registerFrame.dispose();
         }

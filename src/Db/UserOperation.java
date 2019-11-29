@@ -12,51 +12,53 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import pharmacyAppFrames.*;
-//import API.CustomerTransaction;
+
 /**
  *
  * @author 2ndyrGroupB
  */
-public class DbUser implements DbConnect {
+public class UserOperation implements DbConnect {
 
     public void CreateAccount(String name, int age, String email, String password) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtInsert = null;
+        Statement stmtRetrieve = null;
         String insertQuery;
-        CustomerDashboard customer = new CustomerDashboard();
-        SeniorCDashboard scd = new SeniorCDashboard();
+        int e = 0;
         insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password,ecoin) "
-                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password, 2000);
+                + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password, 3000);
         String retrieveUser;
-
         retrieveUser = "SELECT ecoin from `accounts` where email = '" + email
                 + "' and password = '" + password + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            int result = stmt.executeUpdate(insertQuery);
+            stmtInsert = conn.createStatement();
+            int result = stmtInsert.executeUpdate(insertQuery);
             if (age > 60) {
-                ResultSet res = stmt.executeQuery(retrieveUser);
-                while (res.next()) {
-                    int e = res.getInt("ecoin");
-//                    customer.setEcoin(e);
+                stmtRetrieve = conn.createStatement();
+                ResultSet res = stmtRetrieve.executeQuery(retrieveUser);
+                if(res.next()) {
+                    e = res.getInt("ecoin");
                     System.out.println(e + " Ecoin given");
                 }
+                SeniorCDashboard scd = new SeniorCDashboard();
                 scd.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                 JOptionPane.showMessageDialog(null, "You can purchase our medicine with 20% discount..", null, JOptionPane.PLAIN_MESSAGE);
-                
+
             } else {
-                ResultSet res = stmt.executeQuery(retrieveUser);
-                while (res.next()) {
-//                    customer.setEcoin(e);
+                stmtRetrieve = conn.createStatement();
+                ResultSet res = stmtRetrieve.executeQuery(retrieveUser);
+                if(res.next()) {
+                    e = res.getInt("ecoin");
                     System.out.println(res.getInt("ecoin") + " Ecoin given");
                 }
+                CustomerDashboard customer = new CustomerDashboard(e);
                 customer.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
-                
+
             }
-//            conn.close();
+            conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -75,15 +77,15 @@ public class DbUser implements DbConnect {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(retrievetQuery);
-            while (result.next()) {
+            if(result.next()){
                 em = result.getString("email");
                 pass = result.getString("password");
                 age = result.getInt("age");
             }
             if (email.equals(em) && password.equals(pass)) {
-//                int e = result.getInt("ecoin");
+                int e = result.getInt("ecoin");
                 if (age < 60) {
-                    CustomerDashboard cd = new CustomerDashboard();
+                    CustomerDashboard cd = new CustomerDashboard(e);
                     cd.setVisible(true);
                     JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                 } else if (age > 60) {
@@ -101,7 +103,7 @@ public class DbUser implements DbConnect {
                 login.setVisible(true);
             }
             System.out.println(result);
-//            conn.close();
+            conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

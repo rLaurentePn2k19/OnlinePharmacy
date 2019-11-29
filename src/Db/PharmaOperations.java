@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author 2ndyrGroupB
  */
-public class PharmacistOperation implements DbConnect {
+public class PharmaOperations implements DbConnect {
 
     public void addMedicineForCough(String brandname, String genericname, int price, String type, int quantity) {
         Connection conn = null;
@@ -101,7 +101,9 @@ public class PharmacistOperation implements DbConnect {
 
     public void removeMedicineForCough(String brandname, String genericname, int quantity) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
+        Statement stmtDelete = null;
         String deleteQuery;
         String selectQuery;
         String updateQuery;
@@ -109,18 +111,20 @@ public class PharmacistOperation implements DbConnect {
         deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
                     int qty = select.getInt("quantity");
                     if (qty == quantity) {
-                        stmt.executeUpdate(deleteQuery);
+                        stmtDelete = conn.createStatement();
+                        stmtDelete.executeUpdate(deleteQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
                     } else if (qty > quantity) {
                         int upqty = qty - quantity;
                         updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                        stmt.executeUpdate(updateQuery);
+                        stmtUpdate = conn.createStatement();
+                        stmtUpdate.executeUpdate(updateQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                     }
                 }
@@ -133,7 +137,9 @@ public class PharmacistOperation implements DbConnect {
 
     public void removeMedicineForHeadache(String brandname, String genericname, int quantity) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
+        Statement stmtDelete = null;
         String deleteQuery;
         String selectQuery;
         String updateQuery;
@@ -141,18 +147,20 @@ public class PharmacistOperation implements DbConnect {
         deleteQuery = "DELETE FROM `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
                     int qty = select.getInt("quantity");
                     if (qty == quantity) {
-                        stmt.executeUpdate(deleteQuery);
+                        stmtDelete = conn.createStatement();
+                        stmtDelete.executeUpdate(deleteQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
                     } else if (qty > quantity) {
                         int upqty = qty - quantity;
                         updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                        stmt.executeUpdate(updateQuery);
+                        stmtUpdate = conn.createStatement();
+                        stmtUpdate.executeUpdate(updateQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                     }
                 }
@@ -165,7 +173,9 @@ public class PharmacistOperation implements DbConnect {
 
     public void removeMedicineForBodyPain(String brandname, String genericname, int quantity) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
+        Statement stmtDelete = null;
         String deleteQuery;
         String selectQuery;
         String updateQuery;
@@ -173,18 +183,20 @@ public class PharmacistOperation implements DbConnect {
         deleteQuery = "DELETE FROM `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
                     int qty = select.getInt("quantity");
                     if (qty == quantity) {
-                        stmt.executeUpdate(deleteQuery);
+                        stmtDelete = conn.createStatement();
+                        stmtDelete.executeUpdate(deleteQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
                     } else if (qty > quantity) {
                         int upqty = qty - quantity;
                         updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                        stmt.executeUpdate(updateQuery);
+                        stmtUpdate = conn.createStatement();
+                        stmtUpdate.executeUpdate(updateQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                     }
                 }
@@ -197,7 +209,9 @@ public class PharmacistOperation implements DbConnect {
 
     public void removeMedicineForAllergies(String brandname, String genericname, int quantity) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
+        Statement stmtDelete = null;
         String deleteQuery;
         String selectQuery;
         String updateQuery;
@@ -205,18 +219,20 @@ public class PharmacistOperation implements DbConnect {
         deleteQuery = "DELETE FROM `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 if (brandname.equalsIgnoreCase(select.getString("brandname")) || genericname.equalsIgnoreCase(select.getString("genericname"))) {
                     int qty = select.getInt("quantity");
                     if (qty == quantity) {
-                        stmt.executeUpdate(deleteQuery);
+                        stmtDelete = conn.createStatement();
+                        stmtDelete.executeUpdate(deleteQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is succesfully removed");
                     } else if (qty > quantity) {
                         int upqty = qty - quantity;
                         updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                        stmt.executeUpdate(updateQuery);
+                        stmtUpdate = conn.createStatement();
+                        stmtUpdate.executeUpdate(updateQuery);
                         JOptionPane.showMessageDialog(null, genericname + " is deducted by " + quantity);
                     }
                 }
@@ -343,14 +359,15 @@ public class PharmacistOperation implements DbConnect {
 
     public void UpdateMedicineForCough(String brandname, String genericname) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
         String selectQuery;
         String updateQuery;
         selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 String bname = select.getString("brandname");
                 String gname = select.getString("genericname");
@@ -369,7 +386,8 @@ public class PharmacistOperation implements DbConnect {
                     String Updatedquantity = Quantity.getText();
                     updateQuery = "UPDATE `medicineforcough` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
                             + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
+                    stmtUpdate = conn.createStatement();
+                    stmtUpdate.executeUpdate(updateQuery);
                 }
             }
         } catch (SQLException ex) {
@@ -380,14 +398,15 @@ public class PharmacistOperation implements DbConnect {
 
     public void UpdateMedicineForAllergies(String brandname, String genericname) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
         String selectQuery;
         String updateQuery;
         selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 String bname = select.getString("brandname");
                 String gname = select.getString("genericname");
@@ -406,7 +425,8 @@ public class PharmacistOperation implements DbConnect {
                     String Updatedquantity = Quantity.getText();
                     updateQuery = "UPDATE `medicineforallergies` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
                             + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
+                    stmtUpdate = conn.createStatement();
+                    stmtUpdate.executeUpdate(updateQuery);
                 }
             }
         } catch (SQLException ex) {
@@ -417,14 +437,15 @@ public class PharmacistOperation implements DbConnect {
 
     public void UpdateMedicineForHeadache(String brandname, String genericname) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
         String selectQuery;
         String updateQuery;
         selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 String bname = select.getString("brandname");
                 String gname = select.getString("genericname");
@@ -443,7 +464,8 @@ public class PharmacistOperation implements DbConnect {
                     String Updatedquantity = Quantity.getText();
                     updateQuery = "UPDATE `medicineforheadache` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
                             + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
+                    stmtUpdate = conn.createStatement();
+                    stmtUpdate.executeUpdate(updateQuery);
                 }
             }
         } catch (SQLException ex) {
@@ -454,14 +476,15 @@ public class PharmacistOperation implements DbConnect {
 
     public void UpdateMedicineForBodyPain(String brandname, String genericname) {
         Connection conn = null;
-        Statement stmt = null;
+        Statement stmtSelect = null;
+        Statement stmtUpdate = null;
         String selectQuery;
         String updateQuery;
         selectQuery = "SELECT type,price,quantity,brandname,genericname from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            ResultSet select = stmt.executeQuery(selectQuery);
+            stmtSelect = conn.createStatement();
+            ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 String bname = select.getString("brandname");
                 String gname = select.getString("genericname");
@@ -481,7 +504,8 @@ public class PharmacistOperation implements DbConnect {
                     String Updatedquantity = Quantity.getText();
                     updateQuery = "UPDATE `medicineforbodypain` SET quantity = '" + Updatedquantity + "', price = '" + Updatedprice + "' "
                             + ", type = '" + Updatedtype + "'WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
-                    stmt.executeUpdate(updateQuery);
+                    stmtUpdate = conn.createStatement();
+                    stmtUpdate.executeUpdate(updateQuery);
                 }
             }
         } catch (SQLException ex) {
