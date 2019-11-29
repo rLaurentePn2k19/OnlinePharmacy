@@ -5,7 +5,7 @@
  */
 package pharmacyAppFrames;
 
-import Db.PharmacistOperation;
+import Db.PharmaOperations;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewCustomers extends javax.swing.JFrame {
 
-    PharmacistOperation po = new PharmacistOperation();
+    PharmaOperations po = new PharmaOperations();
     String[] columns = {"Name", "Age", "Email"};
     Object[][] customers = po.getAllCustomer();
 

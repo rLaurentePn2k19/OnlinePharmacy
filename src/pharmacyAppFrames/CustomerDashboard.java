@@ -21,20 +21,22 @@ public class CustomerDashboard extends javax.swing.JFrame {
     CustomerOperation co = new CustomerOperation();
     CustomerTransaction ct = new CustomerTransaction();
 //    int ecoin;
+    int user_id = 0;
 
     /**
      * Creates new form CustomerDashboard
      * @param ecoin
      */
-    public CustomerDashboard(int ecoin) {
+    public CustomerDashboard(int ecoin,int acc_id) {
         initComponents();
+        account_id.setText(String.valueOf(acc_id));
         money.setText(Integer.toString(ecoin));
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         medNav.setSelectedItem("Medicine For Cough");
-        
+        user_id = Integer.valueOf(account_id.getText());
     }
 
 
@@ -55,6 +57,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
         tableCustomer = new javax.swing.JTable();
         money = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        account_id = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Purchase = new javax.swing.JMenu();
         PurchasedMedBtn = new javax.swing.JMenu();
@@ -124,6 +128,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         jLabel1.setText("E-money left:  ₱");
 
+        jLabel2.setText("Account id:");
+
+        account_id.setText("jLabel3");
+
         javax.swing.GroupLayout OuterContainerLayout = new javax.swing.GroupLayout(OuterContainer);
         OuterContainer.setLayout(OuterContainerLayout);
         OuterContainerLayout.setHorizontalGroup(
@@ -140,14 +148,20 @@ public class CustomerDashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OuterContainerLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(OuterContainerLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(account_id)
+                                .addGap(12, 12, 12))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         OuterContainerLayout.setVerticalGroup(
             OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OuterContainerLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(purchaseBtn)
@@ -155,7 +169,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(account_id)))
         );
 
         Purchase.setText("Purchase");
@@ -252,7 +269,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         String type = Type.getText();
 
         if (medNav.getSelectedItem().equals("Medicine For Cough")) {
-            ct.purchaseMedicineForCough(brandname, genericname, type, quantity);
+            ct.purchaseMedicineForCough(brandname, genericname, type, quantity,user_id);
             medNav.setSelectedItem("Medicine For Cough");
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
             ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity);
@@ -294,7 +311,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new CustomerDashboard(0).setVisible(true);
+                new CustomerDashboard(0,0).setVisible(true);
 
             }
         });
@@ -305,7 +322,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel OuterContainer;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu PurchasedMedBtn;
+    private javax.swing.JLabel account_id;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;

@@ -18,15 +18,15 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerTransaction {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-    String[] columnForPurchased = {"Brand name", "Generic name", "Quantity","Amount paid"};
+    String[] columnForPurchased = {"Generic name","Amount paid","Category","Quantity","Date"};
 
     CustomerOperation co = new CustomerOperation();
 
-    public void purchaseMedicineForCough(String brandname, String genericname, String type, String quantity) {
+    public void purchaseMedicineForCough(String brandname, String genericname, String type, String quantity, int user_id) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity));
+            co.purchaseMedForCough(brandname, genericname, type, parseInt(quantity),user_id);
         }
     }
 

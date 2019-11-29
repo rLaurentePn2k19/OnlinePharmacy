@@ -133,7 +133,7 @@ public class CustomerOperation implements DbConnect {
         return data;
     }
 
-    public void purchaseMedForCough(String brandname, String genericname, String type, int quantity) {
+    public void purchaseMedForCough(String brandname, String genericname, String type, int quantity, int user_id) {
         Connection conn = null;
         Statement stmtSelect = null;
         Statement stmtDelete = null;

@@ -57,28 +57,28 @@ public class PurchasedMedicines extends javax.swing.JFrame {
 
         tablePurchased.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Generic name", "Quantity", "Amount paid", "Category"
+                "Brandname", "Generic name", "Quantity", "Amount paid", "Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -91,6 +91,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
             tablePurchased.getColumnModel().getColumn(1).setResizable(false);
             tablePurchased.getColumnModel().getColumn(2).setResizable(false);
             tablePurchased.getColumnModel().getColumn(3).setResizable(false);
+            tablePurchased.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,7 +159,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutMouseClicked
 
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
-        CustomerDashboard customer = new CustomerDashboard(0);
+        CustomerDashboard customer = new CustomerDashboard(0,0);
         customer.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_PurchaseMouseClicked
