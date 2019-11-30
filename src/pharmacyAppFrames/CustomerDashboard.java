@@ -21,11 +21,12 @@ public class CustomerDashboard extends javax.swing.JFrame {
     CustomerOperation co = new CustomerOperation();
     CustomerTransaction ct = new CustomerTransaction();
 //    int ecoin;
-    int user_id = 0;
+    int user_id;
 
     /**
      * Creates new form CustomerDashboard
      * @param ecoin
+     * @param acc_id
      */
     public CustomerDashboard(int ecoin,int acc_id) {
         initComponents();
@@ -35,8 +36,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        medNav.setSelectedItem("Medicine For Cough");
+        medNav.setSelectedItem("Medicine For Headache");
         user_id = Integer.valueOf(account_id.getText());
+        System.out.println(user_id + " user id dashboard");
     }
 
 
@@ -267,9 +269,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
         String genericname = Genericname.getText();
         String quantity = Quantity.getText();
         String type = Type.getText();
-
+        
+        System.out.println(this.user_id + " Purchase btn");
         if (medNav.getSelectedItem().equals("Medicine For Cough")) {
-            ct.purchaseMedicineForCough(brandname, genericname, type, quantity,user_id);
+            ct.purchaseMedicineForCough(brandname, genericname, type, quantity,this.user_id);
             medNav.setSelectedItem("Medicine For Cough");
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
             ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity);

@@ -134,45 +134,54 @@ public class CustomerOperation implements DbConnect {
     }
 
     public void purchaseMedForCough(String brandname, String genericname, String type, int quantity, int user_id) {
+        
         Connection conn = null;
         Statement stmtSelect = null;
         Statement stmtDelete = null;
         Statement stmtUpdate = null;
         Statement stmtInsert = null;
+        int medicine_id = 0;
         String deleteQuery;
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)" 
-                + "VALUES ('%s','%d','%d','%s')" , genericname, quantity, 1000, "Medicine for cough");
-        selectQuery = "SELECT quantity from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity from `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforcough` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
-
+        
+        System.out.println(user_id + " this the user id for purchase");
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmtInsert = conn.createStatement();
-            int result = stmtInsert.executeUpdate(insertPurchasedMed);
             stmtSelect = conn.createStatement();
             ResultSet select = stmtSelect.executeQuery(selectQuery);
             while (select.next()) {
                 int qty = select.getInt("quantity");
+                medicine_id = select.getInt("id");
                 if (qty == quantity) {
                     stmtDelete = conn.createStatement();
                     stmtDelete.executeUpdate(deleteQuery);
                     JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
+                    insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforcough` (account_id,medicine_id,quantity,amount_paid)"
+                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, 1000);
+                    stmtInsert = conn.createStatement();
+                    stmtInsert.executeUpdate(insertPurchasedMed);
                 } else if (qty > quantity) {
                     int upqty = qty - quantity;
                     updateQuery = "UPDATE `medicineforcough` SET quantity = '" + upqty + "' WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "'";
                     stmtUpdate = conn.createStatement();
                     stmtUpdate.executeUpdate(updateQuery);
                     JOptionPane.showMessageDialog(null, "You purchased " + quantity + " of " + genericname);
+                    insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforcough` (account_id,medicine_id,quantity,amount_paid)"
+                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, 1000);
+                    stmtInsert = conn.createStatement();
+                    stmtInsert.executeUpdate(insertPurchasedMed);
                 }
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             System.out.println(ex.getMessage());
-        } 
-        
+        }
+
     }
 
     public void purchaseMedForHeadache(String brandname, String genericname, String type, int quantity) {
@@ -185,8 +194,8 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)" 
-                + "VALUES ('%s','%d','%d','%s')" , genericname, quantity, 1000, "Medicine for headache");
+        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)"
+                + "VALUES ('%s','%d','%d','%s')", genericname, quantity, 1000, "Medicine for headache");
         selectQuery = "SELECT quantity from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
@@ -227,8 +236,8 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)" 
-                + "VALUES ('%s','%d','%d','%s')" , genericname, quantity, 1000, "Medicine for body pain");
+        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)"
+                + "VALUES ('%s','%d','%d','%s')", genericname, quantity, 1000, "Medicine for body pain");
         selectQuery = "SELECT quantity from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
@@ -270,8 +279,8 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)" 
-                + "VALUES ('%s','%d','%d','%s')" , genericname, quantity, 1000, "Medicine for allergies");
+        insertPurchasedMed = String.format("INSERT INTO `purchasedmedicines` (med_genericname,quantity,total_amount,category)"
+                + "VALUES ('%s','%d','%d','%s')", genericname, quantity, 1000, "Medicine for allergies");
         selectQuery = "SELECT quantity from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
@@ -301,26 +310,116 @@ public class CustomerOperation implements DbConnect {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public Object[][] viewPurchasedMedicines() {
+
+    public Object[][] viewPurchasedMedForCough(int user_id) {
+        System.out.println(user_id + " viewPurchased");
         Connection conn = null;
         Statement stmt = null;
-        Object[][] data = new Object[20][4];
+        Object[][] data = new Object[20][5];
 
         String selectQuery;
 
-        selectQuery = "SELECT * from `purchasedmedicines`";
-        
+        selectQuery = "SELECT * FROM `purchasedmedicinesforcough` as pmfc JOIN `medicineforcough` as mfc ON pmfc.medicine_id = mfc.id WHERE pmfc.account_id = '"+user_id+"'";
+
         try {
             int cols = 0;
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(selectQuery);
             while (result.next()) {
-                data[cols][0] = result.getString("med_genericname");
-                data[cols][1] = result.getString("quantity");
-                data[cols][2] = result.getString("total_amount");
-                data[cols][3] = result.getString("category");
+                
+                data[cols][0] = result.getString("brandname");
+                data[cols][1] = result.getString("genericname");
+                data[cols][2] = result.getInt("quantity");
+                data[cols][3] = result.getInt("amount_paid");
+                data[cols][4] = result.getString("date");
+                ++cols;
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data;
+    }
+
+    public Object[][] viewPurchasedMedForHeadache(int user_id) {
+        Connection conn = null;
+        Statement stmt = null;
+        Object[][] data = new Object[20][5];
+
+        String selectQuery;
+
+        selectQuery = "SELECT * FROM `purchasedmedicinesforheadache` as pmfh JOIN `medicineforheadache` as mfh on pmfh.medicine_id = mfh.id where account_id = '"+user_id+"'";
+
+        try {
+            int cols = 0;
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(selectQuery);
+            while (result.next()) {
+                data[cols][0] = result.getString("brandname");
+                data[cols][1] = result.getString("genericname");
+                data[cols][2] = result.getString("quantity");
+                data[cols][3] = result.getString("amount_paid");
+                data[cols][4] = result.getString("date");
+                ++cols;
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data;
+    }
+
+    public Object[][] viewPurchasedMedForBodyPain(int user_id) {
+        Connection conn = null;
+        Statement stmt = null;
+        Object[][] data = new Object[20][5];
+
+        String selectQuery;
+
+        selectQuery = "SELECT * FROM `purchasedmedicinesforbodypain` as pmfb JOIN `medicineforbodypain` as mfb on pmfb.medicine_id = mfb.id where account_id = '"+user_id+"'";
+
+        try {
+            int cols = 0;
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(selectQuery);
+            while (result.next()) {
+                data[cols][0] = result.getString("brandname");
+                data[cols][1] = result.getString("genericname");
+                data[cols][2] = result.getString("quantity");
+                data[cols][3] = result.getString("amount_paid");
+                data[cols][4] = result.getString("date");
+                ++cols;
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data;
+    }
+    
+    public Object[][] viewPurchasedMedForAllergies(int user_id) {
+        Connection conn = null;
+        Statement stmt = null;
+        Object[][] data = new Object[20][5];
+
+        String selectQuery;
+
+        selectQuery = "SELECT * FROM `purchasedmedicinesforallergies` as pmfa JOIN `medicineforallergies` as mfa on pmfa.medicine_id = mfa.id where account_id = '"+user_id+"'";
+
+        try {
+            int cols = 0;
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(selectQuery);
+            while (result.next()) {
+                data[cols][0] = result.getString("brandname");
+                data[cols][1] = result.getString("genericname");
+                data[cols][2] = result.getString("quantity");
+                data[cols][3] = result.getString("amount_paid");
+                data[cols][4] = result.getString("date");
                 ++cols;
             }
             System.out.println(result);

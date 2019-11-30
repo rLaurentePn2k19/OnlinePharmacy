@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerTransaction {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-    String[] columnForPurchased = {"Generic name","Amount paid","Category","Quantity","Date"};
+    String[] columnForPurchased = {"Brandname","Genricname","Quantity","Amount paid","Date"};
 
     CustomerOperation co = new CustomerOperation();
 
@@ -101,9 +101,12 @@ public class CustomerTransaction {
         };
         return tableMedAllergies;
     }
-
-    public DefaultTableModel purchasedMedCough() {
-        Object[][] medCough = co.viewMedicineForCough();
+    
+    // This methods will return the table who has the data in specific type of medicine
+    
+    public DefaultTableModel purchasedMedCough(int user_id) {
+        System.out.println(user_id + " user_id in CT");
+        Object[][] medCough = co.viewPurchasedMedForCough(user_id);
         DefaultTableModel tablePurchasedMedCough= new DefaultTableModel(medCough, columnForPurchased) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -114,8 +117,8 @@ public class CustomerTransaction {
         return tablePurchasedMedCough;
     }
     
-    public DefaultTableModel purchasedMedHeadache() {
-        Object[][] medHeadache = co.viewMedicineForAllergies();
+    public DefaultTableModel purchasedMedHeadache(int user_id) {
+        Object[][] medHeadache = co.viewPurchasedMedForHeadache(user_id);
         DefaultTableModel tablePurchasedMedHeadache= new DefaultTableModel(medHeadache, columnForPurchased) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -126,8 +129,8 @@ public class CustomerTransaction {
         return tablePurchasedMedHeadache;
     }
     
-    public DefaultTableModel purchasedMedBodyPain() {
-        Object[][] medBodyPain = co.viewMedicineForAllergies();
+    public DefaultTableModel purchasedMedBodyPain(int user_id) {
+        Object[][] medBodyPain = co.viewPurchasedMedForBodyPain(user_id);
         DefaultTableModel tablePurchasedMedBodyPain= new DefaultTableModel(medBodyPain, columnForPurchased) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -138,8 +141,8 @@ public class CustomerTransaction {
         return tablePurchasedMedBodyPain;
     }
     
-    public DefaultTableModel purchasedMedAllergies() {
-        Object[][] medAllergies = co.viewMedicineForAllergies();
+    public DefaultTableModel purchasedMedAllergies(int user_id) {
+        Object[][] medAllergies = co.viewPurchasedMedForAllergies(user_id);
         DefaultTableModel tablePurchasedMedAllergies= new DefaultTableModel(medAllergies, columnForPurchased) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -150,15 +153,4 @@ public class CustomerTransaction {
         return tablePurchasedMedAllergies;
     }
     
-    public DefaultTableModel viewPurchasedMedicines() {
-        Object[][] viewTable = co.viewPurchasedMedicines();
-        DefaultTableModel tablePurchasedMedicines= new DefaultTableModel(viewTable, columnForPurchased) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                //all ceisCellEditablells false
-                return false;
-            }
-        };
-        return tablePurchasedMedicines;
-    }
 }
