@@ -310,7 +310,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     private void viewCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCustomerMouseClicked
         ViewCustomers vc = new ViewCustomers();
         vc.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_viewCustomerMouseClicked
 
     /**

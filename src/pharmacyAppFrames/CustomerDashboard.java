@@ -36,7 +36,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        medNav.setSelectedItem("Medicine For Headache");
+        medNav.setSelectedItem("Medicine For Cough");
         user_id = Integer.valueOf(account_id.getText());
         System.out.println(user_id + " user id dashboard");
     }
@@ -218,7 +218,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private void PurchasedMedBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchasedMedBtnMouseClicked
         PurchasedMedicines view = new PurchasedMedicines();
         view.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_PurchasedMedBtnMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
@@ -275,13 +275,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
             ct.purchaseMedicineForCough(brandname, genericname, type, quantity,this.user_id);
             medNav.setSelectedItem("Medicine For Cough");
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
-            ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity);
+            ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity,this.user_id);
             medNav.setSelectedItem("Medicine For Headache");
         } else if (medNav.getSelectedItem().equals("Medicine For Body pain")) {
-            ct.purchaseMedicineForBodyPain(brandname, genericname, type, quantity);
-            medNav.setSelectedItem("Medicine For Headache");
+            ct.purchaseMedicineForBodyPain(brandname, genericname, type, quantity,this.user_id);
+            medNav.setSelectedItem("Medicine For Body pain");
         } else if (medNav.getSelectedItem().equals("Medicine For Allergies")) {
-            ct.purchaseMedicineForAllergies(brandname, genericname, type, quantity);
+            ct.purchaseMedicineForAllergies(brandname, genericname, type, quantity,this.user_id);
             medNav.setSelectedItem("Medicine For Allergies");
         }
     }//GEN-LAST:event_purchaseBtnMouseClicked

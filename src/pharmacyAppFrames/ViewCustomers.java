@@ -151,7 +151,7 @@ public class ViewCustomers extends javax.swing.JFrame {
     private void DashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DashboardMouseClicked
         PharmacistDashboard pd = new PharmacistDashboard();
         pd.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_DashboardMouseClicked
 
     /**

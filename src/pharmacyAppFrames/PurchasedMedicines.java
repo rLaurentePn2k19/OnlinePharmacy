@@ -184,7 +184,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
         CustomerDashboard customer = new CustomerDashboard(0, 0);
         customer.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_PurchaseMouseClicked
 
     private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerTransaction {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-    String[] columnForPurchased = {"Brandname","Genricname","Quantity","Amount paid","Date"};
+    String[] columnForPurchased = {"Brandname","Genericname","Quantity","Amount paid","Date"};
 
     CustomerOperation co = new CustomerOperation();
 
@@ -30,27 +30,27 @@ public class CustomerTransaction {
         }
     }
 
-    public void purchaseMedicineForHeadache(String brandname, String genericname, String type, String quantity) {
+    public void purchaseMedicineForHeadache(String brandname, String genericname, String type, String quantity, int user_id) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity));
+            co.purchaseMedForHeadache(brandname, genericname, type, parseInt(quantity),user_id);
         }
     }
 
-    public void purchaseMedicineForBodyPain(String brandname, String genericname, String type, String quantity) {
+    public void purchaseMedicineForBodyPain(String brandname, String genericname, String type, String quantity, int user_id) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity));
+            co.purchaseMedForBodyPain(brandname, genericname, type, parseInt(quantity),user_id);
         }
     }
 
-    public void purchaseMedicineForAllergies(String brandname, String genericname, String type, String quantity) {
+    public void purchaseMedicineForAllergies(String brandname, String genericname, String type, String quantity, int user_id) {
         if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
             JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity));
+            co.purchaseMedForAllergies(brandname, genericname, type, parseInt(quantity),user_id);
         }
     }
 
