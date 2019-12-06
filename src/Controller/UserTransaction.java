@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package API;
+package Controller;
 
+import Model.UserOperation;
+import View.Login;
+import View.Register;
 import javax.swing.JOptionPane;
-import pharmacyAppFrames.*;
-import Db.*;
+
 
 /**
  *
  * @author 2ndyrGroupB
  */
-public class UserLogReg {
+public class UserTransaction {
 
     Login loginFrame = new Login();
     Register registerFrame = new Register();

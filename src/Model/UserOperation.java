@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Db;
+package Model;
 
+import View.PurchasedMedicines;
+import View.SeniorCDashboard;
+import View.PharmacistDashboard;
+import View.Register;
+import View.AdultDashboard;
+import View.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import pharmacyAppFrames.*;
 
 /**
  *
@@ -63,7 +68,7 @@ public class UserOperation implements DbConnect {
                         e = res.getInt("ecoin");
                         int account_id = 0;
                         account_id = res.getInt("id");
-                        CustomerDashboard customer = new CustomerDashboard(e, account_id);
+                        AdultDashboard customer = new AdultDashboard(e, account_id);
                         customer.setVisible(true);
                         PurchasedMedicines pm = new PurchasedMedicines();
                         pm.setUser_id(account_id);
@@ -100,7 +105,7 @@ public class UserOperation implements DbConnect {
                 int e = result.getInt("ecoin");
                 account_id = result.getInt("id");
                 if (age < 60) {
-                    CustomerDashboard cd = new CustomerDashboard(e, account_id);
+                    AdultDashboard cd = new AdultDashboard(e, account_id);
                     cd.setVisible(true);
                     PurchasedMedicines pm = new PurchasedMedicines();
                     pm.setUser_id(account_id);

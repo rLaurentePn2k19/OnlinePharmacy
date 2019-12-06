@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pharmacyAppFrames;
+package View;
 
-import Db.PharmaOperations;
+import Model.PharmacistOperations;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewCustomers extends javax.swing.JFrame {
 
-    PharmaOperations po = new PharmaOperations();
+    PharmacistOperations po = new PharmacistOperations();
     String[] columns = {"Name", "Age", "Email"};
     Object[][] customers = po.getAllCustomer();
 

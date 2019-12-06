@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pharmacyAppFrames;
+package View;
 
-import API.UserLogReg;
+import Controller.UserTransaction;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -185,7 +185,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String em = emailLogin.getText();
         String pass = passLogin.getText();
-        UserLogReg login = new UserLogReg();
+        UserTransaction login = new UserTransaction();
         login.userLogin(em, pass);
         this.dispose();
 

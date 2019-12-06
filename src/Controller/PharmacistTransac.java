@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package API;
+package Controller;
 
+import Model.PharmacistOperations;
 import javax.swing.JOptionPane;
-import Db.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class PharmacistTransac {
 
     String[] columns = {"Brand name", "Generic name", "Price", "Type", "Quantity"};
-    PharmaOperations po = new PharmaOperations();
+    PharmacistOperations po = new PharmacistOperations();
 
     public void addMedForCough(String brandname, String genericname, String price, String type, String quantity) {
         if (brandname.equals("") || genericname.equals("") || price.equals("") || type.equals("") || quantity.equals("")) {
@@ -114,7 +114,7 @@ public class PharmacistTransac {
         }
     }
 
-    public DefaultTableModel tableCough() {
+    public DefaultTableModel viewMedicinesForCough() {
         Object[][] medForCough = po.viewMedicineForCough();
         DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
             @Override
@@ -126,7 +126,7 @@ public class PharmacistTransac {
         return tableMedCough;
     }
 
-    public DefaultTableModel tableHeadache() {
+    public DefaultTableModel viewMedicinesForHeadache() {
         Object[][] medHeadache = po.viewMedicineForHeadache();
         DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
             @Override
@@ -138,7 +138,7 @@ public class PharmacistTransac {
         return tableMedHeadache;
     }
 
-    public DefaultTableModel tableBodyPain() {
+    public DefaultTableModel viewMedicinesForBodyPain() {
         Object[][] medAllergies = po.viewMedicineForBodyPain();
         DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
             @Override
@@ -150,7 +150,7 @@ public class PharmacistTransac {
         return tableMedAllergies;
     }
 
-    public DefaultTableModel tableAllergies() {
+    public DefaultTableModel viewMedicinesForAllergies() {
         Object[][] medBodyPain = po.viewMedicineForAllergies();
         DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
             @Override

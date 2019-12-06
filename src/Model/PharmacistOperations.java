@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Db;
+package Model;
 
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author 2ndyrGroupB
  */
-public class PharmaOperations implements DbConnect {
+public class PharmacistOperations implements DbConnect {
 
     public void addMedicineForCough(String brandname, String genericname, int price, String type, int quantity) {
         Connection conn = null;

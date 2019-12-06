@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package API;
+package Controller;
 
+import Model.CustomerOperation;
 import javax.swing.JOptionPane;
-import Db.*;
 import static java.lang.Integer.parseInt;
 import javax.swing.table.DefaultTableModel;
-//import pharmacyAppFrames.CustomerDashboard;
 
 /**
  *
@@ -54,7 +53,7 @@ public class CustomerTransaction {
         }
     }
 
-    public DefaultTableModel tableCough() {
+    public DefaultTableModel viewMedicinesForCough() {
         Object[][] medForCough = co.viewMedicineForCough();
         DefaultTableModel tableMedCough = new DefaultTableModel(medForCough, columns) {
             @Override
@@ -66,7 +65,7 @@ public class CustomerTransaction {
         return tableMedCough;
     }
 
-    public DefaultTableModel tableHeadache() {
+    public DefaultTableModel viewMedicinesForHeadache() {
         Object[][] medHeadache = co.viewMedicineForHeadache();
         DefaultTableModel tableMedHeadache = new DefaultTableModel(medHeadache, columns) {
             @Override
@@ -78,7 +77,7 @@ public class CustomerTransaction {
         return tableMedHeadache;
     }
 
-    public DefaultTableModel tableBodyPain() {
+    public DefaultTableModel viewMedicinesForBodyPain() {
         Object[][] medBodyPain = co.viewMedicineForBodyPain();
         DefaultTableModel tableMedBodyPain = new DefaultTableModel(medBodyPain, columns) {
             @Override
@@ -90,7 +89,7 @@ public class CustomerTransaction {
         return tableMedBodyPain;
     }
 
-    public DefaultTableModel tableAllergies() {
+    public DefaultTableModel viewMedicinesForAllergies() {
         Object[][] medAllergies = co.viewMedicineForAllergies();
         DefaultTableModel tableMedAllergies = new DefaultTableModel(medAllergies, columns) {
             @Override

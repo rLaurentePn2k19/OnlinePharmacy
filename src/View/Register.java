@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pharmacyAppFrames;
+package View;
 
-import API.UserLogReg;
+import Controller.UserTransaction;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -239,7 +239,7 @@ public class Register extends javax.swing.JFrame {
         String age = regAge.getText();
         String email = regEmail.getText();
         String pass = regPass.getText();
-        UserLogReg register = new UserLogReg();
+        UserTransaction register = new UserTransaction();
         register.userRegister(email, pass, age, name);
         this.dispose();
     }//GEN-LAST:event_registerBtnMouseClicked

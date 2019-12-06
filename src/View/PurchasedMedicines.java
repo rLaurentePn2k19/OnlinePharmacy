@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pharmacyAppFrames;
+package View;
 
-import API.CustomerTransaction;
-import Db.CustomerOperation;
+import Controller.CustomerTransaction;
+import Model.CustomerOperation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -133,7 +133,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Purchase.setText("Purchase");
+        Purchase.setText("Dashboard");
         Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PurchaseMouseClicked(evt);
@@ -181,7 +181,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutMouseClicked
 
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
-        CustomerDashboard customer = new CustomerDashboard(0, 0);
+        AdultDashboard customer = new AdultDashboard(0, 0);
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_PurchaseMouseClicked

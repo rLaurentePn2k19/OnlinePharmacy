@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pharmacyAppFrames;
+package View;
 
-import API.PharmacistTransac;
-import Db.PharmaOperations;
+import Controller.PharmacistTransac;
+import Model.PharmacistOperations;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 public class PharmacistDashboard extends javax.swing.JFrame {
 
     PharmacistTransac pt = new PharmacistTransac();
-    PharmaOperations po = new PharmaOperations();
+    PharmacistOperations po = new PharmacistOperations();
 
     public PharmacistDashboard() {
         initComponents();
@@ -190,13 +190,13 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         Object selected = medNav.getSelectedItem();
 
         if (selected.equals("Medicine For Headache")) {
-            pharTable.setModel(pt.tableHeadache());
+            pharTable.setModel(pt.viewMedicinesForHeadache());
         } else if (selected.equals("Medicine For Cough")) {
-            pharTable.setModel(pt.tableCough());
+            pharTable.setModel(pt.viewMedicinesForCough());
         } else if (selected.equals("Medicine For Allergies")) {
-            pharTable.setModel(pt.tableAllergies());
+            pharTable.setModel(pt.viewMedicinesForAllergies());
         } else if (selected.equals("Medicine For Body pain")) {
-            pharTable.setModel(pt.tableBodyPain());
+            pharTable.setModel(pt.viewMedicinesForBodyPain());
         }
     }//GEN-LAST:event_medNavActionPerformed
 
