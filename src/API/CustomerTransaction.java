@@ -152,5 +152,84 @@ public class CustomerTransaction {
         };
         return tablePurchasedMedAllergies;
     }
+    public DefaultTableModel purchasedMedCoughSC(int user_id) {
+        System.out.println(user_id + " user_id in CT");
+        Object[][] medCough = co.viewPurchasedMedForCough(user_id);
+        DefaultTableModel tablePurchasedMedCough= new DefaultTableModel(medCough, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedCough;
+    }
     
+    public DefaultTableModel purchasedMedHeadacheSC(int user_id) {
+        Object[][] medHeadache = co.viewPurchasedMedForHeadache(user_id);
+        DefaultTableModel tablePurchasedMedHeadache= new DefaultTableModel(medHeadache, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedHeadache;
+    }
+    
+    public DefaultTableModel purchasedMedBodyPainSC(int user_id) {
+        Object[][] medBodyPain = co.viewPurchasedMedForBodyPain(user_id);
+        DefaultTableModel tablePurchasedMedBodyPain= new DefaultTableModel(medBodyPain, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedBodyPain;
+    }
+    
+    public DefaultTableModel purchasedMedAllergiesSC(int user_id) {
+        Object[][] medAllergies = co.viewPurchasedMedForAllergies(user_id);
+        DefaultTableModel tablePurchasedMedAllergies= new DefaultTableModel(medAllergies, columnForPurchased) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all ceisCellEditablells false
+                return false;
+            }
+        };
+        return tablePurchasedMedAllergies;
+    }
+    
+     public void purchaseMedicineForCoughSC(String brandname, String genericname, String type, String quantity, int user_id) {
+        if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            co.purchaseMedForCoughSC(brandname, genericname, type, parseInt(quantity),user_id);
+        }
+    }
+
+    public void purchaseMedicineForHeadacheSC(String brandname, String genericname, String type, String quantity, int user_id) {
+        if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            co.purchaseMedForHeadacheSC(brandname, genericname, type, parseInt(quantity),user_id);
+        }
+    }
+
+    public void purchaseMedicineForBodyPainSC(String brandname, String genericname, String type, String quantity, int user_id) {
+        if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            co.purchaseMedForBodyPainSC(brandname, genericname, type, parseInt(quantity),user_id);
+        }
+    }
+
+    public void purchaseMedicineForAllergiesSC(String brandname, String genericname, String type, String quantity, int user_id) {
+        if (brandname.equals("") || genericname.equals("") || type.equals("") || quantity.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            co.purchaseMedForAllergiesSC(brandname, genericname, type, parseInt(quantity),user_id);
+        }
+    }
 }

@@ -25,7 +25,7 @@ public class UserOperation implements DbConnect {
         Statement stmtRetrieve = null;
         String insertQuery;
         int e = 0;
-        
+
         insertQuery = String.format("INSERT INTO `accounts` (name,age,email,password,ecoin) "
                 + "VALUES ('%s','%d','%s','%s','%d')", name, age, email, password, 3000);
         String retrieveUser;
@@ -41,15 +41,19 @@ public class UserOperation implements DbConnect {
                 stmtInsert = conn.createStatement();
                 int result = stmtInsert.executeUpdate(insertQuery);
                 if (age > 60) {
+
                     stmtRetrieve = conn.createStatement();
                     ResultSet res = stmtRetrieve.executeQuery(retrieveUser);
                     if (res.next()) {
                         e = res.getInt("ecoin");
+                        int account_id = 0;
+                        account_id = res.getInt("id");
                         System.out.println(e + " Ecoin given");
+                        SeniorCDashboard scd = new SeniorCDashboard(e, account_id);
+                        scd.setVisible(true);
+                        PurchasedMedicines pm = new PurchasedMedicines();
+                        pm.setUser_id(account_id);
                     }
-                    SeniorCDashboard scd = new SeniorCDashboard();
-                    scd.setVisible(true);
-
                     JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                     JOptionPane.showMessageDialog(null, "You can purchase our medicine with 20% discount..", null, JOptionPane.PLAIN_MESSAGE);
                 } else {
@@ -57,14 +61,13 @@ public class UserOperation implements DbConnect {
                     ResultSet res = stmtRetrieve.executeQuery(retrieveUser);
                     if (res.next()) {
                         e = res.getInt("ecoin");
-                        int account_id;
+                        int account_id = 0;
                         account_id = res.getInt("id");
                         CustomerDashboard customer = new CustomerDashboard(e, account_id);
                         customer.setVisible(true);
                         PurchasedMedicines pm = new PurchasedMedicines();
                         pm.setUser_id(account_id);
                     }
-
                     JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                 }
                 conn.close();
@@ -103,7 +106,7 @@ public class UserOperation implements DbConnect {
                     pm.setUser_id(account_id);
                     JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                 } else if (age > 60) {
-                    SeniorCDashboard sc = new SeniorCDashboard();
+                    SeniorCDashboard sc = new SeniorCDashboard(e, account_id);
                     sc.setVisible(true);
                     JOptionPane.showMessageDialog(null, "Welcome to Rangie Drug Store", null, JOptionPane.PLAIN_MESSAGE);
                 }

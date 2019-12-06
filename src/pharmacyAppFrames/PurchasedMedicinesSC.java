@@ -13,18 +13,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author laurentera_sd2022
+ * @author laurentera_sd2082
  */
-public class PurchasedMedicines extends javax.swing.JFrame {
+public class PurchasedMedicinesSC extends javax.swing.JFrame {
 
-    // Dapat siya ray maka kita sa iya purchase history, it means kung pag register pa nimo wla pakay purchase history
     CustomerOperation co = new CustomerOperation();
     CustomerTransaction ct = new CustomerTransaction();
     int user_id;
+
     /**
-     * Creates new form ViewHistory
+     * Creates new form PurchasedMedicinesSC
      */
-    public PurchasedMedicines() {
+    public PurchasedMedicinesSC() {
         initComponents();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
@@ -37,7 +37,6 @@ public class PurchasedMedicines extends javax.swing.JFrame {
         this.user_id = user_id;
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,17 +46,39 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablePurchased = new javax.swing.JTable();
-        medNav = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         Purchase = new javax.swing.JMenu();
         PurchasedMedBtn = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablePurchased = new javax.swing.JTable();
+        medNav = new javax.swing.JComboBox<>();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        dashboard = new javax.swing.JMenu();
+        purchasedmedicines = new javax.swing.JMenu();
+        logout = new javax.swing.JMenu();
+
+        Purchase.setText("Purchase");
+        Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PurchaseMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(Purchase);
+
+        PurchasedMedBtn.setText("Purchased Medicines");
+        jMenuBar1.add(PurchasedMedBtn);
+
+        Logout.setText("Logout");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(Logout);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Rangie Drug Store");
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 204));
 
@@ -92,13 +113,6 @@ public class PurchasedMedicines extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tablePurchased);
-        if (tablePurchased.getColumnModel().getColumnCount() > 0) {
-            tablePurchased.getColumnModel().getColumn(0).setResizable(false);
-            tablePurchased.getColumnModel().getColumn(1).setResizable(false);
-            tablePurchased.getColumnModel().getColumn(2).setResizable(false);
-            tablePurchased.getColumnModel().getColumn(3).setResizable(false);
-            tablePurchased.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
         medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -133,26 +147,31 @@ public class PurchasedMedicines extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Purchase.setText("Purchase");
-        Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
+        dashboard.setText("Purchase");
+        dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PurchaseMouseClicked(evt);
+                dashboardMouseClicked(evt);
             }
         });
-        jMenuBar1.add(Purchase);
+        jMenuBar2.add(dashboard);
 
-        PurchasedMedBtn.setText("Purchased Medicines");
-        jMenuBar1.add(PurchasedMedBtn);
-
-        Logout.setText("Logout");
-        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+        purchasedmedicines.setText("Purchase Medicines");
+        purchasedmedicines.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoutMouseClicked(evt);
+                purchasedmedicinesMouseClicked(evt);
             }
         });
-        jMenuBar1.add(Logout);
+        jMenuBar2.add(purchasedmedicines);
 
-        setJMenuBar(jMenuBar1);
+        logout.setText("Logout");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(logout);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,11 +183,35 @@ public class PurchasedMedicines extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
+
+    }//GEN-LAST:event_medNavComponentShown
+
+    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
+        Object selected = medNav.getSelectedItem();
+
+        if (selected.equals("Medicine For Headache")) {
+            tablePurchased.setModel(ct.purchasedMedHeadacheSC(user_id));
+        } else if (selected.equals("Medicine For Cough")) {
+            tablePurchased.setModel(ct.purchasedMedCoughSC(user_id));
+        } else if (selected.equals("Medicine For Allergies")) {
+            tablePurchased.setModel(ct.purchasedMedAllergiesSC(user_id));
+        } else if (selected.equals("Medicine For Body pain")) {
+            tablePurchased.setModel(ct.purchasedMedBodyPainSC(user_id));
+        }
+    }//GEN-LAST:event_medNavActionPerformed
+
+    private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
+        CustomerDashboard customer = new CustomerDashboard(0, 0);
+        customer.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_PurchaseMouseClicked
 
     private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
         Login login = new Login();
@@ -180,29 +223,28 @@ public class PurchasedMedicines extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
-    private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
-        CustomerDashboard customer = new CustomerDashboard(0, 0);
-        customer.setVisible(true);
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        // TODO add your handling code here:
+        SeniorCDashboard sc = new SeniorCDashboard(0,0);
+        sc.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_PurchaseMouseClicked
 
-    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
+    }//GEN-LAST:event_dashboardMouseClicked
 
-    }//GEN-LAST:event_medNavComponentShown
-
-    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
-        Object selected = medNav.getSelectedItem();
-
-        if (selected.equals("Medicine For Headache")) {
-            tablePurchased.setModel(ct.purchasedMedHeadache(user_id));
-        } else if (selected.equals("Medicine For Cough")) {
-            tablePurchased.setModel(ct.purchasedMedCough(user_id));
-        } else if (selected.equals("Medicine For Allergies")) {
-            tablePurchased.setModel(ct.purchasedMedAllergies(user_id));
-        } else if (selected.equals("Medicine For Body pain")) {
-            tablePurchased.setModel(ct.purchasedMedBodyPain(user_id));
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        Login login = new Login();
+        int input = JOptionPane.showConfirmDialog(null, "Do you want to logout?");
+        // 0=yes, 1=no, 2=cancel
+        if (input == 0) {
+            login.setVisible(true);
+            this.dispose();
         }
-    }//GEN-LAST:event_medNavActionPerformed
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void purchasedmedicinesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchasedmedicinesMouseClicked
+                
+    }//GEN-LAST:event_purchasedmedicinesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,22 +263,20 @@ public class PurchasedMedicines extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PurchasedMedicines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurchasedMedicinesSC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PurchasedMedicines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurchasedMedicinesSC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PurchasedMedicines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurchasedMedicinesSC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PurchasedMedicines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurchasedMedicinesSC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                new PurchasedMedicines().setVisible(true);
+                new PurchasedMedicinesSC().setVisible(true);
             }
         });
     }
@@ -245,10 +285,14 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     private javax.swing.JMenu Logout;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu PurchasedMedBtn;
+    private javax.swing.JMenu dashboard;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu logout;
     private javax.swing.JComboBox<String> medNav;
+    private javax.swing.JMenu purchasedmedicines;
     private javax.swing.JTable tablePurchased;
     // End of variables declaration//GEN-END:variables
 }
