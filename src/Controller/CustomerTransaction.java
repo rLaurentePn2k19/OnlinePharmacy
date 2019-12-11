@@ -152,7 +152,6 @@ public class CustomerTransaction {
         return tablePurchasedMedAllergies;
     }
     public DefaultTableModel purchasedMedCoughSC(int user_id) {
-        System.out.println(user_id + " user_id in CT");
         Object[][] medCough = co.viewPurchasedMedForCough(user_id);
         DefaultTableModel tablePurchasedMedCough= new DefaultTableModel(medCough, columnForPurchased) {
             @Override

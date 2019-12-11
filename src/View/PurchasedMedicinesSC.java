@@ -208,7 +208,7 @@ public class PurchasedMedicinesSC extends javax.swing.JFrame {
     }//GEN-LAST:event_medNavActionPerformed
 
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
-        AdultDashboard customer = new AdultDashboard(0, 0);
+        AdultDashboard customer = new AdultDashboard(0);
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_PurchaseMouseClicked
@@ -225,7 +225,7 @@ public class PurchasedMedicinesSC extends javax.swing.JFrame {
 
     private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
         // TODO add your handling code here:
-        SeniorCDashboard sc = new SeniorCDashboard(0,0);
+        SeniorCDashboard sc = new SeniorCDashboard(0);
         sc.setVisible(true);
         this.setVisible(false);
 

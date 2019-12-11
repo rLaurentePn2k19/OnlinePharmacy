@@ -198,7 +198,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {
@@ -249,7 +249,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {
@@ -301,7 +301,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {
@@ -341,7 +341,6 @@ public class CustomerOperation implements DbConnect {
     }
 
     public Object[][] viewPurchasedMedForCough(int user_id) {
-        System.out.println(user_id + " viewPurchased");
         Connection conn = null;
         Statement stmt = null;
         Object[][] data = new Object[20][5];
@@ -524,7 +523,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforheadache` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {
@@ -577,7 +576,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforbodypain` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {
@@ -631,7 +630,7 @@ public class CustomerOperation implements DbConnect {
         String updateQuery;
         String selectQuery;
         String insertPurchasedMed;
-        selectQuery = "SELECT id,quantity from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
+        selectQuery = "SELECT id,quantity,price from `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
         deleteQuery = "DELETE FROM `medicineforallergies` WHERE brandname = '" + brandname + "' and genericname = '" + genericname + "' ";
 
         try {

@@ -24,12 +24,11 @@ public class AdultDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form CustomerDashboard
-     * @param ecoin
+     *
      * @param acc_id
      */
-    public AdultDashboard(int ecoin,int acc_id) {
+    public AdultDashboard(int acc_id) {
         initComponents();
-        money.setText(Integer.toString(ecoin));
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -37,8 +36,6 @@ public class AdultDashboard extends javax.swing.JFrame {
         medNav.setSelectedItem("Medicine For Cough");
         user_id = acc_id;
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,29 +46,15 @@ public class AdultDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        medNav = new javax.swing.JComboBox<>();
         OuterContainer = new javax.swing.JPanel();
         purchaseBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCustomer = new javax.swing.JTable();
-        money = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        medNav = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         Purchase = new javax.swing.JMenu();
         PurchasedMedBtn = new javax.swing.JMenu();
         Logout = new javax.swing.JMenu();
-
-        medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
-        medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                medNavComponentShown(evt);
-            }
-        });
-        medNav.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medNavActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rangie Drug Store");
@@ -121,9 +104,17 @@ public class AdultDashboard extends javax.swing.JFrame {
             tableCustomer.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        money.setText("jLabel1");
-
-        jLabel1.setText("E-money left:  ₱");
+        medNav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine For Cough", "Medicine For Headache", "Medicine For Body pain", "Medicine For Allergies" }));
+        medNav.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                medNavComponentShown(evt);
+            }
+        });
+        medNav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medNavActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout OuterContainerLayout = new javax.swing.GroupLayout(OuterContainer);
         OuterContainer.setLayout(OuterContainerLayout);
@@ -132,14 +123,12 @@ public class AdultDashboard extends javax.swing.JFrame {
             .addGroup(OuterContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                     .addGroup(OuterContainerLayout.createSequentialGroup()
                         .addComponent(purchaseBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         OuterContainerLayout.setVerticalGroup(
             OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,8 +136,7 @@ public class AdultDashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(OuterContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(purchaseBtn)
-                    .addComponent(money)
-                    .addComponent(jLabel1))
+                    .addComponent(medNav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -208,24 +196,6 @@ public class AdultDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LogoutMouseClicked
 
-    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
-        Object selected = medNav.getSelectedItem();
-
-        if (selected.equals("Medicine For Headache")) {
-            tableCustomer.setModel(ct.viewMedicinesForHeadache());
-        } else if (selected.equals("Medicine For Cough")) {
-            tableCustomer.setModel(ct.viewMedicinesForCough());
-        } else if (selected.equals("Medicine For Allergies")) {
-            tableCustomer.setModel(ct.viewMedicinesForAllergies());
-        } else if (selected.equals("Medicine For Body pain")) {
-            tableCustomer.setModel(ct.viewMedicinesForBodyPain());
-        }
-    }//GEN-LAST:event_medNavActionPerformed
-
-    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
-
-    }//GEN-LAST:event_medNavComponentShown
-
     private void purchaseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseBtnMouseClicked
 
         JTextField Brandname = new JTextField();
@@ -245,22 +215,40 @@ public class AdultDashboard extends javax.swing.JFrame {
         String genericname = Genericname.getText();
         String quantity = Quantity.getText();
         String type = Type.getText();
-        
+
         System.out.println(this.user_id + " Purchase btn");
         if (medNav.getSelectedItem().equals("Medicine For Cough")) {
-            ct.purchaseMedicineForCough(brandname, genericname, type, quantity,this.user_id);
+            ct.purchaseMedicineForCough(brandname, genericname, type, quantity, this.user_id);
             medNav.setSelectedItem("Medicine For Cough");
         } else if (medNav.getSelectedItem().equals("Medicine For Headache")) {
-            ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity,this.user_id);
+            ct.purchaseMedicineForHeadache(brandname, genericname, type, quantity, this.user_id);
             medNav.setSelectedItem("Medicine For Headache");
         } else if (medNav.getSelectedItem().equals("Medicine For Body pain")) {
-            ct.purchaseMedicineForBodyPain(brandname, genericname, type, quantity,this.user_id);
+            ct.purchaseMedicineForBodyPain(brandname, genericname, type, quantity, this.user_id);
             medNav.setSelectedItem("Medicine For Body pain");
         } else if (medNav.getSelectedItem().equals("Medicine For Allergies")) {
-            ct.purchaseMedicineForAllergies(brandname, genericname, type, quantity,this.user_id);
+            ct.purchaseMedicineForAllergies(brandname, genericname, type, quantity, this.user_id);
             medNav.setSelectedItem("Medicine For Allergies");
         }
     }//GEN-LAST:event_purchaseBtnMouseClicked
+
+    private void medNavComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medNavComponentShown
+
+    }//GEN-LAST:event_medNavComponentShown
+
+    private void medNavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNavActionPerformed
+        Object selected = medNav.getSelectedItem();
+
+        if (selected.equals("Medicine For Headache")) {
+            tableCustomer.setModel(ct.viewMedicinesForHeadache());
+        } else if (selected.equals("Medicine For Cough")) {
+            tableCustomer.setModel(ct.viewMedicinesForCough());
+        } else if (selected.equals("Medicine For Allergies")) {
+            tableCustomer.setModel(ct.viewMedicinesForAllergies());
+        } else if (selected.equals("Medicine For Body pain")) {
+            tableCustomer.setModel(ct.viewMedicinesForBodyPain());
+        }
+    }//GEN-LAST:event_medNavActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -291,7 +279,7 @@ public class AdultDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new AdultDashboard(0,0).setVisible(true);
+                new AdultDashboard(0).setVisible(true);
 
             }
         });
@@ -302,11 +290,9 @@ public class AdultDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel OuterContainer;
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu PurchasedMedBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> medNav;
-    private javax.swing.JLabel money;
     private javax.swing.JButton purchaseBtn;
     private javax.swing.JTable tableCustomer;
     // End of variables declaration//GEN-END:variables

@@ -181,7 +181,7 @@ public class PurchasedMedicines extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutMouseClicked
 
     private void PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PurchaseMouseClicked
-        AdultDashboard customer = new AdultDashboard(0, 0);
+        AdultDashboard customer = new AdultDashboard(0);
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_PurchaseMouseClicked

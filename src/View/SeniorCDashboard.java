@@ -28,9 +28,8 @@ public class SeniorCDashboard extends javax.swing.JFrame {
      * @param ecoin
      * @param acc_id
      */
-    public SeniorCDashboard(int ecoin, int acc_id) {
+    public SeniorCDashboard(int acc_id) {
         initComponents();
-        money.setText(Integer.toString(ecoin));
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -292,7 +291,7 @@ public class SeniorCDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SeniorCDashboard(0,0).setVisible(true);
+                new SeniorCDashboard(0).setVisible(true);
             }
         });
     }
