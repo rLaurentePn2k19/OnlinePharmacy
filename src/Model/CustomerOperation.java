@@ -141,7 +141,7 @@ public class CustomerOperation implements DbConnect {
         Statement stmtUpdate = null;
         Statement stmtInsert = null;
         int medicine_id = 0;
-        int amount_paid = 0;
+        double amount_paid = 0;
         String deleteQuery;
         String updateQuery;
         String selectQuery;
@@ -163,7 +163,7 @@ public class CustomerOperation implements DbConnect {
                     stmtDelete.executeUpdate(deleteQuery);
                     JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforcough` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 } else if (qty > quantity) {
@@ -173,7 +173,7 @@ public class CustomerOperation implements DbConnect {
                     stmtUpdate.executeUpdate(updateQuery);
                     JOptionPane.showMessageDialog(null, "You purchased " + genericname + " a quantity of " + quantity);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforcough` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 }
@@ -193,7 +193,7 @@ public class CustomerOperation implements DbConnect {
         Statement stmtUpdate = null;
         Statement stmtInsert = null;
         int medicine_id = 0;
-        int amount_paid = 0;
+        double amount_paid = 0;
         String deleteQuery;
         String updateQuery;
         String selectQuery;
@@ -215,7 +215,7 @@ public class CustomerOperation implements DbConnect {
                     stmtDelete.executeUpdate(deleteQuery);
                     JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforheadache` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 } else if (qty > quantity) {
@@ -225,7 +225,7 @@ public class CustomerOperation implements DbConnect {
                     stmtUpdate.executeUpdate(updateQuery);
                     JOptionPane.showMessageDialog(null, "You purchased " + genericname + " a quantity of " + quantity);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforheadache` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 }
@@ -244,7 +244,7 @@ public class CustomerOperation implements DbConnect {
         Statement stmtUpdate = null;
         Statement stmtInsert = null;
         int medicine_id = 0;
-        int amount_paid = 0;
+        double amount_paid = 0;
         String deleteQuery;
         String updateQuery;
         String selectQuery;
@@ -266,7 +266,7 @@ public class CustomerOperation implements DbConnect {
                     stmtDelete.executeUpdate(deleteQuery);
                     JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforbodypain` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 } else if (qty > quantity) {
@@ -276,7 +276,7 @@ public class CustomerOperation implements DbConnect {
                     stmtUpdate.executeUpdate(updateQuery);
                     JOptionPane.showMessageDialog(null, "You purchased " + genericname + " a quantity of " + quantity);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforbodypain` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 }
@@ -296,7 +296,7 @@ public class CustomerOperation implements DbConnect {
         Statement stmtUpdate = null;
         Statement stmtInsert = null;
         int medicine_id = 0;
-        int amount_paid = 0;
+        double amount_paid = 0;
         String deleteQuery;
         String updateQuery;
         String selectQuery;
@@ -318,7 +318,7 @@ public class CustomerOperation implements DbConnect {
                     stmtDelete.executeUpdate(deleteQuery);
                     JOptionPane.showMessageDialog(null, "You purchased all " + genericname);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforallergies` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 } else if (qty > quantity) {
@@ -328,7 +328,7 @@ public class CustomerOperation implements DbConnect {
                     stmtUpdate.executeUpdate(updateQuery);
                     JOptionPane.showMessageDialog(null, "You purchased " + genericname + " a quantity of " + quantity);
                     insertPurchasedMed = String.format("INSERT INTO `purchasedmedicinesforallergies` (account_id,medicine_id,quantity,amount_paid)"
-                            + "VALUES ('%d','%d','%d','%d')", user_id, medicine_id, quantity, amount_paid);
+                            + "VALUES ('%d','%d','%d','%f')", user_id, medicine_id, quantity, amount_paid);
                     stmtInsert = conn.createStatement();
                     stmtInsert.executeUpdate(insertPurchasedMed);
                 }
@@ -359,7 +359,7 @@ public class CustomerOperation implements DbConnect {
                 data[cols][0] = result.getString("brandname");
                 data[cols][1] = result.getString("genericname");
                 data[cols][2] = result.getInt("quantity");
-                data[cols][3] = result.getInt("amount_paid");
+                data[cols][3] = result.getDouble("amount_paid");
                 data[cols][4] = result.getString("date");
                 ++cols;
             }
@@ -387,8 +387,8 @@ public class CustomerOperation implements DbConnect {
             while (result.next()) {
                 data[cols][0] = result.getString("brandname");
                 data[cols][1] = result.getString("genericname");
-                data[cols][2] = result.getString("quantity");
-                data[cols][3] = result.getString("amount_paid");
+                data[cols][2] = result.getInt("quantity");
+                data[cols][3] = result.getDouble("amount_paid");
                 data[cols][4] = result.getString("date");
                 ++cols;
             }
@@ -416,8 +416,8 @@ public class CustomerOperation implements DbConnect {
             while (result.next()) {
                 data[cols][0] = result.getString("brandname");
                 data[cols][1] = result.getString("genericname");
-                data[cols][2] = result.getString("quantity");
-                data[cols][3] = result.getString("amount_paid");
+                data[cols][2] = result.getInt("quantity");
+                data[cols][3] = result.getDouble("amount_paid");
                 data[cols][4] = result.getString("date");
                 ++cols;
             }
@@ -445,8 +445,8 @@ public class CustomerOperation implements DbConnect {
             while (result.next()) {
                 data[cols][0] = result.getString("brandname");
                 data[cols][1] = result.getString("genericname");
-                data[cols][2] = result.getString("quantity");
-                data[cols][3] = result.getString("amount_paid");
+                data[cols][2] = result.getInt("quantity");
+                data[cols][3] = result.getDouble("amount_paid");
                 data[cols][4] = result.getString("date");
                 ++cols;
             }
